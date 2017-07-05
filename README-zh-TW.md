@@ -176,93 +176,93 @@
 * [聯絡方式](#contact-info)
 * [授權](#license)
 
-## Study guide
+## 學習指南
 
-> Suggested topics to review based on your interview timeline (short, medium, long).
+> 基於你面試的時間 (短、中、長) 來複習這些建議的主題。
 
 ![Imgur](http://i.imgur.com/OfVllex.png)
 
-**Q: For interviews, do I need to know everything here?**
+**Q: 對於面試者來說，我需要知道這裡所有的知識嗎？**
 
-**A: No, you don't need to know everything here to prepare for the interview**.
+**A: 不，如果是為了面試，你不需要知道這裡所有的知識**。
 
-What you are asked in an interview depends on variables such as:
+在一場面試中，你會被問到什麼問題取決於以下幾點：
 
-* How much experience you have
-* What your technical background is
-* What positions you are interviewing for
-* Which companies you are interviewing with
-* Luck
+* 你有多少經驗
+* 你的技術背景
+* 你面試什麼職位
+* 你面試什麼公司
+* 你的幸運程度
 
-More experienced candidates are generally expected to know more about system design.  Architects or team leads might be expected to know more than individual contributors.  Top tech companies are likely to have one or more design interview rounds.
+越有經驗的面試者通常被期望瞭解更多系統設計的知識。如果是架構師或團隊負責人則被預期瞭解更多除了個人貢獻以外的知識。頂尖的科技公司通常也會有一次或多次的系統設計面試。
 
-Start broad and go deeper in a few areas.  It helps to know a little about various key system design topics.  Adjust the following guide based on your timeline, experience, what positions you are interviewing for, and which companies you are interviewing with.
+面試時，會很廣泛地展開，並在幾個特定領域深入探討。這裡會幫助你了解一些系統設計不同的主題，基於你面試的時間、經驗、職位和公司來調整你所需要涉獵的知識內容。
 
-* **Short timeline** - Aim for **breadth** with system design topics.  Practice by solving **some** interview questions.
-* **Medium timeline** - Aim for **breadth** and **some depth** with system design topics.  Practice by solving **many** interview questions.
-* **Long timeline** - Aim for **breadth** and **more depth** with system design topics.  Practice by solving **most** interview questions.
+* **短期** - 以系統設計的**廣度**為目標。通過解決**一些**面試題目來練習。
+* **中期** - 以系統設計的**廣度**和**初級深度**為目標。通過解決**很多**面試題目來練習。
+* **長期** - 以系統設計主題的**廣度**和**高級深度**為目標。通過解決**大部分**面試題目來練習。
 
-| | Short | Medium | Long |
+| | 短期 | 中期 | 長期 |
 |---|---|---|---|
-| Read through the [System design topics](#index-of-system-design-topics) to get a broad understanding of how systems work | :+1: | :+1: | :+1: |
-| Read through a few articles in the [Company engineering blogs](#company-engineering-blogs) for the companies you are interviewing with | :+1: | :+1: | :+1: |
-| Read through a few [Real world architectures](#real-world-architectures) | :+1: | :+1: | :+1: |
-| Review [How to approach a system design interview question](#how-to-approach-a-system-design-interview-question) | :+1: | :+1: | :+1: |
-| Work through [System design interview questions with solutions](#system-design-interview-questions-with-solutions) | Some | Many | Most |
-| Work through [Object-oriented design interview questions with solutions](#object-oriented-design-interview-questions-with-solutions) | Some | Many | Most |
-| Review [Additional system design interview questions](#additional-system-design-interview-questions) | Some | Many | Most |
+| 閱讀 [系統設計主題](#index-of-system-design-topics) 來取得關於系統如何運作的廣泛知識 | :+1: | :+1: | :+1: |
+| 閱讀一些你要面試的 [公司技術部落格](#company-engineering-blogs) 文章 | :+1: | :+1: | :+1: |
+| 閱讀關於 [真實世界的架構](#real-world-architectures) | :+1: | :+1: | :+1: |
+| 複習 [如何處理一個系統設計的面試題目](#how-to-approach-a-system-design-interview-question) | :+1: | :+1: | :+1: |
+| 完成 [系統設計面試題目與解答](#system-design-interview-questions-with-solutions) | 一些 | 很多 | 大部分 |
+| 完成 [物件導向設計與解答](#object-oriented-design-interview-questions-with-solutions) | 一些 | 很多 | 大部分 |
+| 複習 [其他的系統設計面試提](#additional-system-design-interview-questions) | 一些 | 很多 | 大部分 |
 
-## How to approach a system design interview question
+## 如何解決一個系統設計的面試題目
 
-> How to tackle a system design interview question.
+> 如何面對一個系統設計的面試題目
 
-The system design interview is an **open-ended conversation**.  You are expected to lead it.
+系統設計是一個**開放式的對話過程**，面試官會期望由你來主導這個對話。
 
-You can use the following steps to guide the discussion.  To help solidify this process, work through the [System design interview questions with solutions](#system-design-interview-questions-with-solutions) section using the following steps.
+你可以使用下面的步驟來引導整個討論過程。為了鞏固這個流程，請使用下面的步驟完成[系統設計的面試題和解答](#system-design-interview-questions-with-solutions)這個章節。
 
-### Step 1: Outline use cases, constraints, and assumptions
+### 第一步：描述使用的場景、限制及假設
 
-Gather requirements and scope the problem.  Ask questions to clarify use cases and constraints.  Discuss assumptions.
+把問題的需求和範圍等資訊搜集起來。詢問以下問題，讓我們可以明確的定義使用場景和限制，對於提出的假設進行討論：
 
-* Who is going to use it?
-* How are they going to use it?
-* How many users are there?
-* What does the system do?
-* What are the inputs and outputs of the system?
-* How much data do we expect to handle?
-* How many requests per second do we expect?
-* What is the expected read to write ratio?
+* 誰會使用這個系統？
+* 他們怎麼使用系統？
+* 有多少使用者？
+* 系統的作用是什麼？
+* 系統的輸入和輸出是什麼？
+* 我們預期希望處理多少資料？
+* 我們希望每秒處理多少請求？
+* 預期的讀、寫比例為何？
 
-### Step 2: Create a high level design
+### 第二步：建立一個高維度的設計
 
-Outline a high level design with all important components.
+使用重要的元件來建立一個高維度的設計。
 
-* Sketch the main components and connections
-* Justify your ideas
+* 畫出主要的元件與連接情況
+* 證明你的想法
 
-### Step 3: Design core components
+### 第三步： 設計核心的元件
 
-Dive into details for each core component.  For example, if you were asked to [design a url shortening service](solutions/system_design/pastebin/README.md), discuss:
+對每一個核心元件進行深入的分析。舉例來說， 如果你被問到[設計一個短網址的服務](solutions/system_design/pastebin/README.md)，底下可以開始討論：
 
-* Generating and storing a hash of the full url
-    * [MD5](solutions/system_design/pastebin/README.md) and [Base62](solutions/system_design/pastebin/README.md)
-    * Hash collisions
-    * SQL or NoSQL
-    * Database schema
-* Translating a hashed url to the full url
-    * Database lookup
-* API and object-oriented design
+* 產生並儲存一個完整網址的 Hash
+    * [MD5](solutions/system_design/pastebin/README.md) 和 [Base62](solutions/system_design/pastebin/README.md)
+    * Hash 碰撞
+    * SQL 或 NoSQL
+    * 資料庫的模型
+* 將一個 hash 過後的網址轉換為完整的網址
+    * 資料庫查詢
+* API 和物件導向設計
 
-### Step 4: Scale the design
+### 第四步：評估你的設計
 
-Identify and address bottlenecks, given the constraints.  For example, do you need the following to address scalability issues?
+確認及指出你的設計的瓶頸與限制，舉例來說，你需要底下幾個元件來擴展你的設計嗎？
 
-* Load balancer
-* Horizontal scaling
-* Caching
-* Database sharding
+* 負載平衡
+* 水平擴展
+* 快取
+* 資料庫切片
 
-Discuss potential solutions and trade-offs.  Everything is a trade-off.  Address bottlenecks using [principles of scalable system design](#index-of-system-design-topics).
+針對你的設計討論可能的解決方法與代價。每個設計都有取捨。使用[可擴展的設計原則](#index-of-system-design-topics)來處理系統瓶頸。
 
 ### Back-of-the-envelope calculations
 
