@@ -264,13 +264,13 @@
 
 針對你的設計討論可能的解決方法與代價。每個設計都有取捨。使用[可擴展的設計原則](#index-of-system-design-topics)來處理系統瓶頸。
 
-### Back-of-the-envelope calculations
+### 快速有效的進行估算
 
-You might be asked to do some estimates by hand.  Refer to the [Appendix](#appendix) for the following resources:
+你可能要求針對設計進行一些估算，可以參考[附錄](#appendix)的一些資源：
 
-* [Use back of the envelope calculations](http://highscalability.com/blog/2011/1/26/google-pro-tip-use-back-of-the-envelope-calculations-to-choo.html)
-* [Powers of two table](#powers-of-two-table)
-* [Latency numbers every programmer should know](#latency-numbers-every-programmer-should-know)
+* [使用快速估算法](http://highscalability.com/blog/2011/1/26/google-pro-tip-use-back-of-the-envelope-calculations-to-choo.html)
+* [2 的次方表](#powers-of-two-table)
+* [每個開發者都應該知道的延遲數量](#latency-numbers-every-programmer-should-know)
 
 ### Source(s) and further reading
 
