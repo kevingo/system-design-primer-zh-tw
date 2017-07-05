@@ -272,13 +272,13 @@
 * [2 的次方表](#powers-of-two-table)
 * [每個開發者都應該知道的延遲數量](#latency-numbers-every-programmer-should-know)
 
-### Source(s) and further reading
+### 相關資源與延伸閱讀
 
-Check out the following links to get a better idea of what to expect:
+查看以下的連結獲得更好的做法：
 
-* [How to ace a systems design interview](https://www.palantir.com/2011/10/how-to-rock-a-systems-design-interview/)
-* [The system design interview](http://www.hiredintech.com/system-design)
-* [Intro to Architecture and Systems Design Interviews](https://www.youtube.com/watch?v=ZgdS0EUmn70)
+* [如何在系統設計的面試中勝出](https://www.palantir.com/2011/10/how-to-rock-a-systems-design-interview/)
+* [系統設計的面試](http://www.hiredintech.com/system-design)
+* [系統架構與設計的面試介紹](https://www.youtube.com/watch?v=ZgdS0EUmn70)
 
 ## System design interview questions with solutions
 
