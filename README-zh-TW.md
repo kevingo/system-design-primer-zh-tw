@@ -280,23 +280,23 @@
 * [系統設計的面試](http://www.hiredintech.com/system-design)
 * [系統架構與設計的面試介紹](https://www.youtube.com/watch?v=ZgdS0EUmn70)
 
-## System design interview questions with solutions
+## 系統設計面試問題與解答
 
-> Common system design interview questions with sample discussions, code, and diagrams.
+> 常見的系統設計面試問題與相關範例的討論、程式碼以及圖表。
 >
-> Solutions linked to content in the `solutions/` folder.
+> 相關的解答位於 `解答/` 的資料夾中。
 
-| Question | |
+| 問題 | |
 |---|---|
-| Design Pastebin.com (or Bit.ly) | [Solution](solutions/system_design/pastebin/README.md) |
-| Design the Twitter timeline (or Facebook feed)<br/>Design Twitter search (or Facebook search) | [Solution](solutions/system_design/twitter/README.md) |
-| Design a web crawler | [Solution](solutions/system_design/web_crawler/README.md) |
-| Design Mint.com | [Solution](solutions/system_design/mint/README.md) |
-| Design the data structures for a social network | [Solution](solutions/system_design/social_graph/README.md) |
-| Design a key-value store for a search engine | [Solution](solutions/system_design/query_cache/README.md) |
-| Design Amazon's sales ranking by category feature | [Solution](solutions/system_design/sales_rank/README.md) |
-| Design a system that scales to millions of users on AWS | [Solution](solutions/system_design/scaling_aws/README.md) |
-| Add a system design question | [Contribute](#contributing) |
+| 設計 Pastebin.com (或 Bit.ly) | [解答](solutions/system_design/pastebin/README.md) |
+| 設計一個像是 Twitter 的 timeline (或 Facebook feed)<br/>設計一個 Twitter 搜尋功能 (or Facebook 搜尋功能) | [解答](solutions/system_design/twitter/README.md) |
+| 設計一個爬蟲系統 | [解答](solutions/system_design/web_crawler/README.md) |
+| 設計 Mint.com 網站 | [解答](solutions/system_design/mint/README.md) |
+| 設計一個社交網站的資料結構 | [解答](solutions/system_design/social_graph/README.md) |
+| 設計一個搜尋引擎使用的鍵值儲存資料結構 | [解答](solutions/system_design/query_cache/README.md) |
+| 設計一個根據產品分類的亞馬遜銷售排名 | [解答](solutions/system_design/sales_rank/README.md) |
+| 在 AWS 上設計一個百萬用戶等級的系統 | [解答](solutions/system_design/scaling_aws/README.md) |
+| 增加一個系統設計的問題 | [貢獻](#contributing) |
 
 ### Design Pastebin.com (or Bit.ly)
 
