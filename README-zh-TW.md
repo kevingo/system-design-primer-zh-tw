@@ -298,51 +298,51 @@
 | 在 AWS 上設計一個百萬用戶等級的系統 | [解答](solutions/system_design/scaling_aws/README.md) |
 | 增加一個系統設計的問題 | [貢獻](#contributing) |
 
-### Design Pastebin.com (or Bit.ly)
+### 設計 Pastebin.com (或 Bit.ly)
 
-[View exercise and solution](solutions/system_design/pastebin/README.md)
+[閱讀練習與解答](solutions/system_design/pastebin/README.md)
 
 ![Imgur](http://i.imgur.com/4edXG0T.png)
 
-### Design the Twitter timeline and search (or Facebook feed and search)
+### 設計一個像是 Twitter 的 timeline (或 Facebook feed)設計一個 Twitter 搜尋功能 (or Facebook 搜尋功能)
 
-[View exercise and solution](solutions/system_design/twitter/README.md)
+[閱讀練習與解答](solutions/system_design/twitter/README.md)
 
 ![Imgur](http://i.imgur.com/jrUBAF7.png)
 
-### Design a web crawler
+### 設計一個爬蟲系統
 
-[View exercise and solution](solutions/system_design/web_crawler/README.md)
+[閱讀練習與解答](solutions/system_design/web_crawler/README.md)
 
 ![Imgur](http://i.imgur.com/bWxPtQA.png)
 
-### Design Mint.com
+### 設計 Mint.com 網站
 
-[View exercise and solution](solutions/system_design/mint/README.md)
+[閱讀練習與解答](solutions/system_design/mint/README.md)
 
 ![Imgur](http://i.imgur.com/V5q57vU.png)
 
-### Design the data structures for a social network
+### 設計一個社交網站的資料結構
 
-[View exercise and solution](solutions/system_design/social_graph/README.md)
+[閱讀練習與解答](solutions/system_design/social_graph/README.md)
 
 ![Imgur](http://i.imgur.com/cdCv5g7.png)
 
-### Design a key-value store for a search engine
+### 設計一個搜尋引擎使用的鍵值儲存資料結構 
 
-[View exercise and solution](solutions/system_design/query_cache/README.md)
+[閱讀練習與解答](solutions/system_design/query_cache/README.md)
 
 ![Imgur](http://i.imgur.com/4j99mhe.png)
 
-### Design Amazon's sales ranking by category feature
+### 設計一個根據產品分類的亞馬遜銷售排名
 
-[View exercise and solution](solutions/system_design/sales_rank/README.md)
+[閱讀練習與解答](solutions/system_design/sales_rank/README.md)
 
 ![Imgur](http://i.imgur.com/MzExP06.png)
 
-### Design a system that scales to millions of users on AWS
+### 在 AWS 上設計一個百萬用戶等級的系統
 
-[View exercise and solution](solutions/system_design/scaling_aws/README.md)
+[閱讀練習與解答](solutions/system_design/scaling_aws/README.md)
 
 ![Imgur](http://i.imgur.com/jj3A5N8.png)
 
