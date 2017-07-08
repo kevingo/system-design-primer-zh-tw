@@ -346,24 +346,24 @@
 
 ![Imgur](http://i.imgur.com/jj3A5N8.png)
 
-## Object-oriented design interview questions with solutions
+## 物件導向設計面試問題與解答
 
-> Common object-oriented design interview questions with sample discussions, code, and diagrams.
+> 常見的物件導向面試問題與案例探討、程式碼與圖表。
 >
-> Solutions linked to content in the `solutions/` folder.
+> 相關的答案為在 `解答/` 目錄中。
 
->**Note: This section is under development**
+>**注意: 本章節仍在完善內容中**
 
-| Question | |
+| 問題 | |
 |---|---|
-| Design a hash map | [Solution](solutions/object_oriented_design/hash_table/hash_map.ipynb)  |
-| Design a least recently used cache | [Solution](solutions/object_oriented_design/lru_cache/lru_cache.ipynb)  |
-| Design a call center | [Solution](solutions/object_oriented_design/call_center/call_center.ipynb)  |
-| Design a deck of cards | [Solution](solutions/object_oriented_design/deck_of_cards/deck_of_cards.ipynb)  |
-| Design a parking lot | [Solution](solutions/object_oriented_design/parking_lot/parking_lot.ipynb)  |
-| Design a chat server | [Solution](solutions/object_oriented_design/online_chat/online_chat.ipynb)  |
-| Design a circular array | [Contribute](#contributing)  |
-| Add an object-oriented design question | [Contribute](#contributing) |
+| 設計一個 hash map | [Solution](solutions/object_oriented_design/hash_table/hash_map.ipynb)  |
+| 設計一個 LRU 快取 | [Solution](solutions/object_oriented_design/lru_cache/lru_cache.ipynb)  |
+| 設計一個客服系統 | [Solution](solutions/object_oriented_design/call_center/call_center.ipynb)  |
+| 設計一副牌 | [Solution](solutions/object_oriented_design/deck_of_cards/deck_of_cards.ipynb)  |
+| 設計一個停車場 | [Solution](solutions/object_oriented_design/parking_lot/parking_lot.ipynb)  |
+| 設計一個聊天室 | [Solution](solutions/object_oriented_design/online_chat/online_chat.ipynb)  |
+| 設計一個環形陣列 | [Contribute](#contributing)  |
+| 增加一個物件導向設計問題 | [Contribute](#contributing) |
 
 ## System design topics: start here
 
