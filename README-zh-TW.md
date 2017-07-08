@@ -365,45 +365,45 @@
 | 設計一個環形陣列 | [Contribute](#contributing)  |
 | 增加一個物件導向設計問題 | [Contribute](#contributing) |
 
-## System design topics: start here
+## 系統設計主題：從這裡開始
 
-New to system design?
+你是系統設計的新手嗎？
 
-First, you'll need a basic understanding of common principles, learning about what they are, how they are used, and their pros and cons.
+首先，你需要對於基本的原則有一定的認識，知道他們是什麼，如何使用，以及他們的優缺點。
 
-### Step 1: Review the scalability video lecture
+### 第一步：瀏覽關於可擴展性的影片
 
-[Scalability Lecture at Harvard](https://www.youtube.com/watch?v=-W9F__D3oY4)
+[哈佛大學可擴展性的影片](https://www.youtube.com/watch?v=-W9F__D3oY4)
 
-* Topics covered:
-    * Vertical scaling
-    * Horizontal scaling
-    * Caching
-    * Load balancing
-    * Database replication
-    * Database partitioning
+* 包含以下主題：
+    * 垂直擴展
+    * 水平擴展
+    * 快取
+    * 負載平衡
+    * 資料庫複寫
+    * 資料庫分割
 
-### Step 2: Review the scalability article
+### 第二步：閱讀關於可擴展性的文章
 
-[Scalability](http://www.lecloud.net/tagged/scalability)
+[可擴展性](http://www.lecloud.net/tagged/scalability)
 
-* Topics covered:
-    * [Clones](http://www.lecloud.net/post/7295452622/scalability-for-dummies-part-1-clones)
-    * [Databases](http://www.lecloud.net/post/7994751381/scalability-for-dummies-part-2-database)
-    * [Caches](http://www.lecloud.net/post/9246290032/scalability-for-dummies-part-3-cache)
-    * [Asynchronism](http://www.lecloud.net/post/9699762917/scalability-for-dummies-part-4-asynchronism)
+* 包含以下主題：
+    * [複製](http://www.lecloud.net/post/7295452622/scalability-for-dummies-part-1-clones)
+    * [資料庫](http://www.lecloud.net/post/7994751381/scalability-for-dummies-part-2-database)
+    * [快取](http://www.lecloud.net/post/9246290032/scalability-for-dummies-part-3-cache)
+    * [非同步](http://www.lecloud.net/post/9699762917/scalability-for-dummies-part-4-asynchronism)
 
-### Next steps
+### 下一步
 
-Next, we'll look at high-level trade-offs:
+接下來，我們需要看看某些取捨：
 
-* **Performance** vs **scalability**
-* **Latency** vs **throughput**
-* **Availability** vs **consistency**
+* **效能** vs **可擴展性**
+* **延遲** vs **吞吐量**
+* **可用性** vs **一致性**
 
-Keep in mind that **everything is a trade-off**.
+記住，任何設計都是取捨。
 
-Then we'll dive into more specific topics such as DNS, CDNs, and load balancers.
+接著，我們將會深入更具體的主題，包含 DNS、CDN 和負載平衡。
 
 ## Performance vs scalability
 
