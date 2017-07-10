@@ -421,15 +421,15 @@
 
 ## 延遲與吞吐量
 
-**Latency** is the time to perform some action or to produce some result.
+**延遲** 指執行一個操作或運算結果所花費的時間。
 
-**Throughput** is the number of such actions or results per unit of time.
+**吞吐量** 指單位時間內執行此類型操作或運算的數量。
 
-Generally, you should aim for **maximal throughput** with **acceptable latency**.
+一般來說，你應該以**可接受的延遲**數量下的**最大化吞吐量**為設計目標。
 
-### Source(s) and further reading
+### 來源及延伸閱讀
 
-* [Understanding latency vs throughput](https://community.cadence.com/cadence_blogs_8/b/sd/archive/2010/09/13/understanding-latency-vs-throughput)
+* [了解延遲與吞吐量](https://community.cadence.com/cadence_blogs_8/b/sd/archive/2010/09/13/understanding-latency-vs-throughput)
 
 ## 可用性與一致性
 
