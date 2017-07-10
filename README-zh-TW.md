@@ -405,21 +405,21 @@
 
 接著，我們將會深入更具體的主題，包含 DNS、CDN 和負載平衡。
 
-## Performance vs scalability
+## 效能與可擴展性
 
-A service is **scalable** if it results in increased **performance** in a manner proportional to resources added. Generally, increasing performance means serving more units of work, but it can also be to handle larger units of work, such as when datasets grow.<sup><a href=http://www.allthingsdistributed.com/2006/03/a_word_on_scalability.html>1</a></sup>
+如果服務**性能**的增加和資源的投入是成正比時，代表服務是可擴展的。一般來說，增加性能代表服務更多的工作單元，也可以處理更多的資料。<sup><a href="http://www.allthingsdistributed.com/2006/03/a_word_on_scalability.html">1</a></sup>
 
-Another way to look at performance vs scalability:
+從另一方面來看看性能與可擴展性：
 
-* If you have a **performance** problem, your system is slow for a single user.
-* If you have a **scalability** problem, your system is fast for a single user but slow under heavy load.
+* 如果你的系統存在**性能**問題時，對單一使用者來說的感覺是慢的。
+* 如果你的系統存在**可擴展性**問題時，對於單一使用者來說感覺較快，但在高負載的時候就會變慢。
 
-### Source(s) and further reading
+### 來源及延伸閱讀
 
-* [A word on scalability](http://www.allthingsdistributed.com/2006/03/a_word_on_scalability.html)
-* [Scalability, availability, stability, patterns](http://www.slideshare.net/jboner/scalability-availability-stability-patterns/)
+* [簡談可擴展性](http://www.allthingsdistributed.com/2006/03/a_word_on_scalability.html)
+* [可擴展性、可用性、穩定性與相關模式](http://www.slideshare.net/jboner/scalability-availability-stability-patterns/)
 
-## Latency vs throughput
+## 延遲與吞吐量
 
 **Latency** is the time to perform some action or to produce some result.
 
@@ -431,7 +431,7 @@ Generally, you should aim for **maximal throughput** with **acceptable latency**
 
 * [Understanding latency vs throughput](https://community.cadence.com/cadence_blogs_8/b/sd/archive/2010/09/13/understanding-latency-vs-throughput)
 
-## Availability vs consistency
+## 可用性與一致性
 
 ### CAP theorem
 
