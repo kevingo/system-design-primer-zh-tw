@@ -465,31 +465,31 @@
 * [簡單的介紹 CAP 理論](http://ksat.me/a-plain-english-introduction-to-cap-theorem/)
 * [CAP 問與答](https://github.com/henryr/cap-faq)
 
-## Consistency patterns
+## 一致性模式
 
-With multiple copies of the same data, we are faced with options on how to synchronize them so clients have a consistent view of the data.  Recall the definition of consistency from the [CAP theorem](#cap-theorem) - Every read receives the most recent write or an error.
+當你的資料有多個副本時，要考慮怎麼同步他們，以便讓使用者有一致的資料顯示。想想 [CAP 理論](#cap-theorem)中的一致性定律 - 每次的訪問都可以得到最新的資料，但可能也會收到錯誤的回應。
 
-### Weak consistency
+### 弱一致性
 
-After a write, reads may or may not see it.  A best effort approach is taken.
+在寫入之後，任何的存取不一定可以拿到資料，弱一致性將盡力確保能存取到最新的資料。
 
-This approach is seen in systems such as memcached.  Weak consistency works well in real time use cases such as VoIP, video chat, and realtime multiplayer games.  For example, if you are on a phone call and lose reception for a few seconds, when you regain connection you do not hear what was spoken during connection loss.
+這種方式可以在 memcached 等系統中看到。弱一致性可以在 VoIP、視訊聊天或其他即時多人線上遊戲中看到相關的使用案例。比方說，如果你在通話中遺失幾秒鐘時間的資料，再重新連接後，你是無法聽到這幾秒鐘的內容。
 
-### Eventual consistency
+### 最終一致性
 
-After a write, reads will eventually see it (typically within milliseconds).  Data is replicated asynchronously.
+在寫入後的讀取操作最終可以看到被寫入的資料(通常在數毫秒內)。資料透過非同步的方式被複製。
 
-This approach is seen in systems such as DNS and email.  Eventual consistency works well in highly available systems.
+DNS 或是電子郵件系統使用的就是這種方式，最終一致性在高可用的系統中效果很好。
 
-### Strong consistency
+### 強一致性
 
-After a write, reads will see it.  Data is replicated synchronously.
+在寫入後，讀取將立刻取得資料，資料是透過同步的方式寫入。
 
-This approach is seen in file systems and RDBMSes.  Strong consistency works well in systems that need transactions.
+檔案系統或資料庫系統就是使用這種方式，強一致性在需要紀錄的系統中表現很好。
 
-### Source(s) and further reading
+### 來源及延伸閱讀
 
-* [Transactions across data centers](http://snarfed.org/transactions_across_datacenters_io.html)
+* [資料中心的記錄行為](http://snarfed.org/transactions_across_datacenters_io.html)
 
 ## Availability patterns
 
