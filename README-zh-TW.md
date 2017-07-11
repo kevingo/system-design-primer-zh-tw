@@ -433,37 +433,37 @@
 
 ## 可用性與一致性
 
-### CAP theorem
+### CAP 理論
 
 <p align="center">
   <img src="http://i.imgur.com/bgLMI2u.png">
   <br/>
-  <i><a href=http://robertgreiner.com/2014/08/cap-theorem-revisited>Source: CAP theorem revisited</a></i>
+  <i><a href=http://robertgreiner.com/2014/08/cap-theorem-revisited>來源：再看 CAP 理論</a></i>
 </p>
 
-In a distributed computer system, you can only support two of the following guarantees:
+在一個分散式系統中，只能滿足以下三個項目的任兩項：
 
-* **Consistency** - Every read receives the most recent write or an error
-* **Availability** - Every request receives a response, without guarantee that it contains the most recent version of the information
-* **Partition Tolerance** - The system continues to operate despite arbitrary partitioning due to network failures
+* **一致性** - 每次讀取都可以得到最新的資料，但偶爾會拿到錯誤
+* **可用性** - 每次讀取都可以得到非錯誤的回應，但不能保證可以得到最新的資料
+* **部分容錯性** - 在任意分區的網路故障情況下，系統仍然能夠持續運行
 
-*Networks aren't reliable, so you'll need to support partition tolerance.  You'll need to make a software tradeoff between consistency and availability.*
+*網路是不可靠的，你的設計必須要確保部分容錯性，所以你只能夠在一致性與可用性中做出取捨。*
 
-#### CP - consistency and partition tolerance
+#### CP - 一致性與部分容錯性
 
-Waiting for a response from the partitioned node might result in a timeout error.  CP is a good choice if your business needs require atomic reads and writes.
+等待分區的節點回覆可能會導致超時錯誤，如果你的系統的需求是需要保證原子讀寫時，CP 是一個不錯的選擇。
 
-#### AP - availability and partition tolerance
+#### AP - 可用性與部分容錯性
 
-Responses return the most recent version of the data available on the a node, which might not be the latest.  Writes might take some time to propagate when the partition is resolved.
+每個進行回覆的節點中的最新版本可能不是最新的，當分區節點解析完畢後，寫入的操作可能需要一些時間來傳播資料。
 
-AP is a good choice if the business needs allow for [eventual consistency](#eventual-consistency) or when the system needs to continue working despite external errors.
+當你的系統需求需要保證 [最終一致性](#eventual-consistency)，或當外部系統故障時，系統要能夠繼續運作時，AP 是一個不錯的選擇。
 
-### Source(s) and further reading
+### 來源及延伸閱讀
 
-* [CAP theorem revisited](http://robertgreiner.com/2014/08/cap-theorem-revisited/)
-* [A plain english introduction to CAP theorem](http://ksat.me/a-plain-english-introduction-to-cap-theorem/)
-* [CAP FAQ](https://github.com/henryr/cap-faq)
+* [複習 CAP 理論](http://robertgreiner.com/2014/08/cap-theorem-revisited/)
+* [簡單的介紹 CAP 理論](http://ksat.me/a-plain-english-introduction-to-cap-theorem/)
+* [CAP 問與答](https://github.com/henryr/cap-faq)
 
 ## Consistency patterns
 
