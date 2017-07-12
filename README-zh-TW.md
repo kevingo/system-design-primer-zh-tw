@@ -491,32 +491,32 @@ DNS 或是電子郵件系統使用的就是這種方式，最終一致性在高�
 
 * [資料中心的記錄行為](http://snarfed.org/transactions_across_datacenters_io.html)
 
-## Availability patterns
+## 可用性模式
 
-There are two main patterns to support high availability: **fail-over** and **replication**.
+關於可用性有兩種模式：**容錯轉移** 和 **複寫**。
 
-### Fail-over
+### 容錯轉移
 
-#### Active-passive
+#### 主動到備用切換模式(AP Mode)
 
-With active-passive fail-over, heartbeats are sent between the active and the passive server on standby.  If the heartbeat is interrupted, the passive server takes over the active's IP address and resumes service.
+在這個模式下，heartbeat 訊號會在主動和備用的機器中發送，當 heartbeat 中斷時，備用的機器就會切換為主動機器的 IP 位置接替服務。
 
-The length of downtime is determined by whether the passive server is already running in 'hot' standby or whether it needs to start up from 'cold' standby.  Only the active server handles traffic.
+當機的時間取決於備用的機器是在「熱」待機狀態還是「冷」待機狀態。只有處於主動的機器會處理使用者來的流量。
 
-Active-passive failover can also be referred to as master-slave failover.
+這個模式的切換也被稱為主從的切換模式。
 
-#### Active-active
+#### 雙主動切換模式(AA Mode)
 
-In active-active, both servers are managing traffic, spreading the load between them.
+在此模式下，兩台伺服器都會負責處理流量，流量會在他們之間進行分散負載。
 
-If the servers are public-facing, the DNS would need to know about the public IPs of both servers.  If the servers are internal-facing, application logic would need to know about both servers.
+如果是外部網路的伺服器，DNS 需要知道兩台機器的 IP 位置，如果是內部網路的伺服器，應用程式邏輯需要知道這兩台機器。
 
-Active-active failover can also be referred to as master-master failover.
+雙主動切換模式也被稱為 master-master 切換。
 
-### Disadvantage(s): failover
+### 缺點：容錯轉移
 
-* Fail-over adds more hardware and additional complexity.
-* There is a potential for loss of data if the active system fails before any newly written data can be replicated to the passive.
+* 容錯轉移會需要增加額外的硬體與複雜度。
+* 如果在新寫入的資料被複製到備用的機器前系統就發生故障，那有可能會遺失資料。
 
 ### Replication
 
