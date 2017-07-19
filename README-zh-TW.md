@@ -582,31 +582,31 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
 * 從靠近使用者的伺服器來拿檔案
 * 透過 CDN 來回應使用者，你的原始伺服器不需要處理請求
 
-### Push CDNs
+### 推送式 CDNs
 
-Push CDNs receive new content whenever changes occur on your server.  You take full responsibility for providing content, uploading directly to the CDN and rewriting URLs to point to the CDN.  You can configure when content expires and when it is updated.  Content is uploaded only when it is new or changed, minimizing traffic, but maximizing storage.
+當你的伺服器有檔案變動時，推送 CDN 會接收到新的變動內容，並重寫 URL 位置指向新的內容。你可以設定檔案內容什麼時候過期以及何時更新，檔案內容只有在變更或新增的時候才會推送，最小化流量，但最大化儲存。
 
-Sites with a small amount of traffic or sites with content that isn't often updated work well with push CDNs.  Content is placed on the CDNs once, instead of being re-pulled at regular intervals.
+流量較小的網站，或是內容不是經常更新的網站使用推送式的 CDN 相當適合，因為內容會被經常放置在 CDN 內，而不是常常需要重新抓取新檔案。
 
-### Pull CDNs
+### 拉取式 CDNs
 
-Pull CDNs grab new content from your server when the first user requests the content.  You leave the content on your server and rewrite URLs to point to the CDN.  This results in a slower request until the content is cached on the CDN.
+拉取式的 CDN 指的是當地一個使用者來請求該資源時，才從伺服器上抓取對應檔案。將檔案留在伺服器上並且重寫指向 CDN 的 URL，直到檔案被快取在 CDN 上為止，請求都會比較慢。
 
-A [time-to-live (TTL)](https://en.wikipedia.org/wiki/Time_to_live) determines how long content is cached.  Pull CDNs minimize storage space on the CDN, but can create redundant traffic if files expire and are pulled before they have actually changed.
+[存活時間 (TTL)](https://en.wikipedia.org/wiki/Time_to_live) 決定檔案要被緩存多久的時間。拉取式 CDN 可以節省儲存空間，但在過期的文件被更新之前，則會導致多餘的流量。
 
-Sites with heavy traffic work well with pull CDNs, as traffic is spread out more evenly with only recently-requested content remaining on the CDN.
+拉取式的 CDN 適合高流量的網站，因為檔案會被平均的分散在各個結點伺服器中。
 
-### Disadvantage(s): CDN
+### CDN 的缺點
 
-* CDN costs could be significant depending on traffic, although this should be weighed with additional costs you would incur not using a CDN.
-* Content might be stale if it is updated before the TTL expires it.
-* CDNs require changing URLs for static content to point to the CDN.
+* CDN 的成本取決於流量，在權衡評估後，你可能會因為成本而放棄使用。
+* 如果在 TTL 過期之前就更新內容，CDN 的緩存內容可能會過期。
+* 需要改變靜態內容的網址來指向 CDN。
 
-### Source(s) and further reading
+### 來源及延伸閱讀
 
-* [Globally distributed content delivery](http://repository.cmu.edu/cgi/viewcontent.cgi?article=2112&context=compsci)
-* [The differences between push and pull CDNs](http://www.travelblogadvice.com/technical/the-differences-between-push-and-pull-cdns/)
-* [Wikipedia](https://en.wikipedia.org/wiki/Content_delivery_network)
+* [全球性的 CDN](http://repository.cmu.edu/cgi/viewcontent.cgi?article=2112&context=compsci)
+* [拉取式和推拉式 CDN 的差別](http://www.travelblogadvice.com/technical/the-differences-between-push-and-pull-cdns/)
+* [維基百科](https://en.wikipedia.org/wiki/Content_delivery_network)
 
 ## Load balancer
 
