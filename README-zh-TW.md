@@ -546,26 +546,26 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
 * **A 記錄 (地址)** - 指向要對應的 IP 位置。
 * **CNAME (別名)** - 從一個域名指向另外一個域名，或是 `CNAME` (example.com 指向 www.example.com) 或指向一個 `A` 記錄。
 
-Services such as [CloudFlare](https://www.cloudflare.com/dns/) and [Route 53](https://aws.amazon.com/route53/) provide managed DNS services.  Some DNS services can route traffic through various methods:
+[CloudFlare](https://www.cloudflare.com/dns/) 和[Route 53](https://aws.amazon.com/route53/) 提供了 DNS 的服務。而這些 DNS 服務商透過以下幾種方式來決定流量如何被分派：
 
-* [Weighted round robin](http://g33kinfo.com/info/archives/2657)
-    * Prevent traffic from going to servers under maintenance
-    * Balance between varying cluster sizes
-    * A/B testing
-* Latency-based
-* Geolocation-based
+* [加權輪詢](http://g33kinfo.com/info/archives/2657)
+    * 防止流量進入正在維修中的伺服器
+    * 在不同大小的集群中進行負載平衡
+    * A/B 測試
+* 基於延遲來路由請求
+* 基於地理位置來路由請求
 
-### Disadvantage(s): DNS
+### DNS 的缺點
 
-* Accessing a DNS server introduces a slight delay, although mitigated by caching described above.
-* DNS server management could be complex, although they are generally managed by [governments, ISPs, and large companies](http://superuser.com/questions/472695/who-controls-the-dns-servers/472729).
-* DNS services have recently come under [DDoS attack](http://dyn.com/blog/dyn-analysis-summary-of-friday-october-21-attack/), preventing users from accessing websites such as Twitter without knowing Twitter's IP address(es).
+* 儘管可以透過快取來減輕 DNS 的延遲，但連接 DNS 伺服器還是帶來了些許的延遲。
+* DNS 伺服器的管理是複雜的，儘管他通常由[政府、ISP 業者或大公司](http://superuser.com/questions/472695/who-controls-the-dns-servers/472729) 來處理。
+* DNS 伺服器會有 [DDoS 攻擊](http://dyn.com/blog/dyn-analysis-summary-of-friday-october-21-attack/)，讓不知道 Twitter IP 的使用者無法訪問 Twitter 網站。
 
-### Source(s) and further reading
+### 來源及延伸閱讀
 
-* [DNS architecture](https://technet.microsoft.com/en-us/library/dd197427(v=ws.10).aspx)
-* [Wikipedia](https://en.wikipedia.org/wiki/Domain_Name_System)
-* [DNS articles](https://support.dnsimple.com/categories/dns/)
+* [DNS 架構](https://technet.microsoft.com/en-us/library/dd197427(v=ws.10).aspx)
+* [維基百科](https://en.wikipedia.org/wiki/Domain_Name_System)
+* [DNS 文章](https://support.dnsimple.com/categories/dns/)
 
 ## Content delivery network
 
