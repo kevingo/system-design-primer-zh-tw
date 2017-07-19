@@ -567,20 +567,20 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
 * [維基百科](https://en.wikipedia.org/wiki/Domain_Name_System)
 * [DNS 文章](https://support.dnsimple.com/categories/dns/)
 
-## Content delivery network
+## 內容傳遞網路(CDN)
 
 <p align="center">
   <img src="http://i.imgur.com/h9TAuGI.jpg">
   <br/>
-  <i><a href=https://www.creative-artworks.eu/why-use-a-content-delivery-network-cdn/>Source: Why use a CDN</a></i>
+  <i><a href=https://www.creative-artworks.eu/why-use-a-content-delivery-network-cdn/>來源：為什麼要使用 CDN</a></i>
 </p>
 
-A content delivery network (CDN) is a globally distributed network of proxy servers, serving content from locations closer to the user.  Generally, static files such as HTML/CSS/JS, photos, and videos are served from CDN, although some CDNs such as Amazon's CloudFront support dynamic content.  The site's DNS resolution will tell clients which server to contact.
+內容傳遞網路(CDN)是一種全球性的分散式代理伺服器，它透過靠近使用者的伺服器來提供檔案。通常 HTML/CSS/JS、圖片或影片等檔案會靜態檔案會透過 CDN 來提供，儘管 Amazon 的 CloudFront 也支援了動態內容的 CDN 服務。而 CDN 的 DNS 服務會告知使用者要連接哪一台伺服器。
 
-Serving content from CDNs can significantly improve performance in two ways:
+透過 CDN 來取得檔案可以大幅度地增加請求的效率，因為：
 
-* Users receive content at data centers close to them
-* Your servers do not have to serve requests that the CDN fulfills
+* 從靠近使用者的伺服器來拿檔案
+* 透過 CDN 來回應使用者，你的原始伺服器不需要處理請求
 
 ### Push CDNs
 
