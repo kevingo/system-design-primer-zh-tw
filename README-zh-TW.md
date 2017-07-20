@@ -608,75 +608,75 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
 * [拉取式和推拉式 CDN 的差別](http://www.travelblogadvice.com/technical/the-differences-between-push-and-pull-cdns/)
 * [維基百科](https://en.wikipedia.org/wiki/Content_delivery_network)
 
-## Load balancer
+## 負載平衡
 
 <p align="center">
   <img src="http://i.imgur.com/h81n9iK.png">
   <br/>
-  <i><a href=http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html>Source: Scalable system design patterns</a></i>
+  <i><a href=http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html>來源：可擴展的系統設計模式</a></i>
 </p>
 
-Load balancers distribute incoming client requests to computing resources such as application servers and databases.  In each case, the load balancer returns the response from the computing resource to the appropriate client.  Load balancers are effective at:
+負載平衡將使用者的請求分發到後端伺服器和資料庫，不管是哪種情況，負載平衡器會將回應返回給對應的使用者。而負載平衡器之所以有效在於以下幾點：
 
-* Preventing requests from going to unhealthy servers
-* Preventing overloading resources
-* Helping eliminate single points of failure
+* 避免請求被轉到非正常運作的伺服器
+* 避免資源過載
+* 避免單點失敗
 
-Load balancers can be implemented with hardware (expensive) or with software such as HAProxy.
+負載平衡器可以透過硬體(較昂貴)或 HAProxy 等軟體來實現。
 
-Additional benefits include:
+其餘額外的好處有：
 
-* **SSL termination** - Decrypt incoming requests and encrypt server responses so backend servers do not have to perform these potentially expensive operations
-    * Removes the need to install [X.509 certificates](https://en.wikipedia.org/wiki/X.509) on each server
-* **Session persistence** - Issue cookies and route a specific client's requests to same instance if the web apps do not keep track of sessions
+* **SSL 終結** - 將傳入的請求解密，並且加密伺服器的回應，如此一來後端伺服器就不需要進行這些高度消耗資源的願算
+    * 不需要在每一台機器上安裝 [X.509 憑證](https://en.wikipedia.org/wiki/X.509)。
+* **Session 保存** - 發行 cookie，並將特定使用者的請求路由到同樣的後端伺服器上。
 
-To protect against failures, it's common to set up multiple load balancers, either in [active-passive](#active-passive) or [active-active](#active-active) mode.
+為了避免故障，通常會採用[active-passive](#active-passive)或[active-active](#active-active)這樣多個負載平衡器的模式。
 
-Load balancers can route traffic based on various metrics, including:
+負載平衡器會基於多種方法來路由請求：
 
-* Random
-* Least loaded
+* 隨機
+* 最少負載
 * Session/cookies
-* [Round robin or weighted round robin](http://g33kinfo.com/info/archives/2657)
-* [Layer 4](#layer-4-load-balancing)
-* [Layer 7](#layer-7-load-balancing)
+* [輪詢調度或加權輪詢調度](http://g33kinfo.com/info/archives/2657)
+* [第四層負載平衡](#layer-4-load-balancing)
+* [第七層負載平衡](#layer-7-load-balancing)
 
-### Layer 4 load balancing
+### 第四層負載平衡
 
-Layer 4 load balancers look at info at the [transport layer](#communication) to decide how to distribute requests.  Generally, this involves the source, destination IP addresses, and ports in the header, but not the contents of the packet.  Layer 4 load balancers forward network packets to and from the upstream server, performing [Network Address Translation (NAT)](https://www.nginx.com/resources/glossary/layer-4-load-balancing/).
+第四層的負載平衡器會監看[傳輸層](#communication)的資訊來決定如何分發請求。一般來說，這包含了來源、目標 IP 位置，以及在 header 中的 port，但不包含資料本身的內容。第四層的負載平衡器會透過 [網路地址轉換(NAT)](https://www.nginx.com/resources/glossary/layer-4-load-balancing/)來向上游的伺服器轉發資料。
 
-### Layer 7 load balancing
+### 第七層負載平衡
 
-Layer 7 load balancers look at the [application layer](#communication) to decide how to distribute requests.  This can involve contents of the header, message, and cookies.  Layer 7 load balancers terminates network traffic, reads the message, makes a load-balancing decision, then opens a connection to the selected server.  For example, a layer 7 load balancer can direct video traffic to servers that host videos while directing more sensitive user billing traffic to security-hardened servers.
+第七層的負載平衡器會監看[應用層](#communication)來決定如何分發請求。這包含了請求的 header、訊息和 cookies。這種負載平衡器會終結網路的流量、讀取訊息並做出如何轉發訊息的決定，並把流量轉往對應的伺服器。舉例來說，一個第七層的負載平衡器可以將影音的流量轉往負責影音流量的伺服器，而將更敏感的使用者帳單的請求轉往安全性更強的伺服器。
 
-At the cost of flexibility, layer 4 load balancing requires less time and computing resources than Layer 7, although the performance impact can be minimal on modern commodity hardware.
+第四層的負載平衡比起第七層的所要花費的時間和計算資源更低，雖然這對於現代商用硬體的性能影響已經微乎其微了。
 
-### Horizontal scaling
+### 水平擴展
 
-Load balancers can also help with horizontal scaling, improving performance and availability.  Scaling out using commodity machines is more cost efficient and results in higher availability than scaling up a single server on more expensive hardware, called **Vertical Scaling**.  It is also easier to hire for talent working on commodity hardware than it is for specialized enterprise systems.
+負載平衡器一樣可以幫助水平擴展，提高性能與可用性。使用這種方式的擴展比起在單一機器的**垂直擴展**來說性價比更高，同時，聘請商用硬體的人才比起特定企業級系統人才來的更加容易。
 
-#### Disadvantage(s): horizontal scaling
+#### 水平擴展的缺點
 
-* Scaling horizontally introduces complexity and involves cloning servers
-    * Servers should be stateless: they should not contain any user-related data like sessions or profile pictures
-    * Sessions can be stored in a centralized data store such as a [database](#database) (SQL, NoSQL) or a persistent [cache](#cache) (Redis, Memcached)
-* Downstream servers such as caches and databases need to handle more simultaneous connections as upstream servers scale out
+* 水平擴展會增加複雜性，同時也涉及了多台伺服器的議題
+    * 伺服器應該是無狀態的：不應該包括像是 session 或資料圖片等和使用者相關的內容
+    * Session 可以集中儲存在資料庫或[快取](#快取)(Redis、Memcached) 等資料儲存中。
+* 快取伺服器或資料庫需要隨著伺服器的增加而進行擴展，以便處理更多的請求。
 
-### Disadvantage(s): load balancer
+### 負載平衡器的缺點
 
-* The load balancer can become a performance bottleneck if it does not have enough resources or if it is not configured properly.
-* Introducing a load balancer to help eliminate single points of failure results in increased complexity.
-* A single load balancer is a single point of failure, configuring multiple load balancers further increases complexity.
+* 當負載平衡器資源不夠或沒有正確設定時，他可能會成為效能的瓶頸
+* 使用負載平衡器來避免單點失敗會增加架構的複雜性
+* 只有一台負載平衡器時，一樣有單點失敗的問題。而多台的負載平衡器一樣增加了架構的複雜性。
 
-### Source(s) and further reading
+### 來源及延伸閱讀
 
-* [NGINX architecture](https://www.nginx.com/blog/inside-nginx-how-we-designed-for-performance-scale/)
-* [HAProxy architecture guide](http://www.haproxy.org/download/1.2/doc/architecture.txt)
-* [Scalability](http://www.lecloud.net/post/7295452622/scalability-for-dummies-part-1-clones)
-* [Wikipedia](https://en.wikipedia.org/wiki/Load_balancing_(computing))
-* [Layer 4 load balancing](https://www.nginx.com/resources/glossary/layer-4-load-balancing/)
-* [Layer 7 load balancing](https://www.nginx.com/resources/glossary/layer-7-load-balancing/)
-* [ELB listener config](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
+* [NGINX 架構](https://www.nginx.com/blog/inside-nginx-how-we-designed-for-performance-scale/)
+* [HAProxy 架構指南](http://www.haproxy.org/download/1.2/doc/architecture.txt)
+* [可擴展性](http://www.lecloud.net/post/7295452622/scalability-for-dummies-part-1-clones)
+* [維基百科](https://en.wikipedia.org/wiki/Load_balancing_(computing))
+* [第四層負載平衡](https://www.nginx.com/resources/glossary/layer-4-load-balancing/)
+* [第七層負載平衡](https://www.nginx.com/resources/glossary/layer-7-load-balancing/)
+* [ELB 監聽器設定](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
 
 ## Reverse proxy (web server)
 
