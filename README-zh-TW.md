@@ -678,48 +678,48 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
 * [第七層負載平衡](https://www.nginx.com/resources/glossary/layer-7-load-balancing/)
 * [ELB 監聽器設定](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
 
-## Reverse proxy (web server)
+## 反向代理 (網頁伺服器)
 
 <p align="center">
   <img src="http://i.imgur.com/n41Azff.png">
   <br/>
-  <i><a href=https://upload.wikimedia.org/wikipedia/commons/6/67/Reverse_proxy_h2g2bob.svg>Source: Wikipedia</a></i>
+  <i><a href=https://upload.wikimedia.org/wikipedia/commons/6/67/Reverse_proxy_h2g2bob.svg>來源：維基百科</a></i>
   <br/>
 </p>
 
-A reverse proxy is a web server that centralizes internal services and provides unified interfaces to the public.  Requests from clients are forwarded to a server that can fulfill it before the reverse proxy returns the server's response to the client.
+反向代理伺服器是一個集中內部服務，並提供統一個介面給公開使用者的伺服器。來自客戶端的請求會先被反向代理伺服器轉發到可以接收服務的伺服器，然後再由代理伺服器將結果返回給客戶端。
 
-Additional benefits include:
+這樣做的好處有：
 
-* **Increased security** - Hide information about backend servers, blacklist IPs, limit number of connections per client
-* **Increased scalability and flexibility** - Clients only see the reverse proxy's IP, allowing you to scale servers or change their configuration
-* **SSL termination** - Decrypt incoming requests and encrypt server responses so backend servers do not have to perform these potentially expensive operations
-    * Removes the need to install [X.509 certificates](https://en.wikipedia.org/wiki/X.509) on each server
-* **Compression** - Compress server responses
-* **Caching** - Return the response for cached requests
-* **Static content** - Serve static content directly
+* **增加安全性** - 隱藏後端伺服器的資訊、可以設定 IP 的黑名單、限制每個客戶端的連線數量等。
+* **增加可擴展性與靈活性** - 客戶端只會看到反向代理伺服器的 IP 或域名，這樣你就可以增加背後伺服器的數量或設定而不影響客戶端。
+* **SSL 終止** - 解密傳入的請求、加密伺服器的回應，這樣後端伺服器就不需要進行這些高成本的操作
+    * 不需要在每一台伺服器安裝 [X.509 憑證](https://en.wikipedia.org/wiki/X.509)。
+* **壓縮** - 壓縮伺服器的回應
+* **快取** - 直接在代理伺服器回應命中快取的結果
+* **靜態檔案** - 直接提供靜態內容
     * HTML/CSS/JS
-    * Photos
-    * Videos
-    * Etc
+    * 圖片
+    * 影片
+    * 等等
 
-### Load balancer vs reverse proxy
+### 負載平衡器與反向代理伺服器
 
-* Deploying a load balancer is useful when you have multiple servers.  Often, load balancers  route traffic to a set of servers serving the same function.
-* Reverse proxies can be useful even with just one web server or application server, opening up the benefits described in the previous section.
-* Solutions such as NGINX and HAProxy can support both layer 7 reverse proxying and load balancing.
+* 當有多台伺服器時，使用負載平衡非常有用，一般來說，負載平衡器會將流量路由給一組功能相同的伺服器上。
+* 即使只有一台伺服器或應用伺服器，反向代理也是有用的。可以參考上述的好處。
+* Nginx 或 HAProxy 等解決方案可以同時支援第七層的反向代理與負載平衡
 
-### Disadvantage(s): reverse proxy
+### 反向代理伺服器的缺點
 
-* Introducing a reverse proxy results in increased complexity.
-* A single reverse proxy is a single point of failure, configuring multiple reverse proxies (ie a [failover](https://en.wikipedia.org/wiki/Failover)) further increases complexity.
+* 引入反向代理伺服器會增加系統複雜度。
+* 只有一台反向代理伺服器會有單點失效的問題，而設定多台的反向代理伺服器(如[故障轉移](https://en.wikipedia.org/wiki/Failover))同樣會增加系統複雜度。
 
-### Source(s) and further reading
+### 來源與延伸閱讀
 
-* [Reverse proxy vs load balancer](https://www.nginx.com/resources/glossary/reverse-proxy-vs-load-balancer/)
-* [NGINX architecture](https://www.nginx.com/blog/inside-nginx-how-we-designed-for-performance-scale/)
-* [HAProxy architecture guide](http://www.haproxy.org/download/1.2/doc/architecture.txt)
-* [Wikipedia](https://en.wikipedia.org/wiki/Reverse_proxy)
+* [反向代理伺服器與負載平衡](https://www.nginx.com/resources/glossary/reverse-proxy-vs-load-balancer/)
+* [NGINX 架構](https://www.nginx.com/blog/inside-nginx-how-we-designed-for-performance-scale/)
+* [HAProxy 架構指南](http://www.haproxy.org/download/1.2/doc/architecture.txt)
+* [維基百科](https://en.wikipedia.org/wiki/Reverse_proxy)
 
 ## Application layer
 
