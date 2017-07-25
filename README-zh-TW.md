@@ -721,42 +721,42 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
 * [HAProxy 架構指南](http://www.haproxy.org/download/1.2/doc/architecture.txt)
 * [維基百科](https://en.wikipedia.org/wiki/Reverse_proxy)
 
-## Application layer
+## 應用層
 
 <p align="center">
   <img src="http://i.imgur.com/yB5SYwm.png">
   <br/>
-  <i><a href=http://lethain.com/introduction-to-architecting-systems-for-scale/#platform_layer>Source: Intro to architecting systems for scale</a></i>
+  <i><a href=http://lethain.com/introduction-to-architecting-systems-for-scale/#platform_layer>資料來源：可縮放式系統架構介紹</a></i>
 </p>
 
-Separating out the web layer from the application layer (also known as platform layer) allows you to scale and configure both layers independently.  Adding a new API results in adding application servers without necessarily adding additional web servers.
+將 Web 服務層與應用層(也被稱為平台層)分離，如此一來這兩層就可以獨立縮放與設定，增加新的 API 服務只需要增加應用伺服器，而不需要增加額外的 Web 伺服器。
 
-The **single responsibility principle** advocates for small and autonomous services that work together.  Small teams with small services can plan more aggressively for rapid growth.
+**單一職責原則**鼓勵小型、自治的服務與共同合作，小型團隊透過提供小型的服務可以更有效率地讓計畫成長。
 
-Workers in the application layer also help enable [asynchronism](#asynchronism).
+在應用層中的工作程式可以實作[異步機制](#異步機制)
 
-### Microservices
+### 微服務
 
-Related to this discussion are [microservices](https://en.wikipedia.org/wiki/Microservices), which can be described as a suite of independently deployable, small, modular services.  Each service runs a unique process and communicates through a well-defined, lightweight mechanism to serve a business goal. <sup><a href=https://smartbear.com/learn/api-design/what-are-microservices>1</a></sup>
+相關的主題還有[微服務](https://en.wikipedia.org/wiki/Microservices)，指的是可以獨立運作、小型的模組化服務。每個服務會透過明確定義好的輕量級溝通機制，運作在一個獨立的流程中來共同實現一個目標。<sup><a href=https://smartbear.com/learn/api-design/what-are-microservices>1</a></sup>
 
-Pinterest, for example, could have the following microservices: user profile, follower, feed, search, photo upload, etc.
+舉例來說，Pinterest 可能有以下這些微服務：使用者資料、跟隨者、Feed、搜尋、照片上傳等等。
 
-### Service Discovery
+### 服務發現
 
-Systems such as [Consul](https://www.consul.io/docs/index.html), [Etcd](https://coreos.com/etcd/docs/latest), and [Zookeeper](http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper) can help services find each other by keeping track of registered names, addresses, and ports.  [Health checks](https://www.consul.io/intro/getting-started/checks.html) help verify service integrity and are often done using an [HTTP](#hypertext-transfer-protocol-http) endpoint.  Both Consul and Etcd have a built in [key-value store](#key-value-store) that can be useful for storing config values and other shared data.
+[Consul](https://www.consul.io/docs/index.html)、[Etcd](https://coreos.com/etcd/docs/latest), 或是 [Zookeeper](http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper) 等系統可以透過註冊的名稱、位置、Port 等資訊來幫助各個服務發現彼此。[Health checks](https://www.consul.io/intro/getting-started/checks.html) 可以幫助確認服務的完整性以及是否經常使用一個 [HTTP](#hypertext-transfer-protocol-http) 的路徑。[key-value 儲存](#key-value-store) 則用來儲存設定的資訊與其他共享的資料。
 
-### Disadvantage(s): application layer
+### 應用層的缺點
 
-* Adding an application layer with loosely coupled services requires a different approach from an architectural, operations, and process viewpoint (vs a monolithic system).
-* Microservices can add complexity in terms of deployments and operations.
+* 設計多個鬆耦合微服務所組成的應用層，必須從架構、維運、流程等多個面向來考量，相對於單系統而言會非常不同。
+* 微服務會增加部署與維運的複雜度。
 
-### Source(s) and further reading
+### 來源與延伸閱讀
 
-* [Intro to architecting systems for scale](http://lethain.com/introduction-to-architecting-systems-for-scale)
-* [Crack the system design interview](http://www.puncsky.com/blog/2016/02/14/crack-the-system-design-interview/)
-* [Service oriented architecture](https://en.wikipedia.org/wiki/Service-oriented_architecture)
-* [Introduction to Zookeeper](http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper)
-* [Here's what you need to know about building microservices](https://cloudncode.wordpress.com/2016/07/22/msa-getting-started/)
+* [可擴展式系統架構介紹](http://lethain.com/introduction-to-architecting-systems-for-scale)
+* [破解系統設計面試](http://www.puncsky.com/blog/2016/02/14/crack-the-system-design-interview/)
+* [面向服務架構](https://en.wikipedia.org/wiki/Service-oriented_architecture)
+* [Zookeeper 介紹](http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper)
+* [建構微服務系統你所需要知道的一切](https://cloudncode.wordpress.com/2016/07/22/msa-getting-started/)
 
 ## Database
 
