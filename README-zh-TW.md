@@ -758,28 +758,28 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
 * [Zookeeper 介紹](http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper)
 * [建構微服務系統你所需要知道的一切](https://cloudncode.wordpress.com/2016/07/22/msa-getting-started/)
 
-## Database
+## 資料庫
 
 <p align="center">
   <img src="http://i.imgur.com/Xkm5CXz.png">
   <br/>
-  <i><a href=https://www.youtube.com/watch?v=vg5onp8TU6Q>Source: Scaling up to your first 10 million users</a></i>
+  <i><a href=https://www.youtube.com/watch?v=vg5onp8TU6Q>來源：擴展你的使用者數量到第一個一千萬量級</a></i>
 </p>
 
-### Relational database management system (RDBMS)
+### 關連式資料庫管理系統 (RDBMS)
 
-A relational database like SQL is a collection of data items organized in tables.
+像 SQL 這種關連式資料庫是以一組表格的形式存在的資料集合。
 
-**ACID** is a set of properties of relational database [transactions](https://en.wikipedia.org/wiki/Database_transaction).
+**ACID** 是用來描述資料庫[事務](https://en.wikipedia.org/wiki/Database_transaction)的特性。
 
-* **Atomicity** - Each transaction is all or nothing
-* **Consistency** - Any transaction will bring the database from one valid state to another
-* **Isolation** - Executing transactions concurrently has the same results as if the transactions were executed serially
-* **Durability** - Once a transaction has been committed, it will remain so
+* **原子性** - 每一個資料庫事務操作要不就是全部完成，要不就是全部不完成。
+* **一致性** - 任何一個資料庫事務操作都會讓資料庫從一個有效的狀態轉換到另外一個有效狀態。
+* **隔離性** - 併發執行資料庫事務操作的結果會和循序執行的結果一致。
+* **持久性** - 一旦一個事務被資料庫執行後，他的結果與影響是擁永久保存的。
 
-There are many techniques to scale a relational database: **master-slave replication**, **master-master replication**, **federation**, **sharding**, **denormalization**, and **SQL tuning**.
+要針對關聯式資料庫系統進行擴展有許多方法： **主從複寫**, **主動模式複寫**, **聯邦式資料庫**, **分片**, **反正規化**, 和 **SQL 優化**.
 
-#### Master-slave replication
+#### 主從複寫
 
 The master serves reads and writes, replicating writes to one or more slaves, which serve only reads.  Slaves can also replicate to additional slaves in a tree-like fashion.  If the master goes offline, the system can continue to operate in read-only mode until a slave is promoted to a master or a new master is provisioned.
 
@@ -794,7 +794,7 @@ The master serves reads and writes, replicating writes to one or more slaves, wh
 * Additional logic is needed to promote a slave to a master.
 * See [Disadvantage(s): replication](#disadvantages-replication) for points related to **both** master-slave and master-master.
 
-#### Master-master replication
+#### 主動模式複寫
 
 Both masters serve reads and writes and coordinate with each other on writes.  If either master goes down, the system can continue to operate with both reads and writes.
 
@@ -824,7 +824,7 @@ Both masters serve reads and writes and coordinate with each other on writes.  I
 * [Scalability, availability, stability, patterns](http://www.slideshare.net/jboner/scalability-availability-stability-patterns/)
 * [Multi-master replication](https://en.wikipedia.org/wiki/Multi-master_replication)
 
-#### Federation
+#### 聯邦式資料庫
 
 <p align="center">
   <img src="http://i.imgur.com/U3qV33e.png">
@@ -845,7 +845,7 @@ Federation (or functional partitioning) splits up databases by function.  For ex
 
 * [Scaling up to your first 10 million users](https://www.youtube.com/watch?v=vg5onp8TU6Q)
 
-#### Sharding
+#### 分片
 
 <p align="center">
   <img src="http://i.imgur.com/wU8x5Id.png">
@@ -873,7 +873,7 @@ Common ways to shard a table of users is either through the user's last name ini
 * [Shard database architecture](https://en.wikipedia.org/wiki/Shard_(database_architecture))
 * [Consistent hashing](http://www.paperplanes.de/2011/12/9/the-magic-of-consistent-hashing.html)
 
-#### Denormalization
+#### 反正規化
 
 Denormalization attempts to improve read performance at the expense of some write performance.  Redundant copies of the data are written in multiple tables to avoid expensive joins.  Some RDBMS such as [PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL) and Oracle support [materialized views](https://en.wikipedia.org/wiki/Materialized_view) which handle the work of storing redundant information and keeping redundant copies consistent.
 
