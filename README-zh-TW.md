@@ -781,18 +781,18 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
 
 #### 主從複寫
 
-The master serves reads and writes, replicating writes to one or more slaves, which serve only reads.  Slaves can also replicate to additional slaves in a tree-like fashion.  If the master goes offline, the system can continue to operate in read-only mode until a slave is promoted to a master or a new master is provisioned.
+主資料庫負責讀和寫，並且將寫入的資料複寫至一或多個從屬資料庫中，從屬資料庫只負責讀取。而從屬資料庫可以再將寫入複製到更多以樹狀結構的其他資料庫中。如果主資料庫離線了，系統可以以只讀模式運行，直到某個從屬資料庫被提升為主資料庫，或有新的主資料庫出現。
 
 <p align="center">
   <img src="http://i.imgur.com/C9ioGtn.png">
   <br/>
-  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>Source: Scalability, availability, stability, patterns</a></i>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>來源： 可擴展性、可用性、穩定性及其模式</a></i>
 </p>
 
-##### Disadvantage(s): master-slave replication
+##### 主從複寫的缺點
 
-* Additional logic is needed to promote a slave to a master.
-* See [Disadvantage(s): replication](#disadvantages-replication) for points related to **both** master-slave and master-master.
+* 需要額外的處理邏輯來將從屬資料庫提升為主要資料庫。
+* 參考 [複寫的缺點](#disadvantages-replication) 章節，你可以看到主動模式複寫與主從模式**共同**的缺點。
 
 #### 主動模式複寫
 
