@@ -792,37 +792,37 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
 ##### 主從複寫的缺點
 
 * 需要額外的處理邏輯來將從屬資料庫提升為主要資料庫。
-* 參考 [複寫的缺點](#disadvantages-replication) 章節，你可以看到主動模式複寫與主從模式**共同**的缺點。
+* 參考 [複寫的缺點](#複寫的缺點) 章節，你可以看到主動模式複寫與主從模式**共同**的缺點。
 
 #### 主動模式複寫
 
-Both masters serve reads and writes and coordinate with each other on writes.  If either master goes down, the system can continue to operate with both reads and writes.
+兩個主要的資料庫都負責讀取和寫入，並且兩者互相協調。如果其中一個主要資料庫離線，系統可以繼續運作。
 
 <p align="center">
   <img src="http://i.imgur.com/krAHLGg.png">
   <br/>
-  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>Source: Scalability, availability, stability, patterns</a></i>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>來源： 可擴展性、可用性、穩定性及其模式</a></i>
 </p>
 
-##### Disadvantage(s): master-master replication
+##### 主動模式的缺點
 
-* You'll need a load balancer or you'll need to make changes to your application logic to determine where to write.
-* Most master-master systems are either loosely consistent (violating ACID) or have increased write latency due to synchronization.
-* Conflict resolution comes more into play as more write nodes are added and as latency increases.
-* See [Disadvantage(s): replication](#disadvantages-replication) for points related to **both** master-slave and master-master.
+* 你需要一個負載平衡器來或是在你的應用程式邏輯中做修改來決定要寫入哪個資料庫。
+* 大多數的主動模式資料庫無法保證一致性(違反 ACID)，或是會因為同步而產生了寫入延遲。
+* 隨著更多寫入節點的增加和延遲的提高，如何解決衝突就顯得更加重要。
+* 參考 [複寫的缺點](#複寫的缺點) 章節，你可以看到主動模式複寫與主從模式**共同**的缺點。
 
-##### Disadvantage(s): replication
+##### 複寫的缺點
 
-* There is a potential for loss of data if the master fails before any newly written data can be replicated to other nodes.
-* Writes are replayed to the read replicas.  If there are a lot of writes, the read replicas can get bogged down with replaying writes and can't do as many reads.
-* The more read slaves, the more you have to replicate, which leads to greater replication lag.
-* On some systems, writing to the master can spawn multiple threads to write in parallel, whereas read replicas only support writing sequentially with a single thread.
-* Replication adds more hardware and additional complexity.
+* 如果在主要資料庫複製到其他結點前系統就失效，則會有資料丟失的可能。
+* 當有過多寫入時，讀取的資料庫可能會因為過多寫入操作而被阻塞，導致讀取功能異常。
+* 當讀取的資料庫越多時，需要複寫的資料越多，將會導致較為嚴重的延遲。
+* 在某些資料庫系統中，寫入主資料庫的操作可以用多執行緒來並行寫入，但讀取的資料庫只支援單一執行緒來循序寫入。
+* 複寫意味著更多的硬體以及更高的複雜度。
 
-##### Source(s) and further reading: replication
+##### 來源及延伸閱讀
 
-* [Scalability, availability, stability, patterns](http://www.slideshare.net/jboner/scalability-availability-stability-patterns/)
-* [Multi-master replication](https://en.wikipedia.org/wiki/Multi-master_replication)
+* [可擴展性、可用性、穩定性及其模式](http://www.slideshare.net/jboner/scalability-availability-stability-patterns/)
+* [多主要資料庫複寫](https://en.wikipedia.org/wiki/Multi-master_replication)
 
 #### 聯邦式資料庫
 
