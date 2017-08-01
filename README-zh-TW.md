@@ -850,28 +850,28 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
 <p align="center">
   <img src="http://i.imgur.com/wU8x5Id.png">
   <br/>
-  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>Source: Scalability, availability, stability, patterns</a></i>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>來源： 可擴展性、可用性、穩定性及其模式</a></i>
 </p>
 
-Sharding distributes data across different databases such that each database can only manage a subset of the data.  Taking a users database as an example, as the number of users increases, more shards are added to the cluster.
+分片是指將資料分配在不同的資料庫上，使每個資料庫只管理整個資料的部分子集。以使用者資料庫為例，隨著使用者數量的增加，越來越多的分片會被加入到群集當中。
 
-Similar to the advantages of [federation](#federation), sharding results in less read and write traffic, less replication, and more cache hits.  Index size is also reduced, which generally improves performance with faster queries.  If one shard goes down, the other shards are still operational, although you'll want to add some form of replication to avoid data loss.  Like federation, there is no single central master serializing writes, allowing you to write in parallel with increased throughput.
+類似於[聯邦式資料庫](#聯邦式資料庫)的優點，分片可以減少讀取和寫入的流量、減少複製並提高快取命中率。索引的容量也會減少，如此一來可以改善查詢的效能。當一個分片出現問題時，其餘的仍然可以正常運作，而為了避免資料遺失，你可能需要思考其他複寫的機制。如同聯邦式資料庫，分片的機制並沒有中央式的資料庫，你可以並行寫入以增加吞吐量。
 
-Common ways to shard a table of users is either through the user's last name initial or the user's geographic location.
+以使用者資料庫為例，常見的做法是用使用者姓氏的部首或使用者地理問位置來區隔使用者資料表。
 
-##### Disadvantage(s): sharding
+##### 分片的缺點
 
-* You'll need to update your application logic to work with shards, which could result in complex SQL queries.
-* Data distribution can become lopsided in a shard.  For example, a set of power users on a shard could result in increased load to that shard compared to others.
-    * Rebalancing adds additional complexity.  A sharding function based on [consistent hashing](http://www.paperplanes.de/2011/12/9/the-magic-of-consistent-hashing.html) can reduce the amount of transferred data.
-* Joining data from multiple shards is more complex.
-* Sharding adds more hardware and additional complexity.
+* 你需要修改應用程式的邏輯來實作分片，這可能會導致 SQL 變得複雜。
+* 不合理的分片可能會導致資料負載不均，例如，頻繁被訪問的使用者資料如果被放置在同一個分片中，會導致該分片負載相對較高。
+    * 再平衡會需要額外的複雜度。基於 [一致性 hash](http://www.paperplanes.de/2011/12/9/the-magic-of-consistent-hashing.html) 的分片演算法可以減少這種情形。
+* 從多個分片中操作資料會很複雜。
+* 分片需要額外的硬體和複雜度。
 
-##### Source(s) and further reading: sharding
+##### 來源及延伸閱讀
 
-* [The coming of the shard](http://highscalability.com/blog/2009/8/6/an-unorthodox-approach-to-database-design-the-coming-of-the.html)
-* [Shard database architecture](https://en.wikipedia.org/wiki/Shard_(database_architecture))
-* [Consistent hashing](http://www.paperplanes.de/2011/12/9/the-magic-of-consistent-hashing.html)
+* [分片時代來臨](http://highscalability.com/blog/2009/8/6/an-unorthodox-approach-to-database-design-the-coming-of-the.html)
+* [分片資料庫架構](https://en.wikipedia.org/wiki/Shard_(database_architecture))
+* [一致性 hashing](http://www.paperplanes.de/2011/12/9/the-magic-of-consistent-hashing.html)
 
 #### 反正規化
 
