@@ -875,21 +875,23 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
 
 #### 反正規化
 
-Denormalization attempts to improve read performance at the expense of some write performance.  Redundant copies of the data are written in multiple tables to avoid expensive joins.  Some RDBMS such as [PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL) and Oracle support [materialized views](https://en.wikipedia.org/wiki/Materialized_view) which handle the work of storing redundant information and keeping redundant copies consistent.
+反正規化嘗試以寫入的性能作為代價來改善讀取性能。透過在不同資料表中的重複資料來避免高成本的 Join 操作。
 
-Once data becomes distributed with techniques such as [federation](#federation) and [sharding](#sharding), managing joins across data centers further increases complexity.  Denormalization might circumvent the need for such complex joins.
+某些關連式資料庫，例如 [PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL) 和 Oracle 支援 [materialized views](https://en.wikipedia.org/wiki/Materialized_view)，可以用來處理重複資料的儲存，以及保證這些資料的一致性。
 
-In most systems, reads can heavily number writes 100:1 or even 1000:1.  A read resulting in a complex database join can be very expensive, spending a significant amount of time on disk operations.
+一旦資料使用如[聯合](#聯合)或[切片](#切片)等技術被分割，處理跨資料中心 Join 操作的複雜度。反正規化可以避免這種複雜的操作。
 
-##### Disadvantage(s): denormalization
+在多數系統中，讀取的操作頻率會遠高於寫入的頻率，比例可能會到 100:1 甚至 1000:1。進行複雜讀取操作的成本很高，會在硬碟上消耗大量的時間。
 
-* Data is duplicated.
-* Constraints can help redundant copies of information stay in sync, which increases complexity of the database design.
-* A denormalized database under heavy write load might perform worse than its normalized counterpart.
+##### 反正規化的缺點
 
-###### Source(s) and further reading: denormalization
+* 資料會重複存取
+* Constraints 的機制可以讓重複的資料保持同步，但這樣會增加資料庫設計的複雜度。
+* 反正規化的資料庫在大量寫入負載的情況下，性能表現可能會比正規化的資料庫差。
 
-* [Denormalization](https://en.wikipedia.org/wiki/Denormalization)
+###### 來源及延伸閱讀
+
+* [反正規化](https://en.wikipedia.org/wiki/Denormalization)
 
 #### SQL tuning
 
