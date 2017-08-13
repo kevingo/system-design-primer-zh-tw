@@ -893,55 +893,55 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
 
 * [反正規化](https://en.wikipedia.org/wiki/Denormalization)
 
-#### SQL tuning
+#### SQL 優化
 
-SQL tuning is a broad topic and many [books](https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=sql+tuning) have been written as reference.
+SQL 優化是一個涵蓋範圍很廣的主題，有許多相關的[參考書籍](https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=sql+tuning) 可以做為參考。
 
-It's important to **benchmark** and **profile** to simulate and uncover bottlenecks.
+透過 **效能測試** 和 **效能分析** 來模擬並發現系統的瓶頸是很重要的。
 
-* **Benchmark** - Simulate high-load situations with tools such as [ab](http://httpd.apache.org/docs/2.2/programs/ab.html).
-* **Profile** - Enable tools such as the [slow query log](http://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) to help track performance issues.
+* **效能測試** - 透過 [ab](http://httpd.apache.org/docs/2.2/programs/ab.html) 等工具來測試高負載的情況。
+* **效能分析** - 使用 [slow query log](http://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) 等工具來追蹤性能問題。
 
-Benchmarking and profiling might point you to the following optimizations.
+效能測試和效能分析可能會引導你到以下的優化方案。
 
-##### Tighten up the schema
+##### 使用較為精準的 schema
 
-* MySQL dumps to disk in contiguous blocks for fast access.
-* Use `CHAR` instead of `VARCHAR` for fixed-length fields.
-    * `CHAR` effectively allows for fast, random access, whereas with `VARCHAR`, you must find the end of a string before moving onto the next one.
-* Use `TEXT` for large blocks of text such as blog posts.  `TEXT` also allows for boolean searches.  Using a `TEXT` field results in storing a pointer on disk that is used to locate the text block.
-* Use `INT` for larger numbers up to 2^32 or 4 billion.
-* Use `DECIMAL` for currency to avoid floating point representation errors.
-* Avoid storing large `BLOBS`, store the location of where to get the object instead.
-* `VARCHAR(255)` is the largest number of characters that can be counted in an 8 bit number, often maximizing the use of a byte in some RDBMS.
-* Set the `NOT NULL` constraint where applicable to [improve search performance](http://stackoverflow.com/questions/1017239/how-do-null-values-affect-performance-in-a-database-search).
+* 為了加快存取速度，MySQL 會在硬碟上使用連續的 block 來儲存資料。
+* 使用 `CHAR` 來儲存固定長度的資料，不要使用 `VARCHAR`。
+    * `CHAR` 在快速、隨機存取時效率很高。如果使用 `VARCHAR`，想要讀取下一個字元時，需要先讀取到目前字元的尾端。
+* 使用 `TEXT` 來儲存大量的文字，例如部落格文章。`TEXT` 還可以使用布林搜尋。使用 `TEXT` 時，會在硬碟上保存一個指向硬碟區塊的指標。
+* 使用 `INT` 來儲存數量級達到 2^32 或 40 億等較大的數字。
+* 使用 `DECIMAL` 來儲存貨幣資料可以避免浮點數表達錯誤。
+* 避免儲存龐大的 `BLOBS`，取而代之的，應該儲存存放該對象的位置。
+* `VARCHAR(255)` 是使用 8 位數來儲存時的最大表示法，在某些關連式資料庫中，要最大限度地使用它。
+* 在適用的情況下設定 `NOT NULL` 來 [提高搜尋性能](http://stackoverflow.com/questions/1017239/how-do-null-values-affect-performance-in-a-database-search)。
 
-##### Use good indices
+##### 使用正確的索引
 
-* Columns that you are querying (`SELECT`, `GROUP BY`, `ORDER BY`, `JOIN`) could be faster with indices.
-* Indices are usually represented as self-balancing [B-tree](https://en.wikipedia.org/wiki/B-tree) that keeps data sorted and allows searches, sequential access, insertions, and deletions in logarithmic time.
-* Placing an index can keep the data in memory, requiring more space.
-* Writes could also be slower since the index also needs to be updated.
-* When loading large amounts of data, it might be faster to disable indices, load the data, then rebuild the indices.
+* 當你使用 (`SELECT`, `GROUP BY`, `ORDER BY`, `JOIN`) 這些操作的對應欄位如果有使用索引就會查詢更快。
+* 索引通常是使用平衡[B 樹](https://en.wikipedia.org/wiki/B-tree) 表示，這樣可以保證資料是有序的，並允許在對數時間內進行搜尋、循序訪問以及插入、刪除等操作。
+* 設定索引時，會將資料放置於記憶體中，會佔用更多記憶體空間。
+* 寫入操作會變慢，因為所隱諱需要更新。
+* 當讀取大量資料時，禁用索引再讀取，之後再重新建立索引，這樣也許會更快。
 
-##### Avoid expensive joins
+##### 避免高成本的 Join 操作
 
-* [Denormalize](#denormalization) where performance demands it.
+* 有性能需求時，可以進行[反正規化](#denormalization)。
 
-##### Partition tables
+##### 分割資料表
 
-* Break up a table by putting hot spots in a separate table to help keep it in memory.
+* 將熱門的資料拆分到單獨的資料表中可以增加快取。
 
-##### Tune the query cache
+##### 調整查詢的快取
 
-* In some cases, the [query cache](http://dev.mysql.com/doc/refman/5.7/en/query-cache) could lead to [performance issues](https://www.percona.com/blog/2014/01/28/10-mysql-performance-tuning-settings-after-installation/).
+* 在某些情況下，[查詢快取](http://dev.mysql.com/doc/refman/5.7/en/query-cache) 可能會導致 [性能問題](https://www.percona.com/blog/2014/01/28/10-mysql-performance-tuning-settings-after-installation/)。
 
-##### Source(s) and further reading: SQL tuning
+##### 來源及延伸閱讀
 
-* [Tips for optimizing MySQL queries](http://20bits.com/article/10-tips-for-optimizing-mysql-queries-that-dont-suck)
-* [Is there a good reason i see VARCHAR(255) used so often?](http://stackoverflow.com/questions/1217466/is-there-a-good-reason-i-see-varchar255-used-so-often-as-opposed-to-another-l)
-* [How do null values affect performance?](http://stackoverflow.com/questions/1017239/how-do-null-values-affect-performance-in-a-database-search)
-* [Slow query log](http://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)
+* [MySQL 查詢優化小提示](http://20bits.com/article/10-tips-for-optimizing-mysql-queries-that-dont-suck)
+* [為什麼使用 VARCHAR(255) 很常見](http://stackoverflow.com/questions/1217466/is-there-a-good-reason-i-see-varchar255-used-so-often-as-opposed-to-another-l)
+* [Null 值是如何影響資料庫性能](http://stackoverflow.com/questions/1017239/how-do-null-values-affect-performance-in-a-database-search)
+* [慢 SQL log 查詢](http://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)
 
 ### NoSQL
 
