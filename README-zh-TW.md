@@ -972,24 +972,24 @@ NoSQL 指的是 **鍵-值對的資料庫**、**文件類型資料庫**、**列�
 * [Redis 架構](http://qnimate.com/overview-of-redis-architecture/)
 * [Memcached 架構](https://www.adayinthelifeof.nl/2011/02/06/memcache-internals/)
 
-#### Document store
+#### 文件類型資料庫
 
-> Abstraction: key-value store with documents stored as values
+> 抽象模型：將文件當做值的鍵值對資料庫
 
-A document store is centered around documents (XML, JSON, binary, etc), where a document stores all information for a given object.  Document stores provide APIs or a query language to query based on the internal structure of the document itself.  *Note, many key-value stores include features for working with a value's metadata, blurring the lines between these two storage types.*
+文件類型的資料庫是以文件 (XML、JSON、二進制檔案等) 為核心，文件本身儲存了對應物件的所有資訊。這種類型的資料庫提供了 API 或相關的查詢方法來根據儲存物件本身的特性來實現查詢功能。請注意，許多鍵值對資料庫有儲存 metadata 的特性，這也模糊了這兩種資料庫之間的界線。
 
-Based on the underlying implementation, documents are organized in either collections, tags, metadata, or directories.  Although documents can be organized or grouped together, documents may have fields that are completely different from each other.
+根據底層實作的不同，文件資料庫可以根據集合、標籤、metadata 或目錄等來組織而成。儘管不同的文件可以被組織在一起或是分成一組，但彼此之間可能具有完全不同的內容。
 
-Some document stores like [MongoDB](https://www.mongodb.com/mongodb-architecture) and [CouchDB](https://blog.couchdb.org/2016/08/01/couchdb-2-0-architecture/) also provide a SQL-like language to perform complex queries.  [DynamoDB](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/decandia07dynamo.pdf) supports both key-values and documents.
+某些文件型資料庫，例如[MongoDB](https://www.mongodb.com/mongodb-architecture) 和 [CouchDB](https://blog.couchdb.org/2016/08/01/couchdb-2-0-architecture/)同樣提供了類似於 SQL 查詢語句的功能來實現複雜的查詢。[DynamoDB](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/decandia07dynamo.pdf)則同時支援了鍵值對儲存和文件類型儲存的功能。
 
-Document stores provide high flexibility and are often used for working with occasionally changing data.
+文件類型的資料庫具備高度靈活性，通常用於處理偶爾變化的資料。
 
-##### Source(s) and further reading: document store
+##### 延伸閱讀
 
-* [Document-oriented database](https://en.wikipedia.org/wiki/Document-oriented_database)
-* [MongoDB architecture](https://www.mongodb.com/mongodb-architecture)
-* [CouchDB architecture](https://blog.couchdb.org/2016/08/01/couchdb-2-0-architecture/)
-* [Elasticsearch architecture](https://www.elastic.co/blog/found-elasticsearch-from-the-bottom-up)
+* [文件類型的資料庫](https://en.wikipedia.org/wiki/Document-oriented_database)
+* [MongoDB 架構](https://www.mongodb.com/mongodb-architecture)
+* [CouchDB 架構](https://blog.couchdb.org/2016/08/01/couchdb-2-0-architecture/)
+* [Elasticsearch 架構](https://www.elastic.co/blog/found-elasticsearch-from-the-bottom-up)
 
 #### Wide column store
 
