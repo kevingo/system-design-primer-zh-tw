@@ -945,32 +945,32 @@ SQL 優化是一個涵蓋範圍很廣的主題，有許多相關的[參考書籍
 
 ### NoSQL
 
-NoSQL is a collection of data items represented in a **key-value store**, **document-store**, **wide column store**, or a **graph database**.  Data is denormalized, and joins are generally done in the application code.  Most NoSQL stores lack true ACID transactions and favor [eventual consistency](#eventual-consistency).
+NoSQL 指的是 **鍵-值對的資料庫**、**文件類型資料庫**、**列儲存形資料庫** 和 **圖形資料庫** 等的統稱。資料是非正規化的，Join 大部分在應用端完成。大多數的 NoSQL 資料庫無法真正實現 ACID 的 transaction，他們通常會支援 [最終一致性](#最終一致性)。
 
-**BASE** is often used to describe the properties of NoSQL databases.  In comparison with the [CAP Theorem](#cap-theorem), BASE chooses availability over consistency.
+**BASE** 通常被用來描述 NoSQL 資料庫的特性。  跟 [CAP 理論](#cap 理論) 相比，BASE 強調可用性而非一致性。
 
-* **Basically available** - the system guarantees availability.
-* **Soft state** - the state of the system may change over time, even without input.
-* **Eventual consistency** - the system will become consistent over a period of time, given that the system doesn't receive input during that period.
+* **基本可用** - 系統保證可用性。
+* **軟狀態** - 系統的狀態可能隨著時間改變，即使在沒有輸入的情況下也是如此。
+* **最終一致性** - 經過一段時間之後，在沒有收到任何輸入的情況下，系統最終會達到一致。
 
-In addition to choosing between [SQL or NoSQL](#sql-or-nosql), it is helpful to understand which type of NoSQL database best fits your use case(s).  We'll review **key-value stores**, **document-stores**, **wide column stores**, and **graph databases** in the next section.
+除了在 [SQL 或 NoSQL](#sql-或-nosql) 之間做選擇，了解哪種類型的 NoSQL 資料庫最適合你的需求也是很有幫助的。我們會在下一節中快速瞭解一下 **鍵-值對的資料庫**、**文件類型資料庫**、**列儲存形資料庫** 和 **圖形資料庫** 等資料庫。
 
-#### Key-value store
+#### 鍵-值對的資料庫
 
-> Abstraction: hash table
+> 抽象模型：hash table
 
-A key-value store generally allows for O(1) reads and writes and is often backed by memory or SSD.  Data stores can maintain keys in [lexicographic order](https://en.wikipedia.org/wiki/Lexicographical_order), allowing efficient retrieval of key ranges.  Key-value stores can allow for storing of metadata with a value.
+一個鍵值對的資料庫通常可以實現 O(1) 時間內的讀寫，同時，它的背後通常使用記憶體或 SSD 當作儲存媒介。資料在儲存時，可以按照[字典順序](https://en.wikipedia.org/wiki/Lexicographical_order)來維護鍵的數值，進而實踐鍵數值的高效率檢索。鍵值對的資料庫也可以用來儲存值的 metadata。
 
-Key-value stores provide high performance and are often used for simple data models or for rapidly-changing data, such as an in-memory cache layer.  Since they offer only a limited set of operations, complexity is shifted to the application layer if additional operations are needed.
+鍵值對資料庫的效能很好，通常用來儲存簡單的資料模型或是頻繁修改的資料，如放在記憶體中的快取層。鍵值對資料庫所提供的操作有限，如果要進行更多操作，會將其放在應用端進行。
 
-A key-value store is the basis for more complex systems such as a document store, and in some cases, a graph database.
+鍵值對的資料庫在某些情況下，是更複雜系統的基礎，例如圖形資料庫或是文件類型的資料庫。
 
-##### Source(s) and further reading: key-value store
+##### 來源及延伸閱讀
 
-* [Key-value database](https://en.wikipedia.org/wiki/Key-value_database)
-* [Disadvantages of key-value stores](http://stackoverflow.com/questions/4056093/what-are-the-disadvantages-of-using-a-key-value-table-over-nullable-columns-or)
-* [Redis architecture](http://qnimate.com/overview-of-redis-architecture/)
-* [Memcached architecture](https://www.adayinthelifeof.nl/2011/02/06/memcache-internals/)
+* [鍵值對資料庫](https://en.wikipedia.org/wiki/Key-value_database)
+* [鍵值對資料庫的缺點](http://stackoverflow.com/questions/4056093/what-are-the-disadvantages-of-using-a-key-value-table-over-nullable-columns-or)
+* [Redis 架構](http://qnimate.com/overview-of-redis-architecture/)
+* [Memcached 架構](https://www.adayinthelifeof.nl/2011/02/06/memcache-internals/)
 
 #### Document store
 
