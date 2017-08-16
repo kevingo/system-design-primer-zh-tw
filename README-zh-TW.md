@@ -991,28 +991,28 @@ NoSQL 指的是 **鍵-值對的資料庫**、**文件類型資料庫**、**列�
 * [CouchDB 架構](https://blog.couchdb.org/2016/08/01/couchdb-2-0-architecture/)
 * [Elasticsearch 架構](https://www.elastic.co/blog/found-elasticsearch-from-the-bottom-up)
 
-#### Wide column store
+#### 列儲存形資料庫
 
 <p align="center">
   <img src="http://i.imgur.com/n16iOGk.png">
   <br/>
-  <i><a href=http://blog.grio.com/2015/11/sql-nosql-a-brief-history.html>Source: SQL & NoSQL, a brief history</a></i>
+  <i><a href=http://blog.grio.com/2015/11/sql-nosql-a-brief-history.html>來源：SQL 和 NoSQL，簡短的歷史介紹</a></i>
 </p>
 
-> Abstraction: nested map `ColumnFamily<RowKey, Columns<ColKey, Value, Timestamp>>`
+> 抽象模型： 巢狀的 Map `ColumnFamily<RowKey, Columns<ColKey, Value, Timestamp>>`
 
-A wide column store's basic unit of data is a column (name/value pair).  A column can be grouped in column families (analogous to a SQL table).  Super column families further group column families.  You can access each column independently with a row key, and columns with the same row key form a row.  Each value contains a timestamp for versioning and for conflict resolution.
+列儲存形資料庫的基本單元是一列 (名稱/值為一組)。每一列可以被分到一個列的族群中(類似於 SQL 中的資料表)。而每個列族群之上還可以有一個超級列群。你可以透過列的鍵值來存取每一列，每個值都有一個時間戳記來解決版本問題。
 
-Google introduced [Bigtable](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf) as the first wide column store, which influenced the open-source [HBase](https://www.mapr.com/blog/in-depth-look-hbase-architecture) often-used in the Hadoop ecosystem, and [Cassandra](http://docs.datastax.com/en/archived/cassandra/2.0/cassandra/architecture/architectureIntro_c.html) from Facebook.  Stores such as BigTable, HBase, and Cassandra maintain keys in lexicographic order, allowing efficient retrieval of selective key ranges.
+Google 發表了第一個列儲存形資料庫 [Bigtable](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf)，這影響了用於 Hadoop 系統中開源的 [HBase](https://www.mapr.com/blog/in-depth-look-hbase-architecture) often-used in the Hadoop ecosystem, 和 Facebook 的 [Cassandra](http://docs.datastax.com/en/archived/cassandra/2.0/cassandra/architecture/architectureIntro_c.html)。這些資料庫的儲存系統把鍵值利用字母順序來儲存，可以有效率的來讀取。
 
-Wide column stores offer high availability and high scalability.  They are often used for very large data sets.
+列儲存型態的資料的提供了高可用和高擴展性，通常被用在大量資料的儲存上。
 
-##### Source(s) and further reading: wide column store
+##### 來源及延伸閱讀
 
-* [SQL & NoSQL, a brief history](http://blog.grio.com/2015/11/sql-nosql-a-brief-history.html)
-* [Bigtable architecture](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf)
-* [HBase architecture](https://www.mapr.com/blog/in-depth-look-hbase-architecture)
-* [Cassandra architecture](http://docs.datastax.com/en/archived/cassandra/2.0/cassandra/architecture/architectureIntro_c.html)
+* [SQL 和 NoSQL 歷史簡介](http://blog.grio.com/2015/11/sql-nosql-a-brief-history.html)
+* [Bigtable 架構](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf)
+* [HBase 架構](https://www.mapr.com/blog/in-depth-look-hbase-architecture)
+* [Cassandra 架構](http://docs.datastax.com/en/archived/cassandra/2.0/cassandra/architecture/architectureIntro_c.html)
 
 #### Graph database
 
