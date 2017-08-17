@@ -1014,33 +1014,33 @@ Google 發表了第一個列儲存形資料庫 [Bigtable](http://www.read.seas.h
 * [HBase 架構](https://www.mapr.com/blog/in-depth-look-hbase-architecture)
 * [Cassandra 架構](http://docs.datastax.com/en/archived/cassandra/2.0/cassandra/architecture/architectureIntro_c.html)
 
-#### Graph database
+#### 圖形化資料庫
 
 <p align="center">
   <img src="http://i.imgur.com/fNcl65g.png">
   <br/>
-  <i><a href=https://en.wikipedia.org/wiki/File:GraphDatabase_PropertyGraph.png>Source: Graph database</a></i>
+  <i><a href=https://en.wikipedia.org/wiki/File:GraphDatabase_PropertyGraph.png>來源： 圖形化資料庫</a></i>
 </p>
 
-> Abstraction: graph
+> 抽象模型：圖
 
-In a graph database, each node is a record and each arc is a relationship between two nodes.  Graph databases are optimized to represent complex relationships with many foreign keys or many-to-many relationships.
+在圖型資料庫中，每一個節點會對應一條紀錄，而每個邊描述兩個節點之間的關係。圖型資料庫針對表示外來鍵(Foreign Key)眾多的複雜關聯或多對多關聯進行優化。
 
-Graphs databases offer high performance for data models with complex relationships, such as a social network.  They are relatively new and are not yet widely-used; it might be more difficult to find development tools and resources.  Many graphs can only be accessed with [REST APIs](#representational-state-transfer-rest).
+圖型資料庫為了儲存複雜的資料結構，例如社群網路，提供了很高的性能。他們相對較新，尚未被廣泛使用，查詢工具或資源比較難取得，許多這種類型的資料庫只能透過 [REST API](#representational-state-transfer-rest).來存取。
 
-##### Source(s) and further reading: graph
+##### 來源及延伸閱讀
 
-* [Graph database](https://en.wikipedia.org/wiki/Graph_database)
+* [圖形資料庫](https://en.wikipedia.org/wiki/Graph_database)
 * [Neo4j](https://neo4j.com/)
 * [FlockDB](https://blog.twitter.com/2010/introducing-flockdb)
 
-#### Source(s) and further reading: NoSQL
+#### 來源及延伸閱讀：NoSQL
 
-* [Explanation of base terminology](http://stackoverflow.com/questions/3342497/explanation-of-base-terminology)
-* [NoSQL databases a survey and decision guidance](https://medium.com/baqend-blog/nosql-databases-a-survey-and-decision-guidance-ea7823a822d#.wskogqenq)
-* [Scalability](http://www.lecloud.net/post/7994751381/scalability-for-dummies-part-2-database)
-* [Introduction to NoSQL](https://www.youtube.com/watch?v=qI_g07C_Q5I)
-* [NoSQL patterns](http://horicky.blogspot.com/2009/11/nosql-patterns.html)
+* [資料庫術語解釋](http://stackoverflow.com/questions/3342497/explanation-of-base-terminology)
+* [NoSQL 資料庫：調查與決策指南](https://medium.com/baqend-blog/nosql-databases-a-survey-and-decision-guidance-ea7823a822d#.wskogqenq)
+* [可擴展性](http://www.lecloud.net/post/7994751381/scalability-for-dummies-part-2-database)
+* [NoSQL 介紹](https://www.youtube.com/watch?v=qI_g07C_Q5I)
+* [NoSQL 模式](http://horicky.blogspot.com/2009/11/nosql-patterns.html)
 
 ### SQL or NoSQL
 
