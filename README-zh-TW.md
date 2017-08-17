@@ -1042,47 +1042,47 @@ Google 發表了第一個列儲存形資料庫 [Bigtable](http://www.read.seas.h
 * [NoSQL 介紹](https://www.youtube.com/watch?v=qI_g07C_Q5I)
 * [NoSQL 模式](http://horicky.blogspot.com/2009/11/nosql-patterns.html)
 
-### SQL or NoSQL
+### SQL 或 NoSQL
 
 <p align="center">
   <img src="http://i.imgur.com/wXGqG5f.png">
   <br/>
-  <i><a href=https://www.infoq.com/articles/Transition-RDBMS-NoSQL/>Source: Transitioning from RDBMS to NoSQL</a></i>
+  <i><a href=https://www.infoq.com/articles/Transition-RDBMS-NoSQL/>來源：從 RDBMS 轉換到 NoSQL</a></i>
 </p>
 
-Reasons for **SQL**:
+選擇 **SQL** 的原因：
 
-* Structured data
-* Strict schema
-* Relational data
-* Need for complex joins
-* Transactions
-* Clear patterns for scaling
-* More established: developers, community, code, tools, etc
-* Lookups by index are very fast
+* 結構化資料
+* 嚴格的 schema
+* 關連式資料
+* 需要複雜的 join 
+* 事務
+* 清晰的擴展模式
+* 既有資源更豐富：開發者、社群、原始碼、工具等
+* 透過索引查詢很快
 
-Reasons for **NoSQL**:
+選擇 **NoSQL** 的原因：
 
-* Semi-structured data
-* Dynamic or flexible schema
-* Non-relational data
-* No need for complex joins
-* Store many TB (or PB) of data
-* Very data intensive workload
-* Very high throughput for IOPS
+* 半結構化資料
+* 動態或具有彈性的 schema
+* 非關連式資料
+* 不需要複雜的 joins
+* 儲存 TB (或 PB) 等級的資料
+* 高資料密集亮的工作負載
+* IOPS 的高吞吐量
 
-Sample data well-suited for NoSQL:
+適合使用 NoSQL 的範例：
 
-* Rapid ingest of clickstream and log data
-* Leaderboard or scoring data
-* Temporary data, such as a shopping cart
-* Frequently accessed ('hot') tables
-* Metadata/lookup tables
+* 快速地得到點擊的日誌資料
+* 排行榜或得分資料
+* 暫時性的資料，像是購物車
+* 經常頻繁存取的資料表
+* Metadata 或 查找資料表
 
-##### Source(s) and further reading: SQL or NoSQL
+##### 來源及延伸閱讀： SQL 或 NoSQL
 
-* [Scaling up to your first 10 million users](https://www.youtube.com/watch?v=vg5onp8TU6Q)
-* [SQL vs NoSQL differences](https://www.sitepoint.com/sql-vs-nosql-differences/)
+* [擴展你的使用者到第一個一千萬等級](https://www.youtube.com/watch?v=vg5onp8TU6Q)
+* [SQL 和 NoSQL 的不同](https://www.sitepoint.com/sql-vs-nosql-differences/)
 
 ## Cache
 
