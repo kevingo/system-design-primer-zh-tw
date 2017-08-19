@@ -1084,60 +1084,60 @@ Google 發表了第一個列儲存形資料庫 [Bigtable](http://www.read.seas.h
 * [擴展你的使用者到第一個一千萬等級](https://www.youtube.com/watch?v=vg5onp8TU6Q)
 * [SQL 和 NoSQL 的不同](https://www.sitepoint.com/sql-vs-nosql-differences/)
 
-## Cache
+## 快取
 
 <p align="center">
   <img src="http://i.imgur.com/Q6z24La.png">
   <br/>
-  <i><a href=http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html>Source: Scalable system design patterns</a></i>
+  <i><a href=http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html>來源：可擴展的系統設計模式</a></i>
 </p>
 
-Caching improves page load times and can reduce the load on your servers and databases.  In this model, the dispatcher will first lookup if the request has been made before and try to find the previous result to return, in order to save the actual execution.
+快取可以提高頁面讀取速度，並且減少伺服器和資料庫的負載。在這種模型中，分派器會先檢查該次請求之前是否曾經被回應過，如果有的話，則直接拿之前的結果返回，避免真正執行處理的程序。
 
-Databases often benefit from a uniform distribution of reads and writes across its partitions.  Popular items can skew the distribution, causing bottlenecks.  Putting a cache in front of a database can help absorb uneven loads and spikes in traffic.
+資料庫在資料均勻分布的情況下，讀取和寫入的效能是最好的。但是熱門的資料會讓讀取分佈不均，如此一來就會造成效能瓶頸。在資料庫前增加一個快取，就可以減少負載不均和突發流量所造成的影響。
 
-### Client caching
+### 客戶端快取
 
-Caches can be located on the client side (OS or browser), [server side](#reverse-proxy), or in a distinct cache layer.
+快取可以在客戶端(作業系統或瀏覽器)、[伺服器端](#反向代理伺服器)或不同的緩存層等。
 
-### CDN caching
+### CDN 快取
 
-[CDNs](#content-delivery-network) are considered a type of cache.
+[CDNs](#content-delivery-network) 也被視為一種快取。
 
-### Web server caching
+### 網站伺服器快取
 
-[Reverse proxies](#reverse-proxy-web-server) and caches such as [Varnish](https://www.varnish-cache.org/) can serve static and dynamic content directly.  Web servers can also cache requests, returning responses without having to contact application servers.
+[反向代理](#反向代理網站伺服器)以及像是 [Varnish](https://www.varnish-cache.org/)等的快取服務可以提供靜態和動態內容。網站伺服器也可以快取使用者請求，返回結果，而不需要真正的處理這些請求。
 
-### Database caching
+### 資料庫快取
 
-Your database usually includes some level of caching in a default configuration, optimized for a generic use case.  Tweaking these settings for specific usage patterns can further boost performance.
+資料庫的預設設定中通常包含了快取的級別，針對一般的使用進行了優化。你可以針對不同的情況調整這些設定來進一步提高效能。
 
-### Application caching
+### 應用快取
 
-In-memory caches such as Memcached and Redis are key-value stores between your application and your data storage.  Since the data is held in RAM, it is much faster than typical databases where data is stored on disk.  RAM is more limited than disk, so [cache invalidation](https://en.wikipedia.org/wiki/Cache_algorithms) algorithms such as [least recently used (LRU)](https://en.wikipedia.org/wiki/Cache_algorithms#Least_Recently_Used) can help invalidate 'cold' entries and keep 'hot' data in RAM.
+基於記憶體的快取，像是 Memcached 和 Redis 是一種在應用層和資料庫之間的鍵值對快取。由於資料保存在記憶體中，比起存放在硬碟中的資料庫在存取上要快得多。記憶體的限制也比硬碟更多，所以像是[least recently used (LRU)](https://en.wikipedia.org/wiki/Cache_algorithms#Least_Recently_Used) 的 [cache invalidation](https://en.wikipedia.org/wiki/Cache_algorithms) 方法可以讓 '熱門資料' 放在記憶體中，而比較 '冷門' 的資料在記憶體中失效。
 
-Redis has the following additional features:
+Redis 還有以下額外的功能：
 
-* Persistence option
-* Built-in data structures such as sorted sets and lists
+* 持久性的設定
+* 內建一些資料結構，像是 Set 或 List
 
-There are multiple levels you can cache that fall into two general categories: **database queries** and **objects**:
+你可以快取的級別有好幾種，大致上分為兩類：**資料庫查詢** 和 **物件**：
 
-* Row level
-* Query-level
-* Fully-formed serializable objects
-* Fully-rendered HTML
+* 記錄級別
+* 查詢及別
+* 完整的可序列化物件
+* 完整的 HTML
 
-Generally, you should try to avoid file-based caching, as it makes cloning and auto-scaling more difficult.
+一般來說，你應該避免文件檔案的快取，因為這會讓複製和自動擴展變得困難。
 
-### Caching at the database query level
+### 資料庫查詢級別的快取
 
 Whenever you query the database, hash the query as a key and store the result to the cache.  This approach suffers from expiration issues:
 
 * Hard to delete a cached result with complex queries
 * If one piece of data changes such as a table cell, you need to delete all cached queries that might include the changed cell
 
-### Caching at the object level
+### 物件級別的快取
 
 See your data as an object, similar to what you do with your application code.  Have your application assemble the dataset from the database into a class instance or a data structure(s):
 
