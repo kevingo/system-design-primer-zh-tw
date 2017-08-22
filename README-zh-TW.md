@@ -1132,10 +1132,10 @@ Redis 還有以下額外的功能：
 
 ### 資料庫查詢級別的快取
 
-Whenever you query the database, hash the query as a key and store the result to the cache.  This approach suffers from expiration issues:
+當你將查詢資料庫的查詢語句的 hash 值和查詢結果儲存到快取中時，這種方法會遇到以下問題：
 
-* Hard to delete a cached result with complex queries
-* If one piece of data changes such as a table cell, you need to delete all cached queries that might include the changed cell
+* 當你的查詢很複雜時，很難刪除快取內容
+* 如果某個資料表中的某個欄位值改變時，需要刪除所有可能包含該欄位值的快取結果。
 
 ### 物件級別的快取
 
