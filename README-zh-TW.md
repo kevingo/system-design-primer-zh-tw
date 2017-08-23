@@ -1151,9 +1151,9 @@ Redis 還有以下額外的功能：
 * 活動資訊
 * 使用者資料圖表
 
-### When to update the cache
+### 什麼時候要更新快取
 
-Since you can only store a limited amount of data in cache, you'll need to determine which cache update strategy works best for your use case.
+由於你只能在快取中儲存有限的資料，所以你需要選擇一個適用的快取策略。
 
 #### Cache-aside
 
