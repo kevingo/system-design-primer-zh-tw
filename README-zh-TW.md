@@ -1139,17 +1139,17 @@ Redis 還有以下額外的功能：
 
 ### 物件級別的快取
 
-See your data as an object, similar to what you do with your application code.  Have your application assemble the dataset from the database into a class instance or a data structure(s):
+將資料視為物件，就像對待你的程式碼一樣。讓應用程式將資料從資料庫中組合到類別實例或資料結構中：
 
-* Remove the object from cache if its underlying data has changed
-* Allows for asynchronous processing: workers assemble objects by consuming the latest cached object
+* 如果物件內的基本資料已經改變，那應該要從快取中刪除這個物件
+* 允許異步處理：workers 透過使用最新的快取來組裝物件
 
-Suggestions of what to cache:
+建議快取的資料：
 
-* User sessions
-* Fully rendered web pages
-* Activity streams
-* User graph data
+* 使用者 sessions
+* 完整渲染的頁面
+* 活動資訊
+* 使用者資料圖表
 
 ### When to update the cache
 
