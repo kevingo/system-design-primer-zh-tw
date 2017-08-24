@@ -1155,20 +1155,20 @@ Redis 還有以下額外的功能：
 
 由於你只能在快取中儲存有限的資料，所以你需要選擇一個適用的快取策略。
 
-#### Cache-aside
+#### 快取模式
 
 <p align="center">
   <img src="http://i.imgur.com/ONjORqk.png">
   <br/>
-  <i><a href=http://www.slideshare.net/tmatyashovsky/from-cache-to-in-memory-data-grid-introduction-to-hazelcast>Source: From cache to in-memory data grid</a></i>
+  <i><a href=http://www.slideshare.net/tmatyashovsky/from-cache-to-in-memory-data-grid-introduction-to-hazelcast>資料來源：從快取到記憶體資料網格</a></i>
 </p>
 
-The application is responsible for reading and writing from storage.  The cache does not interact with storage directly.  The application does the following:
+應用程式負責從儲存裝置中進行讀取及寫入。快取不直接和儲存裝置進行互動，應用程式會執行以下操作：
 
-* Look for entry in cache, resulting in a cache miss
-* Load entry from the database
-* Add entry to cache
-* Return entry
+* 從快取中尋找紀錄，如果所需要的紀錄在快取中找不到時
+* 從資料庫中讀取紀錄
+* 將該筆記錄儲存到快取
+* 將資料返回
 
 ```
 def get_user(self, user_id):
@@ -1181,15 +1181,15 @@ def get_user(self, user_id):
     return user
 ```
 
-[Memcached](https://memcached.org/) is generally used in this manner.
+[Memcached](https://memcached.org/) 通常被用在快取上。
 
-Subsequent reads of data added to cache are fast.  Cache-aside is also referred to as lazy loading.  Only requested data is cached, which avoids filling up the cache with data that isn't requested.
+加入快取中的資料讀取速度很快，快取的模式也被稱為延遲讀取。只有被請求過的資料會被加入到快取中，避免沒有被請求的資料佔滿了快取空間。
 
-##### Disadvantage(s): cache-aside
+##### 快取的缺點
 
-* Each cache miss results in three trips, which can cause a noticeable delay.
-* Data can become stale if it is updated in the database.  This issue is mitigated by setting a time-to-live (TTL) which forces an update of the cache entry, or by using write-through.
-* When a node fails, it is replaced by a new, empty node, increasing latency.
+* 當請求的資料不在快取中時，就需要經過三個步驟來獲得資料，這會導致明顯的延遲。
+* 如果資料庫中的資料被更新了，會導致快取中的資料過時，這需要透過設定 TTL 強制更新快取，或透過直接更新模式來解決這種問題。
+* 當快取的某個節點發生故障時，會需要被一個新的節點取代，這會導致延遲。
 
 #### Write-through
 
