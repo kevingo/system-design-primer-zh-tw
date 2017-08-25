@@ -1191,27 +1191,27 @@ def get_user(self, user_id):
 * 如果資料庫中的資料被更新了，會導致快取中的資料過時，這需要透過設定 TTL 強制更新快取，或透過直接更新模式來解決這種問題。
 * 當快取的某個節點發生故障時，會需要被一個新的節點取代，這會導致延遲。
 
-#### Write-through
+#### 寫入模式
 
 <p align="center">
   <img src="http://i.imgur.com/0vBc0hN.png">
   <br/>
-  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>Source: Scalability, availability, stability, patterns</a></i>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>資料來源：可獲展性、可用性、穩定性與模式</a></i>
 </p>
 
-The application uses the cache as the main data store, reading and writing data to it, while the cache is responsible for reading and writing to the database:
+應用程式使用快取當作主要的資料儲存服務，將資料寫入/讀取到快取中，由快取服務負責向資料庫讀寫資料。
 
-* Application adds/updates entry in cache
-* Cache synchronously writes entry to data store
-* Return
+* 應用程式向快取寫入/讀取資料
+* 快取同步的將資料寫到資料庫進行儲存
+* 返回所需要的內容
 
-Application code:
+應用程式程式碼：
 
 ```
 set_user(12345, {"foo":"bar"})
 ```
 
-Cache code:
+快取程式碼：
 
 ```
 def set_user(user_id, values):
@@ -1219,7 +1219,7 @@ def set_user(user_id, values):
     cache.set(user_id, user)
 ```
 
-Write-through is a slow overall operation due to the write operation, but subsequent reads of just written data are fast.  Users are generally more tolerant of latency when updating data than reading data.  Data in the cache is not stale.
+直寫模式因為寫入操作的緣故，是一種較慢的操作，但讀取剛剛寫入的資料會很快，使用者通常比較能接受更新較慢，但讀取快速的情況。在快取中的資料不會過時。
 
 ##### Disadvantage(s): write through
 
