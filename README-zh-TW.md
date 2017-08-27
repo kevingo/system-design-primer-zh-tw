@@ -1221,10 +1221,10 @@ def set_user(user_id, values):
 
 直寫模式因為寫入操作的緣故，是一種較慢的操作，但讀取剛剛寫入的資料會很快，使用者通常比較能接受更新較慢，但讀取快速的情況。在快取中的資料不會過時。
 
-##### Disadvantage(s): write through
+##### 寫入模式的缺點
 
-* When a new node is created due to failure or scaling, the new node will not cache entries until the entry is updated in the database.  Cache-aside in conjunction with write through can mitigate this issue.
-* Most data written might never read, which can be minimized with a TTL.
+* 當發生故障或因為水平擴展而產生新的節點時，新的節點中將不會有快取資料，直到資料庫更新為止。將快取模式和寫入模式一起使用可以減緩這種現象。
+* 被寫入多數的資料可能永遠都不會被讀取，你可以設定 TTL 來解決這種問題。
 
 #### Write-behind (write-back)
 
