@@ -1260,21 +1260,21 @@ def set_user(user_id, values):
 
 * 無法準確預測未來會使用的資料時，會導致性能降低，還不如使用其他模式。
 
-### Disadvantage(s): cache
+### 快取的缺點
 
-* Need to maintain consistency between caches and the source of truth such as the database through [cache invalidation](https://en.wikipedia.org/wiki/Cache_algorithms).
-* Need to make application changes such as adding Redis or memcached.
-* Cache invalidation is a difficult problem, there is additional complexity associated with when to update the cache.
+* 需要保持快取和資料庫之間資料的一致性，比如說要如何設定 [快取無效](https://en.wikipedia.org/wiki/Cache_algorithms)。
+* 需要更改應用程式程式碼來支援像是 Redis 或 Memcached 等快取服務。
+* 快取的無效性是個難題，而什麼時候要更新快取就是個對應的複雜問題。
 
-### Source(s) and further reading
+### 來源及延伸閱讀
 
-* [From cache to in-memory data grid](http://www.slideshare.net/tmatyashovsky/from-cache-to-in-memory-data-grid-introduction-to-hazelcast)
-* [Scalable system design patterns](http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html)
-* [Introduction to architecting systems for scale](http://lethain.com/introduction-to-architecting-systems-for-scale/)
-* [Scalability, availability, stability, patterns](http://www.slideshare.net/jboner/scalability-availability-stability-patterns/)
-* [Scalability](http://www.lecloud.net/post/9246290032/scalability-for-dummies-part-3-cache)
-* [AWS ElastiCache strategies](http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Strategies.html)
-* [Wikipedia](https://en.wikipedia.org/wiki/Cache_(computing))
+* [從快取到記憶體資料網格技術](http://www.slideshare.net/tmatyashovsky/from-cache-to-in-memory-data-grid-introduction-to-hazelcast)
+* [可擴展的系統設計模式](http://horicky.blogspot.com/2010/10/scalable-system-design-patterns.html)
+* [可擴展的系統架構介紹](http://lethain.com/introduction-to-architecting-systems-for-scale/)
+* [可擴展性、可用性、穩定性與模式](http://www.slideshare.net/jboner/scalability-availability-stability-patterns/)
+* [可擴展性](http://www.lecloud.net/post/9246290032/scalability-for-dummies-part-3-cache)
+* [AWS ElastiCache 策略](http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Strategies.html)
+* [維基百科](https://en.wikipedia.org/wiki/Cache_(computing))
 
 ## Asynchronism
 
