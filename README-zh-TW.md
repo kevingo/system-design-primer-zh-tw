@@ -1226,23 +1226,23 @@ def set_user(user_id, values):
 * 當發生故障或因為水平擴展而產生新的節點時，新的節點中將不會有快取資料，直到資料庫更新為止。將快取模式和寫入模式一起使用可以減緩這種現象。
 * 被寫入多數的資料可能永遠都不會被讀取，你可以設定 TTL 來解決這種問題。
 
-#### Write-behind (write-back)
+#### 事後寫入 (回寫)
 
 <p align="center">
   <img src="http://i.imgur.com/rgSrvjG.png">
   <br/>
-  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>Source: Scalability, availability, stability, patterns</a></i>
+  <i><a href=http://www.slideshare.net/jboner/scalability-availability-stability-patterns/>資料來源：可獲展性、可用性、穩定性與模式</a></i>
 </p>
 
-In write-behind, the application does the following:
+在事後寫入的模式中，應用程式會執行以下步驟：
 
-* Add/update entry in cache
-* Asynchronously write entry to the data store, improving write performance
+* 在快取中新增/更新資料
+* 非同步的寫入資料到資料儲存單元，提高寫入的性能
 
-##### Disadvantage(s): write-behind
+##### 事後寫入的缺點
 
-* There could be data loss if the cache goes down prior to its contents hitting the data store.
-* It is more complex to implement write-behind than it is to implement cache-aside or write-through.
+* 快取可能在資料成功寫入到儲存單元前就丟失
+* 事後寫入比起快取模式或是直寫模式在實作上更為複雜
 
 #### Refresh-ahead
 
