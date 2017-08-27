@@ -1276,15 +1276,15 @@ def set_user(user_id, values):
 * [AWS ElastiCache 策略](http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Strategies.html)
 * [維基百科](https://en.wikipedia.org/wiki/Cache_(computing))
 
-## Asynchronism
+## 非同步
 
 <p align="center">
   <img src="http://i.imgur.com/54GYsSx.png">
   <br/>
-  <i><a href=http://lethain.com/introduction-to-architecting-systems-for-scale/#platform_layer>Source: Intro to architecting systems for scale</a></i>
+  <i><a href=http://lethain.com/introduction-to-architecting-systems-for-scale/#platform_layer>資料來源：可縮放性系統架構介紹</a></i>
 </p>
 
-Asynchronous workflows help reduce request times for expensive operations that would otherwise be performed in-line.  They can also help by doing time-consuming work in advance, such as periodic aggregation of data.
+非同步的工作流程有助於減少原本按照同步順序進行請求的時間，透過提前進行一些耗時操作來將降低整體請求時間，比如說：定期的彙整資料。
 
 ### Message queues
 
