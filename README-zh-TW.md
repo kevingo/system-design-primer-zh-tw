@@ -1244,21 +1244,21 @@ def set_user(user_id, values):
 * 快取可能在資料成功寫入到儲存單元前就丟失
 * 事後寫入比起快取模式或是直寫模式在實作上更為複雜
 
-#### Refresh-ahead
+#### 更新式快取
 
 <p align="center">
   <img src="http://i.imgur.com/kxtjqgE.png">
   <br/>
-  <i><a href=http://www.slideshare.net/tmatyashovsky/from-cache-to-in-memory-data-grid-introduction-to-hazelcast>Source: From cache to in-memory data grid</a></i>
+  <i><a href=http://www.slideshare.net/tmatyashovsky/from-cache-to-in-memory-data-grid-introduction-to-hazelcast>來源：從快取到記憶體資料網格技術</a></i>
 </p>
 
-You can configure the cache to automatically refresh any recently accessed cache entry prior to its expiration.
+你可以將快取設定為在到期之前就自動更新為最新存取的內容。
 
-Refresh-ahead can result in reduced latency vs read-through if the cache can accurately predict which items are likely to be needed in the future.
+如果快取可以準確的預測將來可能會存取哪些資料，那自動更新可以降低讀取的延遲。
 
-##### Disadvantage(s): refresh-ahead
+##### 更新式快取的缺點
 
-* Not accurately predicting which items are likely to be needed in the future can result in reduced performance than without refresh-ahead.
+* 無法準確預測未來會使用的資料時，會導致性能降低，還不如使用其他模式。
 
 ### Disadvantage(s): cache
 
