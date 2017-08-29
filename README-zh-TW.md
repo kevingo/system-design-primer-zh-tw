@@ -1286,20 +1286,20 @@ def set_user(user_id, values):
 
 非同步的工作流程有助於減少原本按照同步順序進行請求的時間，透過提前進行一些耗時操作來將降低整體請求時間，比如說：定期的彙整資料。
 
-### Message queues
+### 訊息佇列
 
-Message queues receive, hold, and deliver messages.  If an operation is too slow to perform inline, you can use a message queue with the following workflow:
+訊息佇列用來接收、保留以及傳遞訊息。如果一個操作按照順序執行太慢的時候，你可以透過訊息佇列和以下的流程搭配來完成此工作：
 
-* An application publishes a job to the queue, then notifies the user of job status
-* A worker picks up the job from the queue, processes it, then signals the job is complete
+* 應用程式將訊息發送到佇列中，並通知使用者對應的狀態
+* 一個 worker 從佇列中拿出該訊息並進行處理，然後完成後顯示對應資訊
 
-The user is not blocked and the job is processed in the background.  During this time, the client might optionally do a small amount of processing to make it seem like the task has completed.  For example, if posting a tweet, the tweet could be instantly posted to your timeline, but it could take some time before your tweet is actually delivered to all of your followers.
+這樣的工作流程，使用者不會被阻塞，同時工作會在背景完成。在這段期間，客戶端可以進行一些處理讓此任務看起來已經完成了。例如，當你要發送一則推文訊息時，此訊息可以馬上出現在你的時間軸上，但可能需要一段時間才會發送到你的追蹤者上面。
 
-**Redis** is useful as a simple message broker but messages can be lost.
+**Redis** 是一個簡單且令人滿意的訊息佇列服務，但訊息有可能會丟失。
 
-**RabbitMQ** is popular but requires you to adapt to the 'AMQP' protocol and manage your own nodes.
+**RabbitMQ** 很受歡迎，但你必須要使用 AMQP 通訊協定，並且要自己管理節點。
 
-**Amazon SQS**, is hosted but can have high latency and has the possibility of messages being delivered twice.
+**Amazon SQS** 是一個被 AWS 託管的服務，但可能會有高延遲，並且訊息可能會被傳送兩次。
 
 ### Task queues
 
