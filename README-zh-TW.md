@@ -1311,16 +1311,16 @@ def set_user(user_id, values):
 
 當佇列開始明顯成長時，佇列的大小可能會超過記憶體，這會導致無法命中快取，降低整體效能。[背壓](http://mechanical-sympathy.blogspot.com/2012/05/apply-back-pressure-when-overloaded.html) 可以用來限制佇列的大小，讓佇列保持高吞吐率和良好的回應時間。一旦佇列滿了，客戶端將會得到 HTTP 503 的回應碼，以便讓他們在稍後重新嘗試。客戶端可以透過[指數後退演算法](https://en.wikipedia.org/wiki/Exponential_backoff)這種方式來進行重試。
 
-### Disadvantage(s): asynchronism
+### 非同步的缺點
 
-* Use cases such as inexpensive calculations and realtime workflows might be better suited for synchronous operations, as introducing queues can add delays and complexity.
+* 簡單的運算和需要即時的工作可能更適合使用同步運算，導入佇列可能會增加延遲或系統複雜度。
 
-### Source(s) and further reading
+### 來源及延伸閱讀
 
-* [It's all a numbers game](https://www.youtube.com/watch?v=1KRYH75wgy4)
-* [Applying back pressure when overloaded](http://mechanical-sympathy.blogspot.com/2012/05/apply-back-pressure-when-overloaded.html)
-* [Little's law](https://en.wikipedia.org/wiki/Little%27s_law)
-* [What is the difference between a message queue and a task queue?](https://www.quora.com/What-is-the-difference-between-a-message-queue-and-a-task-queue-Why-would-a-task-queue-require-a-message-broker-like-RabbitMQ-Redis-Celery-or-IronMQ-to-function)
+* [這是一個數字遊戲](https://www.youtube.com/watch?v=1KRYH75wgy4)
+* [當過載時，使用背壓](http://mechanical-sympathy.blogspot.com/2012/05/apply-back-pressure-when-overloaded.html)
+* [利特爾法則](https://en.wikipedia.org/wiki/Little%27s_law)
+* [訊息佇列和工作佇列有什麼不同？](https://www.quora.com/What-is-the-difference-between-a-message-queue-and-a-task-queue-Why-would-a-task-queue-require-a-message-broker-like-RabbitMQ-Redis-Celery-or-IronMQ-to-function)
 
 ## Communication
 
