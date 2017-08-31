@@ -1301,11 +1301,11 @@ def set_user(user_id, values):
 
 **Amazon SQS** 是一個被 AWS 託管的服務，但可能會有高延遲，並且訊息可能會被傳送兩次。
 
-### Task queues
+### 工作佇列
 
-Tasks queues receive tasks and their related data, runs them, then delivers their results.  They can support scheduling and can be used to run computationally-intensive jobs in the background.
+工作佇列會接收工作和對應的資料，執行它們，並且傳送其結果。他們可以支援排程，並且可以在背景運作計算密集型的工作。
 
-**Celery** has support for scheduling and primarily has python support.
+**Celery** 支援排程，主要是使用 Python 開發。
 
 ### Back pressure
 
