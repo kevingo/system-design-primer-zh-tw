@@ -1307,9 +1307,9 @@ def set_user(user_id, values):
 
 **Celery** 支援排程，主要是使用 Python 開發。
 
-### Back pressure
+### 背壓
 
-If queues start to grow significantly, the queue size can become larger than memory, resulting in cache misses, disk reads, and even slower performance.  [Back pressure](http://mechanical-sympathy.blogspot.com/2012/05/apply-back-pressure-when-overloaded.html) can help by limiting the queue size, thereby maintaining a high throughput rate and good response times for jobs already in the queue.  Once the queue fills up, clients get a server busy or HTTP 503 status code to try again later.  Clients can retry the request at a later time, perhaps with [exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff).
+當佇列開始明顯成長時，佇列的大小可能會超過記憶體，這會導致無法命中快取，降低整體效能。[背壓](http://mechanical-sympathy.blogspot.com/2012/05/apply-back-pressure-when-overloaded.html) 可以用來限制佇列的大小，讓佇列保持高吞吐率和良好的回應時間。一旦佇列滿了，客戶端將會得到 HTTP 503 的回應碼，以便讓他們在稍後重新嘗試。客戶端可以透過[指數後退演算法](https://en.wikipedia.org/wiki/Exponential_backoff)這種方式來進行重試。
 
 ### Disadvantage(s): asynchronism
 
