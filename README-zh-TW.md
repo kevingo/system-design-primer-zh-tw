@@ -1322,37 +1322,37 @@ def set_user(user_id, values):
 * [利特爾法則](https://en.wikipedia.org/wiki/Little%27s_law)
 * [訊息佇列和工作佇列有什麼不同？](https://www.quora.com/What-is-the-difference-between-a-message-queue-and-a-task-queue-Why-would-a-task-queue-require-a-message-broker-like-RabbitMQ-Redis-Celery-or-IronMQ-to-function)
 
-## Communication
+## 通訊
 
 <p align="center">
   <img src="http://i.imgur.com/5KeocQs.jpg">
   <br/>
-  <i><a href=http://www.escotal.com/osilayer.html>Source: OSI 7 layer model</a></i>
+  <i><a href=http://www.escotal.com/osilayer.html>來源：OSI 七層模型</a></i>
 </p>
 
-### Hypertext transfer protocol (HTTP)
+### 超文件通訊協定 (HTTP)
 
-HTTP is a method for encoding and transporting data between a client and a server.  It is a request/response protocol: clients issue requests and servers issue responses with relevant content and completion status info about the request.  HTTP is self-contained, allowing requests and responses to flow through many intermediate routers and servers that perform load balancing, caching, encryption, and compression.
+HTTP 是一種在客戶端和伺服器端傳輸資料和定義編碼的方法。它是基於請求/回應的協議：客戶端發出請求，而伺服器端則針對請求內容完成對應的行為並進行回應。HTTP 是獨立的，它允許請求和回應經過許多負載平衡、快取、加密和壓縮的中間路由器和伺服器。
 
-A basic HTTP request consists of a verb (method) and a resource (endpoint).  Below are common HTTP verbs:
+一個基本的 HTTP 請求是由一個動詞(方法)和一個資源(端點)所組成。以下是常見的 HTTP 動詞：
 
-| Verb | Description | Idempotent* | Safe | Cacheable |
+| 動詞 | 描述 | 冪等* | 安全性 | 可快取性 |
 |---|---|---|---|---|
-| GET | Reads a resource | Yes | Yes | Yes |
-| POST | Creates a resource or trigger a process that handles data | No | No | Yes if response contains freshness info |
-| PUT | Creates or replace a resource | Yes | No | No |
-| PATCH | Partially updates a resource | No | No | Yes if response contains freshness info |
-| DELETE | Deletes a resource | Yes | No | No |
+| GET | 讀取資源 | Yes | Yes | Yes |
+| POST | 建立資源，或是驅動處理資料的流程 | No | No | Yes，如果回應包含更新的資訊 |
+| PUT | 建立或更新資料 | Yes | No | No |
+| PATCH | 更新部分資料 | No | No | Yes if response contains freshness info |
+| DELETE | 刪除資料 | Yes | No | No |
 
-*Can be called many times without different outcomes.
+* 指的是當進行多次相同請求時，結果是相同的。
 
-HTTP is an application layer protocol relying on lower-level protocols such as **TCP** and **UDP**.
+HTTP 是依賴於較底層的協議(例如：**TCP** 和 **UDP**) 的應用層協議。
 
-#### Source(s) and further reading: HTTP
+#### 來源及延伸閱讀
 
-* [What is HTTP?](https://www.nginx.com/resources/glossary/http/)
-* [Difference between HTTP and TCP](https://www.quora.com/What-is-the-difference-between-HTTP-protocol-and-TCP-protocol)
-* [Difference between PUT and PATCH](https://laracasts.com/discuss/channels/general-discussion/whats-the-differences-between-put-and-patch?page=1)
+* [什麼是 HTTP?](https://www.nginx.com/resources/glossary/http/)
+* [HTTP 和 TCP 的差別](https://www.quora.com/What-is-the-difference-between-HTTP-protocol-and-TCP-protocol)
+* [PUT 和 PATCH 的差別](https://laracasts.com/discuss/channels/general-discussion/whats-the-differences-between-put-and-patch?page=1)
 
 ### Transmission control protocol (TCP)
 
