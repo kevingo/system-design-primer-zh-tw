@@ -1354,29 +1354,29 @@ HTTP 是依賴於較底層的協議(例如：**TCP** 和 **UDP**) 的應用層�
 * [HTTP 和 TCP 的差別](https://www.quora.com/What-is-the-difference-between-HTTP-protocol-and-TCP-protocol)
 * [PUT 和 PATCH 的差別](https://laracasts.com/discuss/channels/general-discussion/whats-the-differences-between-put-and-patch?page=1)
 
-### Transmission control protocol (TCP)
+### 傳輸控制通訊協定 (TCP)
 
 <p align="center">
   <img src="http://i.imgur.com/JdAsdvG.jpg">
   <br/>
-  <i><a href=http://www.wildbunny.co.uk/blog/2012/10/09/how-to-make-a-multi-player-game-part-1/>Source: How to make a multiplayer game</a></i>
+  <i><a href=http://www.wildbunny.co.uk/blog/2012/10/09/how-to-make-a-multi-player-game-part-1/>來源：如何開發多人遊戲</a></i>
 </p>
 
-TCP is a connection-oriented protocol over an [IP network](https://en.wikipedia.org/wiki/Internet_Protocol).  Connection is established and terminated using a [handshake](https://en.wikipedia.org/wiki/Handshaking).  All packets sent are guaranteed to reach the destination in the original order and without corruption through:
+TCP 是透過 [IP 網路](https://en.wikipedia.org/wiki/Internet_Protocol) 面向連線的通訊協定。連線是透過[握手](https://en.wikipedia.org/wiki/Handshaking)的方式來建立和斷開連接，所有發送的資料在接收時會保證順序，另外透過以下的機制來保證資料不會損毀：
 
-* Sequence numbers and [checksum fields](https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Checksum_computation) for each packet
-* [Acknowledgement](https://en.wikipedia.org/wiki/Acknowledgement_(data_networks)) packets and automatic retransmission
+* 每個資料的序列號碼和[校驗碼](https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Checksum_computation)
+* [確認訊息](https://en.wikipedia.org/wiki/Acknowledgement_(data_networks)) 和自動重傳
 
-If the sender does not receive a correct response, it will resend the packets.  If there are multiple timeouts, the connection is dropped.  TCP also implements [flow control](https://en.wikipedia.org/wiki/Flow_control_(data)) and [congestion control](https://en.wikipedia.org/wiki/Network_congestion#Congestion_control).  These guarantees cause delays and generally result in less efficient transmission than UDP.
+如果發送端沒有收到正確的回應，會重新發送資料，如果有多次的逾期時，連線就會斷開。TCP 實作了 [流量控制](https://en.wikipedia.org/wiki/Flow_control_(data)) 和 [阻塞控制](https://en.wikipedia.org/wiki/Network_congestion#Congestion_control)，這些機制會導致延遲，而且通常傳輸的效率會比 UDP 來得低。
+ 
+為了確保高吞吐量，Web 伺服器會保持大量的 TCP 連線，進而導致記憶體用量變大。在 Web 伺服器之間使用大量的開放連線可能是昂貴的，更別說是在 memcached 快取中做這些事情。[連線池](https://en.wikipedia.org/wiki/Connection_pool) 可以幫助在適合的情況下切換到 UDP。
 
-To ensure high throughput, web servers can keep a large number of TCP connections open, resulting in high memory usage.  It can be expensive to have a large number of open connections between web server threads and say, a [memcached](#memcached) server.  [Connection pooling](https://en.wikipedia.org/wiki/Connection_pool) can help in addition to switching to UDP where applicable.
+TCP 對於需要高可靠、低時間急迫性的應用來說很有用，比如說：Web 伺服器、資料庫、SMTP、FTP 和 SSH。
 
-TCP is useful for applications that require high reliability but are less time critical.  Some examples include web servers, database info, SMTP, FTP, and SSH.
+以下的情況請使用 TCP 而不是 UDP：
 
-Use TCP over UDP when:
-
-* You need all of the data to arrive intact
-* You want to automatically make a best estimate use of the network throughput
+* 你需要資料完整無缺
+* 你想要自動地對網路的流量進行最佳評估
 
 ### User datagram protocol (UDP)
 
