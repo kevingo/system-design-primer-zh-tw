@@ -1378,34 +1378,34 @@ TCP 對於需要高可靠、低時間急迫性的應用來說很有用，比如�
 * 你需要資料完整無缺
 * 你想要自動地對網路的流量進行最佳評估
 
-### User datagram protocol (UDP)
+### 使用者資料流通訊協定 (UDP)
 
 <p align="center">
   <img src="http://i.imgur.com/yzDrJtA.jpg">
   <br/>
-  <i><a href=http://www.wildbunny.co.uk/blog/2012/10/09/how-to-make-a-multi-player-game-part-1/>Source: How to make a multiplayer game</a></i>
+  <i><a href=http://www.wildbunny.co.uk/blog/2012/10/09/how-to-make-a-multi-player-game-part-1/>資料來源：如何製作多人遊戲</a></i>
 </p>
 
-UDP is connectionless.  Datagrams (analogous to packets) are guaranteed only at the datagram level.  Datagrams might reach their destination out of order or not at all.  UDP does not support congestion control.  Without the guarantees that TCP support, UDP is generally more efficient.
+UDP 是非連線型的通訊協定。資料流(類似於封包)只在資料流級別進行確保。資料可能會不按照順序地到達目的地，也可能會遺失。UDP 並不支援阻塞處理，儘管 UDP 不像 TCP 一樣可靠，但通常效率更好。
 
-UDP can broadcast, sending datagrams to all devices on the subnet.  This is useful with [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) because the client has not yet received an IP address, thus preventing a way for TCP to stream without the IP address.
+UDP 可以透過廣播來傳送資料流到所有子網路中的所有裝置，這對於 [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) 來說很有用，因為所有子網路中的設備還沒有分配到 IP 位置，而對 TCP 來說，IP 是必須的。
 
-UDP is less reliable but works well in real time use cases such as VoIP, video chat, streaming, and realtime multiplayer games.
+UDP 的可靠性較低，但適合用在像是網路電話、視訊聊天、串流和多人線上即時遊戲中。
 
-Use UDP over TCP when:
+針對以下的案例，請使用 UDP 來代替 TCP：
 
-* You need the lowest latency
-* Late data is worse than loss of data
-* You want to implement your own error correction
+* 你需要低延遲
+* 資料延遲的成本比資料遺失還高
+* 你想要自己實作錯誤校正方法
 
-#### Source(s) and further reading: TCP and UDP
+#### 來源及延伸閱讀
 
-* [Networking for game programming](http://gafferongames.com/networking-for-game-programmers/udp-vs-tcp/)
-* [Key differences between TCP and UDP protocols](http://www.cyberciti.biz/faq/key-differences-between-tcp-and-udp-protocols/)
-* [Difference between TCP and UDP](http://stackoverflow.com/questions/5970383/difference-between-tcp-and-udp)
-* [Transmission control protocol](https://en.wikipedia.org/wiki/Transmission_Control_Protocol)
-* [User datagram protocol](https://en.wikipedia.org/wiki/User_Datagram_Protocol)
-* [Scaling memcache at Facebook](http://www.cs.bu.edu/~jappavoo/jappavoo.github.com/451/papers/memcache-fb.pdf)
+* [遊戲程式撰寫的網路架構](http://gafferongames.com/networking-for-game-programmers/udp-vs-tcp/)
+* [TCP 和 UDP 的關鍵區別](http://www.cyberciti.biz/faq/key-differences-between-tcp-and-udp-protocols/)
+* [TCP 和 UDP 的差別](http://stackoverflow.com/questions/5970383/difference-between-tcp-and-udp)
+* [傳輸控制協議(TCP)](https://en.wikipedia.org/wiki/Transmission_Control_Protocol)
+* [使用者資料流協議(UDP)](https://en.wikipedia.org/wiki/User_Datagram_Protocol)
+* [Memcache 在 Facebook 中的可擴展性設計](http://www.cs.bu.edu/~jappavoo/jappavoo.github.com/451/papers/memcache-fb.pdf)
 
 ### Remote procedure call (RPC)
 
