@@ -1407,26 +1407,26 @@ UDP 的可靠性較低，但適合用在像是網路電話、視訊聊天、串�
 * [使用者資料流協議(UDP)](https://en.wikipedia.org/wiki/User_Datagram_Protocol)
 * [Memcache 在 Facebook 中的可擴展性設計](http://www.cs.bu.edu/~jappavoo/jappavoo.github.com/451/papers/memcache-fb.pdf)
 
-### Remote procedure call (RPC)
+### 遠端程式呼叫 (RPC)
 
 <p align="center">
   <img src="http://i.imgur.com/iF4Mkb5.png">
   <br/>
-  <i><a href=http://www.puncsky.com/blog/2016/02/14/crack-the-system-design-interview/>Source: Crack the system design interview</a></i>
+  <i><a href=http://www.puncsky.com/blog/2016/02/14/crack-the-system-design-interview/>資料來源：破解系統設計面試</a></i>
 </p>
 
-In an RPC, a client causes a procedure to execute on a different address space, usually a remote server.  The procedure is coded as if it were a local procedure call, abstracting away the details of how to communicate with the server from the client program.  Remote calls are usually slower and less reliable than local calls so it is helpful to distinguish RPC calls from local calls.  Popular RPC frameworks include [Protobuf](https://developers.google.com/protocol-buffers/), [Thrift](https://thrift.apache.org/), and [Avro](https://avro.apache.org/docs/current/).
+在一個 RPC 中，客戶端會去呼叫另外一個位置空間(通常是在遠端的伺服器)的方法。呼叫的方式就像是呼叫本地端的一個方法一樣，客戶端和伺服器溝通的具體過程被抽象化，而遠端呼叫相較於本地端呼叫來說一般較慢，而且可靠性較差，因此了解如何區別這兩種方法是必要的。熱門的 RPC 框架包含了 [Protobuf](https://developers.google.com/protocol-buffers/)、[Thrift](https://thrift.apache.org/) 和 [Avro](https://avro.apache.org/docs/current/)。
 
-RPC is a request-response protocol:
+RPC 是一個請求-回應的通訊協定：
 
-* **Client program** - Calls the client stub procedure.  The parameters are pushed onto the stack like a local procedure call.
-* **Client stub procedure** - Marshals (packs) procedure id and arguments into a request message.
-* **Client communication module** - OS sends the message from the client to the server.
-* **Server communication module** - OS passes the incoming packets to the server stub procedure.
-* **Server stub procedure** -  Unmarshalls the results, calls the server procedure matching the procedure id and passes the given arguments.
-* The server response repeats the steps above in reverse order.
+* **客戶端程序** - 呼叫客戶端的 stub 程序，就像呼叫本地端方法一樣，參數會被放入堆疊當中
+* **客戶端 stub 程序** - 將請求過程的 id 和參數打包放入請求資訊中
+* **客戶端通訊模組** - 作業系統將資訊從客戶端發送到伺服器端
+* **伺服器端通訊模組** - 作業系統將收到的資訊傳送到伺服器端的 stub 程序
+* **伺服器端 stub 程序** -  將結果解開後，依照過程中的 ID 來呼叫伺服器
+* 伺服器回覆的順序會按照以上相反的順序來回覆
 
-Sample RPC calls:
+RPC 使用範例：
 
 ```
 GET /someoperation?data=anId
@@ -1438,23 +1438,23 @@ POST /anotheroperation
 }
 ```
 
-RPC is focused on exposing behaviors.  RPCs are often used for performance reasons with internal communications, as you can hand-craft native calls to better fit your use cases.
+RPC 專注於揭露行為，它通常用來處理內部通訊的效能問題，通常你可以手動處理本地端的呼叫來更加符合你的使用案例。
 
-Choose a native library (aka SDK) when:
+當遇到以下情況時，使用本地端函式庫（也就是 SDK）：
 
-* You know your target platform.
-* You want to control how your "logic" is accessed.
-* You want to control how error control happens off your library.
-* Performance and end user experience is your primary concern.
+* 你知道你的目標平台
+* 你想要控制如何訪問你的 "邏輯"
+* 當你的函式庫發生錯誤時，你想要進行控制
+* 效能和使用者體驗是你最關注的事情
 
-HTTP APIs following **REST** tend to be used more often for public APIs.
+遵守 **REST** 規範的 HTTP API 往往更適合用在公用的 API。
 
-#### Disadvantage(s): RPC
+#### RPC 的缺點
 
-* RPC clients become tightly coupled to the service implementation.
-* A new API must be defined for every new operation or use case.
-* It can be difficult to debug RPC.
-* You might not be able to leverage existing technologies out of the box.  For example, it might require additional effort to ensure [RPC calls are properly cached](http://etherealbits.com/2012/12/debunking-the-myths-of-rpc-rest/) on caching servers such as [Squid](http://www.squid-cache.org/).
+* RPC 的客戶端會變得和伺服器的實作綁得更死
+* 一個新的 API 必須在每個操作或使用案例中進行定義
+* RPC 很難抓錯誤
+* 你很難方便的修改現有的技術，舉例來說，如果你希望在 [Squid](http://www.squid-cache.org/) 這樣的快取伺服器上確保 [RPC 呼叫被正確的快取](http://etherealbits.com/2012/12/debunking-the-myths-of-rpc-rest/)，你可以需要多費額外的努力了。
 
 ### Representational state transfer (REST)
 
