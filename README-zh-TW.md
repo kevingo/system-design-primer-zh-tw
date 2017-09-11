@@ -1512,20 +1512,20 @@ REST 關注於揭露資料，減少客戶端/伺服器之間耦合的程度，�
 * [Thrift](https://code.facebook.com/posts/1468950976659943/)
 * [為什麼在內部要使用 REST 而不是 RPC](http://arstechnica.com/civis/viewtopic.php?t=1190508)
 
-## Security
+## 資訊安全
 
-This section could use some updates.  Consider [contributing](#contributing)!
+這一章節需要更多的貢獻，一起[加入](#contributing)吧！
 
-Security is a broad topic.  Unless you have considerable experience, a security background, or are applying for a position that requires knowledge of security, you probably won't need to know more than the basics:
+資訊安全是一個廣泛的議題，除非你有相當的經驗、資訊安全的背景或正在申請相關的職位要求對應的知識，否則了解以下的基礎內容即可：
 
-* Encrypt in transit and at rest.
-* Sanitize all user inputs or any input parameters exposed to user to prevent [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) and [SQL injection](https://en.wikipedia.org/wiki/SQL_injection).
-* Use parameterized queries to prevent SQL injection.
-* Use the principle of [least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
+*在傳輸和等待的過程中進行加密
+* 對所有使用者輸入和從使用者得到的參數進行處理，以避免 [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) 和 [SQL injection](https://en.wikipedia.org/wiki/SQL_injection)
+* 使用參數化輸入來避免 SQL injection
+* 使用 [最小權限原則](https://en.wikipedia.org/wiki/Principle_of_least_privilege)
 
-### Source(s) and further reading
+### 來源及延伸閱讀
 
-* [Security guide for developers](https://github.com/FallibleInc/security-guide-for-developers)
+* [為開發者準備的資訊安全指南](https://github.com/FallibleInc/security-guide-for-developers)
 * [OWASP top ten](https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet)
 
 ## Appendix
