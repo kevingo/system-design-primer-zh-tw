@@ -1456,18 +1456,18 @@ RPC 專注於揭露行為，它通常用來處理內部通訊的效能問題，�
 * RPC 很難抓錯誤
 * 你很難方便的修改現有的技術，舉例來說，如果你希望在 [Squid](http://www.squid-cache.org/) 這樣的快取伺服器上確保 [RPC 呼叫被正確的快取](http://etherealbits.com/2012/12/debunking-the-myths-of-rpc-rest/)，你可以需要多費額外的努力了。
 
-### Representational state transfer (REST)
+### 具象狀態轉移 (REST)
 
-REST is an architectural style enforcing a client/server model where the client acts on a set of resources managed by the server.  The server provides a representation of resources and actions that can either manipulate or get a new representation of resources.  All communication must be stateless and cacheable.
+REST 是一個規範客戶端/伺服器端架構設計的模型。客戶端基於伺服器管理的系列操作，伺服器提供修改或取得資源的介面，所有的通訊必須是無狀態、可快取的。
 
-There are four qualities of a RESTful interface:
+Restful 的設計有四個原則：
 
-* **Identify resources (URI in HTTP)** - use the same URI regardless of any operation.
-* **Change with representations (Verbs in HTTP)** - use verbs, headers, and body.
-* **Self-descriptive error message (status response in HTTP)** - Use status codes, don't reinvent the wheel.
-* **[HATEOAS](http://restcookbook.com/Basics/hateoas/) (HTML interface for HTTP)** - your web service should be fully accessible in a browser.
+* **標示資源 (HTTP 中的 URI)** - 無論任何操作都使用相同的 URI
+* **表示層的改變 (HTTP 中的動作)** - 使用 HTTP 動詞、Headers 和 body
+* **可自我描述的錯誤訊息 (HTTP 中的狀態碼)** - 使用狀態碼，不要重複造輪子
+* **[HATEOAS](http://restcookbook.com/Basics/hateoas/) (HTTP 中的 HTML 介面)** - 你的 Web 伺服器應該要能夠透過瀏覽器訪問
 
-Sample REST calls:
+REST 請求範例：
 
 ```
 GET /someresources/anId
@@ -1476,41 +1476,41 @@ PUT /someresources/anId
 {"anotherdata": "another value"}
 ```
 
-REST is focused on exposing data.  It minimizes the coupling between client/server and is often used for public HTTP APIs.  REST uses a more generic and uniform method of exposing resources through URIs, [representation through headers](https://github.com/for-GET/know-your-http-well/blob/master/headers.md), and actions through verbs such as GET, POST, PUT, DELETE, and PATCH.  Being stateless, REST is great for horizontal scaling and partitioning.
+REST 關注於揭露資料，減少客戶端/伺服器之間耦合的程度，並且經常用在公共的 HTTP API 設計上。REST 使用更通用和受規範的方法來透過 URI 來揭露資源，[透過 Headers 來描述](https://github.com/for-GET/know-your-http-well/blob/master/headers.md)，並透過 GET、POST、PUT、DELETE 和 PATCH 等動作來進行操作，因為無狀態的特性，REST 易於橫向擴展和分片。
 
-#### Disadvantage(s): REST
+#### REST 的缺點
 
-* With REST being focused on exposing data, it might not be a good fit if resources are not naturally organized or accessed in a simple hierarchy.  For example, returning all updated records from the past hour matching a particular set of events is not easily expressed as a path.  With REST, it is likely to be implemented with a combination of URI path, query parameters, and possibly the request body.
-* REST typically relies on a few verbs (GET, POST, PUT, DELETE, and PATCH) which sometimes doesn't fit your use case.  For example, moving expired documents to the archive folder might not cleanly fit within these verbs.
-* Fetching complicated resources with nested hierarchies requires multiple round trips between the client and server to render single views, e.g. fetching content of a blog entry and the comments on that entry. For mobile applications operating in variable network conditions, these multiple roundtrips are highly undesirable.
-* Over time, more fields might be added to an API response and older clients will receive all new data fields, even those that they do not need, as a result, it bloats the payload size and leads to larger latencies.
+* 因為 REST 的重點是放在如何揭露資料，所以當資料不是以自然的形式組成時，或是結構相當複雜時，REST 可能無法很好的處理他們。舉個範例，回傳過去一小時中與特定事件吻合的更新操作就很難透過路徑來表示，使用 REST，可能會使用 URI、查詢參數和請求本身來實現。
+* REST 一般依賴於幾個動詞操作(GET、POST、PUT、DELETE 和 PATCH)，但有時候這些操作無法滿足你的需求，舉個範例，將過期的文件移動到歸檔文件資料庫中這樣的操作，可能就沒辦法簡單的使用以上幾個動詞操作來完成。
+* 對於那些多層複雜的資源來說，需要在客戶端和伺服器端進行多次請求，例如：獲得部落格頁面及相關評論，而對於網路環境較不穩定的行動端應用來說，這些多次往返的請求是非常麻煩的。
+* 隨著時間的增加，API 的回應中可能會增加更多的欄位，比較舊的客戶端還是會收到所有新的回應內容，即時他們不需要這些回應，這會造成他們的負擔，並且造成更大的延遲。
 
-### RPC and REST calls comparison
+### RPC 和 REST 呼叫的比較
 
-| Operation | RPC | REST |
+| 操作 | RPC | REST |
 |---|---|---|
-| Signup	| **POST** /signup | **POST** /persons |
-| Resign	| **POST** /resign<br/>{<br/>"personid": "1234"<br/>} | **DELETE** /persons/1234 |
-| Read a person | **GET** /readPerson?personid=1234 | **GET** /persons/1234 |
-| Read a person’s items list | **GET** /readUsersItemsList?personid=1234 | **GET** /persons/1234/items |
-| Add an item to a person’s items | **POST** /addItemToUsersItemsList<br/>{<br/>"personid": "1234";<br/>"itemid": "456"<br/>} | **POST** /persons/1234/items<br/>{<br/>"itemid": "456"<br/>} |
-| Update an item	| **POST** /modifyItem<br/>{<br/>"itemid": "456";<br/>"key": "value"<br/>} | **PUT** /items/456<br/>{<br/>"key": "value"<br/>} |
-| Delete an item | **POST** /removeItem<br/>{<br/>"itemid": "456"<br/>} | **DELETE** /items/456 |
+| 註冊	| **POST** /signup | **POST** /persons |
+| 取消	| **POST** /resign<br/>{<br/>"personid": "1234"<br/>} | **DELETE** /persons/1234 |
+| 讀取使用者資訊 | **GET** /readPerson?personid=1234 | **GET** /persons/1234 |
+| 讀取使用者物品清單 | **GET** /readUsersItemsList?personid=1234 | **GET** /persons/1234/items |
+| 增加一個物品到使用者的清單 | **POST** /addItemToUsersItemsList<br/>{<br/>"personid": "1234";<br/>"itemid": "456"<br/>} | **POST** /persons/1234/items<br/>{<br/>"itemid": "456"<br/>} |
+| 更新一個物品	| **POST** /modifyItem<br/>{<br/>"itemid": "456";<br/>"key": "value"<br/>} | **PUT** /items/456<br/>{<br/>"key": "value"<br/>} |
+| 刪除一個物品 | **POST** /removeItem<br/>{<br/>"itemid": "456"<br/>} | **DELETE** /items/456 |
 
 <p align="center">
-  <i><a href=https://apihandyman.io/do-you-really-know-why-you-prefer-rest-over-rpc/>Source: Do you really know why you prefer REST over RPC</a></i>
+  <i><a href=https://apihandyman.io/do-you-really-know-why-you-prefer-rest-over-rpc/>資料來源：你真的知道為什麼你更喜歡 REST 而不是 RPC 嗎？</a></i>
 </p>
 
-#### Source(s) and further reading: REST and RPC
+#### 來源及延伸閱讀
 
-* [Do you really know why you prefer REST over RPC](https://apihandyman.io/do-you-really-know-why-you-prefer-rest-over-rpc/)
-* [When are RPC-ish approaches more appropriate than REST?](http://programmers.stackexchange.com/a/181186)
-* [REST vs JSON-RPC](http://stackoverflow.com/questions/15056878/rest-vs-json-rpc)
-* [Debunking the myths of RPC and REST](http://etherealbits.com/2012/12/debunking-the-myths-of-rpc-rest/)
-* [What are the drawbacks of using REST](https://www.quora.com/What-are-the-drawbacks-of-using-RESTful-APIs)
-* [Crack the system design interview](http://www.puncsky.com/blog/2016/02/14/crack-the-system-design-interview/)
+* [你真的知道為什麼你更喜歡 REST 而不是 RPC 嗎？](https://apihandyman.io/do-you-really-know-why-you-prefer-rest-over-rpc/)
+* [什麼時候 RPC 比 REST 更適合](http://programmers.stackexchange.com/a/181186)
+* [REST 和 JSON-RPC](http://stackoverflow.com/questions/15056878/rest-vs-json-rpc)
+* [揭開 RPC 和 REST 的神秘面紗](http://etherealbits.com/2012/12/debunking-the-myths-of-rpc-rest/)
+* [使用 REST 的缺點](https://www.quora.com/What-are-the-drawbacks-of-using-RESTful-APIs)
+* [破解系統設計面試](http://www.puncsky.com/blog/2016/02/14/crack-the-system-design-interview/)
 * [Thrift](https://code.facebook.com/posts/1468950976659943/)
-* [Why REST for internal use and not RPC](http://arstechnica.com/civis/viewtopic.php?t=1190508)
+* [為什麼在內部要使用 REST 而不是 RPC](http://arstechnica.com/civis/viewtopic.php?t=1190508)
 
 ## Security
 
