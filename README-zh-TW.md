@@ -1528,14 +1528,14 @@ REST 關注於揭露資料，減少客戶端/伺服器之間耦合的程度，�
 * [為開發者準備的資訊安全指南](https://github.com/FallibleInc/security-guide-for-developers)
 * [OWASP top ten](https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet)
 
-## Appendix
+## 附錄
 
-You'll sometimes be asked to do 'back-of-the-envelope' estimates.  For example, you might need to determine how long it will take to generate 100 image thumbnails from disk or how much memory a data structure will take.  The **Powers of two table** and **Latency numbers every programmer should know** are handy references.
+某些時候你可能會被要求做一些保守估計，比如說，你可能需要預估從硬碟中生成 100 張圖片約略需要多少時間，或一個資料結構需要多少記憶體等。**2 的次方表** 和 **每個開發者都需要知道的一些時間資料** 都是一些很方便的參考料。
 
-### Powers of two table
+### 2 的次方表
 
 ```
-Power           Exact Value         Approx Value        Bytes
+次方           實際值         近似值        位元組
 ---------------------------------------------------------------
 7                             128
 8                             256
@@ -1547,14 +1547,14 @@ Power           Exact Value         Approx Value        Bytes
 40              1,099,511,627,776   1 trillion           1 TB
 ```
 
-#### Source(s) and further reading
+#### 來源及延伸閱讀
 
-* [Powers of two](https://en.wikipedia.org/wiki/Power_of_two)
+* [2 的次方](https://en.wikipedia.org/wiki/Power_of_two)
 
-### Latency numbers every programmer should know
+### 每個程式設計師都應該知道的延遲數量級
 
 ```
-Latency Comparison Numbers
+延遲比較數量級
 --------------------------
 L1 cache reference                           0.5 ns
 Branch mispredict                            5   ns
