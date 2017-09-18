@@ -1556,11 +1556,11 @@ REST 關注於揭露資料，減少客戶端/伺服器之間耦合的程度，�
 ```
 延遲比較數量級
 --------------------------
-L1 cache reference                           0.5 ns
+L1 快取參考數量級                           0.5 ns
 Branch mispredict                            5   ns
-L2 cache reference                           7   ns                      14x L1 cache
+L2 快取參考數量級                             7   ns                      14x L1 cache
 Mutex lock/unlock                          100   ns
-Main memory reference                      100   ns                      20x L2 cache, 200x L1 cache
+主記憶體參考數量級                      100   ns                      20x L2 cache, 200x L1 cache
 Compress 1K bytes with Zippy            10,000   ns       10 us
 Send 1 KB bytes over 1 Gbps network     10,000   ns       10 us
 Read 4 KB randomly from SSD*           150,000   ns      150 us          ~1GB/sec SSD
@@ -1579,14 +1579,14 @@ Notes
 1 ms = 10^-3 seconds = 1,000 us = 1,000,000 ns
 ```
 
-Handy metrics based on numbers above:
+一些基於上述數字的指標：
 
-* Read sequentially from disk at 30 MB/s
-* Read sequentially from 1 Gbps Ethernet at 100 MB/s
-* Read sequentially from SSD at 1 GB/s
-* Read sequentially from main memory at 4 GB/s
-* 6-7 world-wide round trips per second
-* 2,000 round trips per second within a data center
+* 循序的從硬碟讀取資料大約 30 MB/s
+* 循序的從 1 Gbps 坪寬的乙太網路讀取約 100 MB/s
+* 循序的從 SSD 讀取大約 1 GB/s
+* 循序的從主記憶體中讀取大約 4 GB/s
+* 每秒大約可以繞地球 6-7 圈
+* 資料中心內每秒約有 2000 次的往返
 
 #### Latency numbers visualized
 
