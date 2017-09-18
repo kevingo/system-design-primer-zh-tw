@@ -1592,12 +1592,12 @@ Notes
 
 ![](https://camo.githubusercontent.com/77f72259e1eb58596b564d1ad823af1853bc60a3/687474703a2f2f692e696d6775722e636f6d2f6b307431652e706e67)
 
-#### Source(s) and further reading
+#### 來源及延伸閱讀
 
-* [Latency numbers every programmer should know - 1](https://gist.github.com/jboner/2841832)
-* [Latency numbers every programmer should know - 2](https://gist.github.com/hellerbarde/2843375)
-* [Designs, lessons, and advice from building large distributed systems](http://www.cs.cornell.edu/projects/ladis2009/talks/dean-keynote-ladis2009.pdf)
-* [Software Engineering Advice from Building Large-Scale Distributed Systems](https://static.googleusercontent.com/media/research.google.com/en//people/jeff/stanford-295-talk.pdf)
+* [每個程式設計師都應該知道的延遲數量級 - 1](https://gist.github.com/jboner/2841832)
+* [每個程式設計師都應該知道的延遲數量級 - 2](https://gist.github.com/hellerbarde/2843375)
+* [關於建置大型分散式系統所需要知道的設計方案、課程和建議](http://www.cs.cornell.edu/projects/ladis2009/talks/dean-keynote-ladis2009.pdf)
+* [從軟體工程師的角度來看建置大型分散式系統](https://static.googleusercontent.com/media/research.google.com/en//people/jeff/stanford-295-talk.pdf)
 
 ### Additional system design interview questions
 
