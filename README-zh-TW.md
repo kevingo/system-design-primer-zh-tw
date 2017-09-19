@@ -1628,45 +1628,45 @@ Notes
 | 設計一個垃圾回收系統 | [stuffwithstuff.com](http://journal.stuffwithstuff.com/2013/12/08/babys-first-garbage-collector/)<br/>[washington.edu](http://courses.cs.washington.edu/courses/csep521/07wi/prj/rick.pdf) |
 | 貢獻更多系統設計問題 | [Contribute](#contributing) |
 
-### Real world architectures
+### 真實世界的架構
 
-> Articles on how real world systems are designed.
+> 底下是關於真實世界的系統架構是如何設計的文章
 
 <p align="center">
   <img src="http://i.imgur.com/TcUo2fw.png">
   <br/>
-  <i><a href=https://www.infoq.com/presentations/Twitter-Timeline-Scalability>Source: Twitter timelines at scale</a></i>
+  <i><a href=https://www.infoq.com/presentations/Twitter-Timeline-Scalability>資料來源：可擴展式的 Twitter 時間軸設計</a></i>
 </p>
 
-**Don't focus on nitty gritty details for the following articles, instead:**
+**不要關注以下文章的細節，而是注意以下幾點：**
 
-* Identify shared principles, common technologies, and patterns within these articles
-* Study what problems are solved by each component, where it works, where it doesn't
-* Review the lessons learned
+* 找到這些文章中共通的原則、技術和模式
+* 學習每個元件負責解決哪些問題、在什麼情況下使用、什麼情況下不適用
+* 複習學習過的文章
 
-|Type | System | Reference(s) |
+|種類 | 系統 | 參考來源 |
 |---|---|---|
-| Data processing | **MapReduce** - Distributed data processing from Google | [research.google.com](http://static.googleusercontent.com/media/research.google.com/zh-CN/us/archive/mapreduce-osdi04.pdf) |
-| Data processing | **Spark** - Distributed data processing from Databricks | [slideshare.net](http://www.slideshare.net/AGrishchenko/apache-spark-architecture) |
-| Data processing | **Storm** - Distributed data processing from Twitter | [slideshare.net](http://www.slideshare.net/previa/storm-16094009) |
+| 資料處理 | **MapReduce** - Google 的分散式資料處理 | [research.google.com](http://static.googleusercontent.com/media/research.google.com/zh-CN/us/archive/mapreduce-osdi04.pdf) |
+| 資料處理 | **Spark** - Databricks 的分散式資料處理 | [slideshare.net](http://www.slideshare.net/AGrishchenko/apache-spark-architecture) |
+| 資料處理 | **Storm** - Twitter 的分散式資料處理 | [slideshare.net](http://www.slideshare.net/previa/storm-16094009) |
 | | | |
-| Data store | **Bigtable** - Distributed column-oriented database from Google | [harvard.edu](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf) |
-| Data store | **HBase** - Open source implementation of Bigtable | [slideshare.net](http://www.slideshare.net/alexbaranau/intro-to-hbase) |
-| Data store | **Cassandra** - Distributed column-oriented database from Facebook | [slideshare.net](http://www.slideshare.net/planetcassandra/cassandra-introduction-features-30103666)
-| Data store | **DynamoDB** - Document-oriented database from Amazon | [harvard.edu](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/decandia07dynamo.pdf) |
-| Data store | **MongoDB** - Document-oriented database | [slideshare.net](http://www.slideshare.net/mdirolf/introduction-to-mongodb) |
-| Data store | **Spanner** - Globally-distributed database from Google | [research.google.com](http://research.google.com/archive/spanner-osdi2012.pdf) |
-| Data store | **Memcached** - Distributed memory caching system | [slideshare.net](http://www.slideshare.net/oemebamo/introduction-to-memcached) |
-| Data store | **Redis** - Distributed memory caching system with persistence and value types | [slideshare.net](http://www.slideshare.net/dvirsky/introduction-to-redis) |
+| 資料儲存 | **Bigtable** - Google 的列式資料庫 | [harvard.edu](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf) |
+| 資料儲存 | **HBase** - Bigtable 的開放原始碼解決方案 | [slideshare.net](http://www.slideshare.net/alexbaranau/intro-to-hbase) |
+| 資料儲存 | **Cassandra** - Facebook 的列式資料庫 | [slideshare.net](http://www.slideshare.net/planetcassandra/cassandra-introduction-features-30103666)
+| 資料儲存 | **DynamoDB** - Amazon 的文件式資料庫 | [harvard.edu](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/decandia07dynamo.pdf) |
+| 資料儲存 | **MongoDB** - 文件式資料庫 | [slideshare.net](http://www.slideshare.net/mdirolf/introduction-to-mongodb) |
+| 資料儲存 | **Spanner** - Google 的全球分散式資料庫 | [research.google.com](http://research.google.com/archive/spanner-osdi2012.pdf) |
+| 資料儲存 | **Memcached** - 分散式的記憶體快取系統 | [slideshare.net](http://www.slideshare.net/oemebamo/introduction-to-memcached) |
+| 資料儲存 | **Redis** - 具有持久化及值型別的分散式快取系統 | [slideshare.net](http://www.slideshare.net/dvirsky/introduction-to-redis) |
 | | | |
-| File system | **Google File System (GFS)** - Distributed file system | [research.google.com](http://static.googleusercontent.com/media/research.google.com/zh-CN/us/archive/gfs-sosp2003.pdf) |
-| File system | **Hadoop File System (HDFS)** - Open source implementation of GFS | [apache.org](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) |
+| 檔案系統 | **Google File System (GFS)** - 分散式的檔案系統 | [research.google.com](http://static.googleusercontent.com/media/research.google.com/zh-CN/us/archive/gfs-sosp2003.pdf) |
+| 檔案系統 | **Hadoop File System (HDFS)** - GFS 的開放原始碼解決方案 | [apache.org](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) |
 | | | |
-| Misc | **Chubby** - Lock service for loosely-coupled distributed systems from Google | [research.google.com](http://static.googleusercontent.com/external_content/untrusted_dlcp/research.google.com/en/us/archive/chubby-osdi06.pdf) |
-| Misc | **Dapper** - Distributed systems tracing infrastructure | [research.google.com](http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/36356.pdf)
-| Misc | **Kafka** - Pub/sub message queue from LinkedIn | [slideshare.net](http://www.slideshare.net/mumrah/kafka-talk-tri-hug) |
-| Misc | **Zookeeper** - Centralized infrastructure and services enabling synchronization | [slideshare.net](http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper) |
-| | Add an architecture | [Contribute](#contributing) |
+| 其他 | **Chubby** - Google 的分散式系統低耦合鎖服務 | [research.google.com](http://static.googleusercontent.com/external_content/untrusted_dlcp/research.google.com/en/us/archive/chubby-osdi06.pdf) |
+| 其他 | **Dapper** - 分散式系統監控基礎設施 | [research.google.com](http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/36356.pdf)
+| 其他 | **Kafka** - LinkedIn 的 pub/sub 訊息佇列服務 | [slideshare.net](http://www.slideshare.net/mumrah/kafka-talk-tri-hug) |
+| 其他 | **Zookeeper** - 集中式的基礎架構和協調服務 | [slideshare.net](http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper) |
+| | 貢獻更多架構 | [Contribute](#contributing) |
 
 ### Company architectures
 
