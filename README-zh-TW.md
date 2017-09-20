@@ -1695,11 +1695,11 @@ Notes
 | WhatsApp | [讓 Facebook 用 $190 億購買下來的 WhatsApp 的架構](http://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html) |
 | YouTube | [YouTube 的可擴展性](https://www.youtube.com/watch?v=w5WVu624fY8)<br/>[YouTube 的架構](http://highscalability.com/youtube-architecture) |
 
-### Company engineering blogs
+### 公司的工程部落格
 
-> Architectures for companies you are interviewing with.
+> 你即將面試的公司的架構
 >
-> Questions you encounter might be from the same domain.
+> 你被問到的問題可能就來自於相同領域的問題
 
 * [Airbnb Engineering](http://nerds.airbnb.com/)
 * [Atlassian Developers](https://developer.atlassian.com/blog/)
@@ -1743,7 +1743,7 @@ Notes
 * [Yelp Engineering Blog](http://engineeringblog.yelp.com/)
 * [Zynga Engineering Blog](https://www.zynga.com/blogs/engineering)
 
-#### Source(s) and further reading
+#### 來源及延伸閱讀
 
 * [kilimchoi/engineering-blogs](https://github.com/kilimchoi/engineering-blogs)
 
