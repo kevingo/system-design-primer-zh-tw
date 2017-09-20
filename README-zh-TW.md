@@ -1668,32 +1668,32 @@ Notes
 | 其他 | **Zookeeper** - 集中式的基礎架構和協調服務 | [slideshare.net](http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper) |
 | | 貢獻更多架構 | [Contribute](#contributing) |
 
-### Company architectures
+### 公司的系統架構
 
-| Company | Reference(s) |
+| 公司 | 參考 |
 |---|---|
-| Amazon | [Amazon architecture](http://highscalability.com/amazon-architecture) |
-| Cinchcast | [Producing 1,500 hours of audio every day](http://highscalability.com/blog/2012/7/16/cinchcast-architecture-producing-1500-hours-of-audio-every-d.html) |
-| DataSift | [Realtime datamining At 120,000 tweets per second](http://highscalability.com/blog/2011/11/29/datasift-architecture-realtime-datamining-at-120000-tweets-p.html) |
-| DropBox | [How we've scaled Dropbox](https://www.youtube.com/watch?v=PE4gwstWhmc) |
-| ESPN | [Operating At 100,000 duh nuh nuhs per second](http://highscalability.com/blog/2013/11/4/espns-architecture-at-scale-operating-at-100000-duh-nuh-nuhs.html) |
-| Google | [Google architecture](http://highscalability.com/google-architecture) |
-| Instagram | [14 million users, terabytes of photos](http://highscalability.com/blog/2011/12/6/instagram-architecture-14-million-users-terabytes-of-photos.html)<br/>[What powers Instagram](http://instagram-engineering.tumblr.com/post/13649370142/what-powers-instagram-hundreds-of-instances) |
-| Justin.tv | [Justin.Tv's live video broadcasting architecture](http://highscalability.com/blog/2010/3/16/justintvs-live-video-broadcasting-architecture.html) |
-| Facebook | [Scaling memcached at Facebook](https://cs.uwaterloo.ca/~brecht/courses/854-Emerging-2014/readings/key-value/fb-memcached-nsdi-2013.pdf)<br/>[TAO: Facebook’s distributed data store for the social graph](https://cs.uwaterloo.ca/~brecht/courses/854-Emerging-2014/readings/data-store/tao-facebook-distributed-datastore-atc-2013.pdf)<br/>[Facebook’s photo storage](https://www.usenix.org/legacy/event/osdi10/tech/full_papers/Beaver.pdf) |
-| Flickr | [Flickr architecture](http://highscalability.com/flickr-architecture) |
-| Mailbox | [From 0 to one million users in 6 weeks](http://highscalability.com/blog/2013/6/18/scaling-mailbox-from-0-to-one-million-users-in-6-weeks-and-1.html) |
-| Pinterest | [From 0 To 10s of billions of page views a month](http://highscalability.com/blog/2013/4/15/scaling-pinterest-from-0-to-10s-of-billions-of-page-views-a.html)<br/>[18 million visitors, 10x growth, 12 employees](http://highscalability.com/blog/2012/5/21/pinterest-architecture-update-18-million-visitors-10x-growth.html) |
-| Playfish | [50 million monthly users and growing](http://highscalability.com/blog/2010/9/21/playfishs-social-gaming-architecture-50-million-monthly-user.html) |
-| PlentyOfFish | [PlentyOfFish architecture](http://highscalability.com/plentyoffish-architecture) |
-| Salesforce | [How they handle 1.3 billion transactions a day](http://highscalability.com/blog/2013/9/23/salesforce-architecture-how-they-handle-13-billion-transacti.html) |
-| Stack Overflow | [Stack Overflow architecture](http://highscalability.com/blog/2009/8/5/stack-overflow-architecture.html) |
-| TripAdvisor | [40M visitors, 200M dynamic page views, 30TB data](http://highscalability.com/blog/2011/6/27/tripadvisor-architecture-40m-visitors-200m-dynamic-page-view.html) |
-| Tumblr | [15 billion page views a month](http://highscalability.com/blog/2012/2/13/tumblr-architecture-15-billion-page-views-a-month-and-harder.html) |
-| Twitter | [Making Twitter 10000 percent faster](http://highscalability.com/scaling-twitter-making-twitter-10000-percent-faster)<br/>[Storing 250 million tweets a day using MySQL](http://highscalability.com/blog/2011/12/19/how-twitter-stores-250-million-tweets-a-day-using-mysql.html)<br/>[150M active users, 300K QPS, a 22 MB/S firehose](http://highscalability.com/blog/2013/7/8/the-architecture-twitter-uses-to-deal-with-150m-active-users.html)<br/>[Timelines at scale](https://www.infoq.com/presentations/Twitter-Timeline-Scalability)<br/>[Big and small data at Twitter](https://www.youtube.com/watch?v=5cKTP36HVgI)<br/>[Operations at Twitter: scaling beyond 100 million users](https://www.youtube.com/watch?v=z8LU0Cj6BOU) |
-| Uber | [How Uber scales their real-time market platform](http://highscalability.com/blog/2015/9/14/how-uber-scales-their-real-time-market-platform.html) |
-| WhatsApp | [The WhatsApp architecture Facebook bought for $19 billion](http://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html) |
-| YouTube | [YouTube scalability](https://www.youtube.com/watch?v=w5WVu624fY8)<br/>[YouTube architecture](http://highscalability.com/youtube-architecture) |
+| Amazon | [Amazon 的架構](http://highscalability.com/amazon-architecture) |
+| Cinchcast | [每天產生 1,500 小時的音樂](http://highscalability.com/blog/2012/7/16/cinchcast-architecture-producing-1500-hours-of-audio-every-d.html) |
+| DataSift | [每秒探勘 120,000 則 tweet](http://highscalability.com/blog/2011/11/29/datasift-architecture-realtime-datamining-at-120000-tweets-p.html) |
+| DropBox | [我們如何擴展 Dropbox](https://www.youtube.com/watch?v=PE4gwstWhmc) |
+| ESPN | [每秒操作 100,000 次 duh nuh nuhs](http://highscalability.com/blog/2013/11/4/espns-architecture-at-scale-operating-at-100000-duh-nuh-nuhs.html) |
+| Google | [Google 的架構](http://highscalability.com/google-architecture) |
+| Instagram | [一千四百萬個使用者，TB 等級的照片儲存](http://highscalability.com/blog/2011/12/6/instagram-architecture-14-million-users-terabytes-of-photos.html)<br/>[什麼驅動著 Instagram](http://instagram-engineering.tumblr.com/post/13649370142/what-powers-instagram-hundreds-of-instances) |
+| Justin.tv | [Justin.Tv 的即時影片廣播架構](http://highscalability.com/blog/2010/3/16/justintvs-live-video-broadcasting-architecture.html) |
+| Facebook | [Facebook 可擴展的 memcached 架構](https://cs.uwaterloo.ca/~brecht/courses/854-Emerging-2014/readings/key-value/fb-memcached-nsdi-2013.pdf)<br/>[TAO: Facebook 為了社交網路架構的分散式資料儲存](https://cs.uwaterloo.ca/~brecht/courses/854-Emerging-2014/readings/data-store/tao-facebook-distributed-datastore-atc-2013.pdf)<br/>[Facebook 的圖片儲存架構](https://www.usenix.org/legacy/event/osdi10/tech/full_papers/Beaver.pdf) |
+| Flickr | [Flickr 的架構](http://highscalability.com/flickr-architecture) |
+| Mailbox | [在六週內從 0 到 100 萬個使用者](http://highscalability.com/blog/2013/6/18/scaling-mailbox-from-0-to-one-million-users-in-6-weeks-and-1.html) |
+| Pinterest | [從零到每個月數十億次的瀏覽量](http://highscalability.com/blog/2013/4/15/scaling-pinterest-from-0-to-10s-of-billions-of-page-views-a.html)<br/>[1800 萬個訪問人次、10 倍成長、12 名員工](http://highscalability.com/blog/2012/5/21/pinterest-architecture-update-18-million-visitors-10x-growth.html) |
+| Playfish | [月使用者量 5000 萬人次在成長](http://highscalability.com/blog/2010/9/21/playfishs-social-gaming-architecture-50-million-monthly-user.html) |
+| PlentyOfFish | [PlentyOfFish 的架構](http://highscalability.com/plentyoffish-architecture) |
+| Salesforce | [如何處理每天 13 億筆交易](http://highscalability.com/blog/2013/9/23/salesforce-architecture-how-they-handle-13-billion-transacti.html) |
+| Stack Overflow | [Stack Overflow 的架構](http://highscalability.com/blog/2009/8/5/stack-overflow-architecture.html) |
+| TripAdvisor | [4000 萬的訪問人次、2 億次頁面瀏覽量、30 TB 的資料](http://highscalability.com/blog/2011/6/27/tripadvisor-architecture-40m-visitors-200m-dynamic-page-view.html) |
+| Tumblr | [每月 150 億的瀏覽量](http://highscalability.com/blog/2012/2/13/tumblr-architecture-15-billion-page-views-a-month-and-harder.html) |
+| Twitter | [如何讓 Twitter 的速度成長 10000 倍](http://highscalability.com/scaling-twitter-making-twitter-10000-percent-faster)<br/>[使用 MySQL 儲存每天 2.5 億條 tweet](http://highscalability.com/blog/2011/12/19/how-twitter-stores-250-million-tweets-a-day-using-mysql.html)<br/>[1.5 億的活躍使用者、300K QPS、22 MB/S 的串流資料](http://highscalability.com/blog/2013/7/8/the-architecture-twitter-uses-to-deal-with-150m-active-users.html)<br/>[可擴展的 Timelines](https://www.infoq.com/presentations/Twitter-Timeline-Scalability)<br/>[Twitter 的大大小小的資料](https://www.youtube.com/watch?v=5cKTP36HVgI)<br/>[Twitter 的運營：擴展超過一億個使用者](https://www.youtube.com/watch?v=z8LU0Cj6BOU) |
+| Uber | [Uber 是如何擴展他們的及時行銷平台](http://highscalability.com/blog/2015/9/14/how-uber-scales-their-real-time-market-platform.html) |
+| WhatsApp | [讓 Facebook 用 $190 億購買下來的 WhatsApp 的架構](http://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html) |
+| YouTube | [YouTube 的可擴展性](https://www.youtube.com/watch?v=w5WVu624fY8)<br/>[YouTube 的架構](http://highscalability.com/youtube-architecture) |
 
 ### Company engineering blogs
 
