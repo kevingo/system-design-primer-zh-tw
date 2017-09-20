@@ -1756,11 +1756,11 @@ Notes
 * 直接記憶體存取
 * [貢獻](#contributing)
 
-## Credits
+## 致謝
 
-Credits and sources are provided throughout this repo.
+在這個 Repository 中提供的任何來源和開放原始碼庫
 
-Special thanks to:
+特別感謝：
 
 * [Hired in tech](http://www.hiredintech.com/system-design/the-system-design-process/)
 * [Cracking the coding interview](https://www.amazon.com/dp/0984782850/)
