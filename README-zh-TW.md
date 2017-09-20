@@ -1772,15 +1772,15 @@ Notes
 * [A distributed systems reading list](http://dancres.github.io/Pages/)
 * [Cracking the system design interview](http://www.puncsky.com/blog/2016/02/14/crack-the-system-design-interview/)
 
-## Contact info
+## 聯絡資訊
 
-Feel free to contact me to discuss any issues, questions, or comments.
+隨時歡迎與我討論相關的問題或意見。
 
-My contact info can be found on my [GitHub page](https://github.com/donnemartin).
+我的聯絡資訊可以在我的 [GitHub 主頁](https://github.com/donnemartin) 中找到。
 
-## License
+## 版權
 
-*I am providing code and resources in this repository to you under an open source license.  Because this is my personal repository, the license you receive to my code and resources is from me and not my employer (Facebook).*
+*我已開放原始碼授權的方式提供你在此儲存庫中的程式碼和資源。因為這是我個人的儲存庫，所以你所以所收到的使用許可是來自於我，並非我的雇主(Facebook)*
 
     Copyright 2017 Donne Martin
 
