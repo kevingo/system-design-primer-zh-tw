@@ -1747,14 +1747,14 @@ Notes
 
 * [kilimchoi/engineering-blogs](https://github.com/kilimchoi/engineering-blogs)
 
-## Under development
+## 仍在進行中
 
-Interested in adding a section or helping complete one in-progress?  [Contribute](#contributing)!
+有興趣增加一些內容，或幫忙完善某些部分嗎？  [來貢獻吧](#contributing)!
 
-* Distributed computing with MapReduce
-* Consistent hashing
-* Scatter gather
-* [Contribute](#contributing)
+* 使用 MapReduce 進行分散式運算
+* 一致性的 hashing
+* 直接記憶體存取
+* [貢獻](#contributing)
 
 ## Credits
 
