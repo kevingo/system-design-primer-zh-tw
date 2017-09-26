@@ -17,15 +17,15 @@
 
 學習如何設計可擴展的系統會幫助你成為一個更好的工程師。
 
-系統設計是一個廣泛的主題。在網路上，關於**系統設計的資源也是不及其數**。
+系統設計是一個廣泛的主題。在網路上，關於**系統設計的資源也是不計其數**。
 
-本專案是一個 **組織好的資源集合**，幫助你學習如何建構可擴展的系統。
+本專案將**許多資源進行分門別類**，幫助你學習如何建構可擴展的系統。
 
 ### 從開放原始碼社群中學習
 
 這是一個早期、持續不斷更新的開放原始碼專案。
 
-[任何貢獻](#contributing) 都相當歡迎！
+[任何貢獻](#如何貢獻) 都相當歡迎！
 
 ### 準備系統設計的面試
 
@@ -35,11 +35,11 @@
 
 關於面試的其他主題：
 
-* [學習指南](#study-guide)
-* [如何處理系統設計面試問題](#how-to-approach-a-system-design-interview-question)
-* [系統設計面試問題與**解答**](#system-design-interview-questions-with-solutions)
-* [物件導向設計問題與**解答**](#object-oriented-design-interview-questions-with-solutions)
-* [其他的系統設計面試問題](#additional-system-design-interview-questions)
+* [學習指南](#學習指南)
+* [如何解決一個系統設計的面試題目](#如何解決一個系統設計的面試題目)
+* [系統設計面試問題與**解答**](#系統設計面試問題與解答)
+* [物件導向設計問題與**解答**](#物件導向設計面試問題與解答)
+* [其他的系統設計面試問題](#其他的系統設計面試問題)
 
 ## 學習單字卡
 
@@ -48,7 +48,7 @@
   <br/>
 </p>
 
-底下提供的[學習單字卡](https://apps.ankiweb.net/)以每隔一段時間間隔出現的方式幫助你學習系統設計的概念。
+底下提供的[學習單字卡](https://apps.ankiweb.net/)以每隔一段時間間隔出現的方式，幫助你學習系統設計的概念。
 
 * [系統設計單字卡](resources/flash_cards/System%20Design.apkg)
 * [系統設計練習單字卡](resources/flash_cards/System%20Design%20Exercises.apkg)
@@ -56,9 +56,9 @@
 
 這些是非常棒的學習資源，隨時都可以使用。
 
-### 程式設計學習資源：互動式程式學習設計
+### 程式設計學習資源：互動式程式學習設計  
 
-你正在尋找資源來面對 [**程式語言面試**](https://github.com/donnemartin/interactive-coding-challenges)嗎？
+你正在尋找資源來面對[**程式語言面試**](https://github.com/donnemartin/interactive-coding-challenges)嗎？
 
 <p align="center">
   <img src="http://i.imgur.com/b4YtAEN.png">
@@ -80,42 +80,42 @@
 * 增加新的章節
 * [翻譯](https://github.com/donnemartin/system-design-primer/issues/28)
 
-某些還需要再完善的章節放在 [修正中](#under-development) 中。
+某些還需要再完善的章節放在[修正中](#under-development)。
 
-請參考 [貢獻指南](CONTRIBUTING.md)。
+請參考[貢獻指南](CONTRIBUTING.md)。
 
 ## 系統設計主題的索引
 
-> 底下是數個系統設計的主題， 包含了優點及缺點。**要記得，每一個系統設計的考量都包含著某種取捨**。
+> 底下是數個系統設計的主題，包含了優點及缺點。**要記得，每一個系統設計的考量都包含著某種取捨**。
 >
-> 每一章節都包含更深入的資源的連結。
+> 每一章節都包含更深入資源的連結。
 
 <p align="center">
   <img src="http://i.imgur.com/jrUBAF7.png">
   <br/>
 </p>
 
-* [系統設計主題：從這裡開始](#system-design-topics-start-here)
-    * [第一步： 複習關於可擴展性的影片講座](#step-1-review-the-scalability-video-lecture)
-    * [第二步： 複習關於可擴展性的文章](#step-2-review-the-scalability-article)
-    * [下一步](#next-steps)
-* [效能與可擴展性](#performance-vs-scalability)
-* [延遲與吞吐量](#latency-vs-throughput)
-* [可用性與一致性](#availability-vs-consistency)
-    * [CAP 理論](#cap-theorem)
-        * [CP - 一致性與分區容錯性](#cp---consistency-and-partition-tolerance)
-        * [AP - 可用性與分區容錯性](#ap---availability-and-partition-tolerance)
-* [一致性模式](#consistency-patterns)
-    * [弱一致性](#weak-consistency)
-    * [最終一致性](#eventual-consistency)
-    * [強一致性](#strong-consistency)
-* [可用模式](#availability-patterns)
-    * [錯誤轉移](#fail-over)
-    * [複寫機制](#replication)
-* [域名系統](#domain-name-system)
-* [內容傳遞網路(CDN)](#content-delivery-network)
-    * [CDN 推送](#push-cdns)
-    * [CDN 拉取](#pull-cdns)
+* [系統設計主題：從這裡開始](#系統設計主題：從這裡開始)
+    * [第一步：複習關於可擴展性的影片講座](#第一步：複習關於可擴展性的影片講座)
+    * [第二步：複習關於可擴展性的文章](#第二步：複習關於可擴展性的文章)
+    * [下一步](#下一步)
+* [效能與可擴展性](#效能與可擴展性)
+* [延遲與吞吐量](#延遲與吞吐量)
+* [可用性與一致性](#可用性與一致性)
+    * [CAP 理論](#CAP 理論)
+        * [CP - 一致性與部分容錯性](#CP - 一致性與部分容錯性)
+        * [AP - 可用性與部分容錯性](#AP - 可用性與部分容錯性)
+* [一致性模式](#一致性模式)
+    * [弱一致性](#弱一致性)
+    * [最終一致性](#最終一致性)
+    * [強一致性](#強一致性)
+* [可用性模式](#可用性模式)
+    * [容錯轉移](#容錯轉移)
+    * [複寫機制](#複寫機制)
+* [域名系統](#域名系統)
+* [內容傳遞網路(CDN)](#內容傳遞網路(CDN))
+    * [推送式 CDNs](#推送式 CDNs)
+    * [拉取式 CDNs](#拉取式 CDNs)
 * [負載平衡器](#load-balancer)
     * [主動到備用切換模式(AP Mode)](#active-passive)
     * [雙主動切換模式(AA Mode)](#active-active)
@@ -296,7 +296,7 @@
 | 設計一個搜尋引擎使用的鍵值儲存資料結構 | [解答](solutions/system_design/query_cache/README.md) |
 | 設計一個根據產品分類的亞馬遜銷售排名 | [解答](solutions/system_design/sales_rank/README.md) |
 | 在 AWS 上設計一個百萬用戶等級的系統 | [解答](solutions/system_design/scaling_aws/README.md) |
-| 增加一個系統設計的問題 | [貢獻](#contributing) |
+| 增加一個系統設計的問題 | [貢獻](#如何貢獻) |
 
 ### 設計 Pastebin.com (或 Bit.ly)
 
@@ -362,8 +362,8 @@
 | 設計一副牌 | [Solution](solutions/object_oriented_design/deck_of_cards/deck_of_cards.ipynb)  |
 | 設計一個停車場 | [Solution](solutions/object_oriented_design/parking_lot/parking_lot.ipynb)  |
 | 設計一個聊天室 | [Solution](solutions/object_oriented_design/online_chat/online_chat.ipynb)  |
-| 設計一個環形陣列 | [Contribute](#contributing)  |
-| 增加一個物件導向設計問題 | [Contribute](#contributing) |
+| 設計一個環形陣列 | [Contribute](#如何貢獻)  |
+| 增加一個物件導向設計問題 | [Contribute](#如何貢獻) |
 
 ## 系統設計主題：從這裡開始
 
@@ -371,7 +371,7 @@
 
 首先，你需要對於基本的原則有一定的認識，知道他們是什麼，如何使用，以及他們的優缺點。
 
-### 第一步：瀏覽關於可擴展性的影片
+### 第一步：複習關於可擴展性的影片講座
 
 [哈佛大學可擴展性的影片](https://www.youtube.com/watch?v=-W9F__D3oY4)
 
@@ -383,7 +383,7 @@
     * 資料庫複寫
     * 資料庫分割
 
-### 第二步：閱讀關於可擴展性的文章
+### 第二步：複習關於可擴展性的文章
 
 [可擴展性](http://www.lecloud.net/tagged/scalability)
 
@@ -457,7 +457,7 @@
 
 每個進行回覆的節點中的最新版本可能不是最新的，當分區節點解析完畢後，寫入的操作可能需要一些時間來傳播資料。
 
-當你的系統需求需要保證 [最終一致性](#eventual-consistency)，或當外部系統故障時，系統要能夠繼續運作時，AP 是一個不錯的選擇。
+當你的系統需求需要保證 [最終一致性](#最終一致性)，或當外部系統故障時，系統要能夠繼續運作時，AP 是一個不錯的選擇。
 
 ### 來源及延伸閱讀
 
@@ -518,7 +518,7 @@ DNS 或是電子郵件系統使用的就是這種方式，最終一致性在高�
 * 容錯轉移會需要增加額外的硬體與複雜度。
 * 如果在新寫入的資料被複製到備用的機器前系統就發生故障，那有可能會遺失資料。
 
-### 複寫
+### 複寫機制
 
 #### 主動到備用複寫與雙主動複寫
 
@@ -1514,7 +1514,7 @@ REST 關注於揭露資料，減少客戶端/伺服器之間耦合的程度，�
 
 ## 資訊安全
 
-這一章節需要更多的貢獻，一起[加入](#contributing)吧！
+這一章節需要更多的貢獻，一起[加入](#如何貢獻)吧！
 
 資訊安全是一個廣泛的議題，除非你有相當的經驗、資訊安全的背景或正在申請相關的職位要求對應的知識，否則了解以下的基礎內容即可：
 
@@ -1626,7 +1626,7 @@ Notes
 | 設計一個資料來源在多個資料中心的系統 | [highscalability.com](http://highscalability.com/blog/2009/8/24/how-google-serves-data-from-multiple-datacenters.html) |
 | 設計一個線上多人卡牌遊戲 | [indieflashblog.com](http://www.indieflashblog.com/how-to-create-an-asynchronous-multiplayer-game.html)<br/>[buildnewgames.com](http://buildnewgames.com/real-time-multiplayer/) |
 | 設計一個垃圾回收系統 | [stuffwithstuff.com](http://journal.stuffwithstuff.com/2013/12/08/babys-first-garbage-collector/)<br/>[washington.edu](http://courses.cs.washington.edu/courses/csep521/07wi/prj/rick.pdf) |
-| 貢獻更多系統設計問題 | [Contribute](#contributing) |
+| 貢獻更多系統設計問題 | [Contribute](#如何貢獻) |
 
 ### 真實世界的架構
 
@@ -1666,7 +1666,7 @@ Notes
 | 其他 | **Dapper** - 分散式系統監控基礎設施 | [research.google.com](http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/36356.pdf)
 | 其他 | **Kafka** - LinkedIn 的 pub/sub 訊息佇列服務 | [slideshare.net](http://www.slideshare.net/mumrah/kafka-talk-tri-hug) |
 | 其他 | **Zookeeper** - 集中式的基礎架構和協調服務 | [slideshare.net](http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper) |
-| | 貢獻更多架構 | [Contribute](#contributing) |
+| | 貢獻更多架構 | [Contribute](#如何貢獻) |
 
 ### 公司的系統架構
 
@@ -1749,12 +1749,12 @@ Notes
 
 ## 仍在進行中
 
-有興趣增加一些內容，或幫忙完善某些部分嗎？  [來貢獻吧](#contributing)!
+有興趣增加一些內容，或幫忙完善某些部分嗎？  [來貢獻吧](#如何貢獻)!
 
 * 使用 MapReduce 進行分散式運算
 * 一致性的 hashing
 * 直接記憶體存取
-* [貢獻](#contributing)
+* [貢獻](#如何貢獻)
 
 ## 致謝
 
