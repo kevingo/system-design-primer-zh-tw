@@ -207,10 +207,10 @@
 | 閱讀 [系統設計主題的索引](#系統設計主題的索引) 來取得關於系統如何運作的廣泛知識 | :+1: | :+1: | :+1: |
 | 閱讀一些你要面試的 [公司的工程部落格](#公司的工程部落格) 文章 | :+1: | :+1: | :+1: |
 | 閱讀關於 [真實世界的架構](#真實世界的架構) | :+1: | :+1: | :+1: |
-| 複習 [如何處理一個系統設計的面試題目](#how-to-approach-a-system-design-interview-question) | :+1: | :+1: | :+1: |
-| 完成 [系統設計面試題目與解答](#system-design-interview-questions-with-solutions) | 一些 | 很多 | 大部分 |
-| 完成 [物件導向設計與解答](#object-oriented-design-interview-questions-with-solutions) | 一些 | 很多 | 大部分 |
-| 複習 [其他的系統設計面試提](#additional-system-design-interview-questions) | 一些 | 很多 | 大部分 |
+| 複習 [如何解決一個系統設計的面試題目](#如何解決一個系統設計的面試題目) | :+1: | :+1: | :+1: |
+| 完成 [系統設計面試題目與解答](#系統設計面試問題與解答) | 一些 | 很多 | 大部分 |
+| 完成 [物件導向設計與解答](#物件導向設計面試問題與解答) | 一些 | 很多 | 大部分 |
+| 複習 [其他的系統設計面試問題](#其他的系統設計面試問題) | 一些 | 很多 | 大部分 |
 
 ## 如何解決一個系統設計的面試題目
 
@@ -218,7 +218,7 @@
 
 系統設計是一個**開放式的對話過程**，面試官會期望由你來主導這個對話。
 
-你可以使用下面的步驟來引導整個討論過程。為了鞏固這個流程，請使用下面的步驟完成[系統設計的面試題和解答](#system-design-interview-questions-with-solutions)這個章節。
+你可以使用下面的步驟來引導整個討論過程。為了鞏固這個流程，請使用下面的步驟完成[系統設計面試題目與解答](#系統設計面試題目與解答)這個章節。
 
 ### 第一步：描述使用的場景、限制及假設
 
@@ -262,11 +262,11 @@
 * 快取
 * 資料庫切片
 
-針對你的設計討論可能的解決方法與代價。每個設計都有取捨。使用[可擴展的設計原則](#index-of-system-design-topics)來處理系統瓶頸。
+針對你的設計討論可能的解決方法與代價。每個設計都有取捨。使用[可擴展的設計原則](#系統設計主題：從這裡開始)來處理系統瓶頸。
 
 ### 快速有效的進行估算
 
-你可能要求針對設計進行一些估算，可以參考[附錄](#appendix)的一些資源：
+你可能要求針對設計進行一些估算，可以參考[附錄](#附錄)的一些資源：
 
 * [使用快速估算法](http://highscalability.com/blog/2011/1/26/google-pro-tip-use-back-of-the-envelope-calculations-to-choo.html)
 * [2 的次方表](#2-的次方表)
@@ -467,7 +467,7 @@
 
 ## 一致性模式
 
-當你的資料有多個副本時，要考慮怎麼同步他們，以便讓使用者有一致的資料顯示。想想 [CAP 理論](#cap-theorem)中的一致性定律 - 每次的訪問都可以得到最新的資料，但可能也會收到錯誤的回應。
+當你的資料有多個副本時，要考慮怎麼同步他們，以便讓使用者有一致的資料顯示。想想 [CAP 理論](#cap-理論)中的一致性定律 - 每次的訪問都可以得到最新的資料，但可能也會收到錯誤的回應。
 
 ### 弱一致性
 
@@ -628,7 +628,7 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
     * 不需要在每一台機器上安裝 [X.509 憑證](https://en.wikipedia.org/wiki/X.509)。
 * **Session 保存** - 發行 cookie，並將特定使用者的請求路由到同樣的後端伺服器上。
 
-為了避免故障，通常會採用[active-passive](#active-passive)或[active-active](#active-active)這樣多個負載平衡器的模式。
+為了避免故障，通常會採用[主動到備用切換模式](#主動到備用切換模式(AP Mode))或[雙主動切換模式](#雙主動切換模式(AA Mode))這樣多個負載平衡器的模式。
 
 負載平衡器會基於多種方法來路由請求：
 
@@ -636,16 +636,16 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
 * 最少負載
 * Session/cookies
 * [輪詢調度或加權輪詢調度](http://g33kinfo.com/info/archives/2657)
-* [第四層負載平衡](#layer-4-load-balancing)
+* [第四層負載平衡](#第四層負載平衡)
 * [第七層負載平衡](#第七層負載平衡)
 
 ### 第四層負載平衡
 
-第四層的負載平衡器會監看[傳輸層](#communication)的資訊來決定如何分發請求。一般來說，這包含了來源、目標 IP 位置，以及在 header 中的 port，但不包含資料本身的內容。第四層的負載平衡器會透過 [網路地址轉換(NAT)](https://www.nginx.com/resources/glossary/layer-4-load-balancing/)來向上游的伺服器轉發資料。
+第四層的負載平衡器會監看[傳輸層](#傳輸層)的資訊來決定如何分發請求。一般來說，這包含了來源、目標 IP 位置，以及在 header 中的 port，但不包含資料本身的內容。第四層的負載平衡器會透過 [網路地址轉換(NAT)](https://www.nginx.com/resources/glossary/layer-4-load-balancing/)來向上游的伺服器轉發資料。
 
 ### 第七層負載平衡
 
-第七層的負載平衡器會監看[應用層](#communication)來決定如何分發請求。這包含了請求的 header、訊息和 cookies。這種負載平衡器會終結網路的流量、讀取訊息並做出如何轉發訊息的決定，並把流量轉往對應的伺服器。舉例來說，一個第七層的負載平衡器可以將影音的流量轉往負責影音流量的伺服器，而將更敏感的使用者帳單的請求轉往安全性更強的伺服器。
+第七層的負載平衡器會監看[應用層](#應用層)來決定如何分發請求。這包含了請求的 header、訊息和 cookies。這種負載平衡器會終結網路的流量、讀取訊息並做出如何轉發訊息的決定，並把流量轉往對應的伺服器。舉例來說，一個第七層的負載平衡器可以將影音的流量轉往負責影音流量的伺服器，而將更敏感的使用者帳單的請求轉往安全性更強的伺服器。
 
 第四層的負載平衡比起第七層的所要花費的時間和計算資源更低，雖然這對於現代商用硬體的性能影響已經微乎其微了。
 
@@ -741,7 +741,7 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
 
 ### 服務發現
 
-[Consul](https://www.consul.io/docs/index.html)、[Etcd](https://coreos.com/etcd/docs/latest), 或是 [Zookeeper](http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper) 等系統可以透過註冊的名稱、位置、Port 等資訊來幫助各個服務發現彼此。[Health checks](https://www.consul.io/intro/getting-started/checks.html) 可以幫助確認服務的完整性以及是否經常使用一個 [HTTP](#hypertext-transfer-protocol-http) 的路徑。[key-value 儲存](#key-value-store) 則用來儲存設定的資訊與其他共享的資料。
+[Consul](https://www.consul.io/docs/index.html)、[Etcd](https://coreos.com/etcd/docs/latest), 或是 [Zookeeper](http://www.slideshare.net/sauravhaloi/introduction-to-apache-zookeeper) 等系統可以透過註冊的名稱、位置、Port 等資訊來幫助各個服務發現彼此。[Health checks](https://www.consul.io/intro/getting-started/checks.html) 可以幫助確認服務的完整性以及是否經常使用一個 [HTTP](#hypertext-transfer-protocol-http) 的路徑。[鍵-值對的資料庫](#鍵-值對的資料庫) 則用來儲存設定的資訊與其他共享的資料。
 
 ### 應用層的缺點
 
@@ -924,7 +924,7 @@ SQL 優化是一個涵蓋範圍很廣的主題，有許多相關的[參考書籍
 
 ##### 避免高成本的 Join 操作
 
-* 有性能需求時，可以進行[反正規化](#denormalization)。
+* 有性能需求時，可以進行[反正規化](#反正規化)。
 
 ##### 分割資料表
 
@@ -1024,7 +1024,7 @@ Google 發表了第一個列儲存型資料庫 [Bigtable](http://www.read.seas.h
 
 在圖形資料庫中，每一個節點會對應一條紀錄，而每個邊描述兩個節點之間的關係。圖形資料庫針對表示外來鍵(Foreign Key)眾多的複雜關聯或多對多關聯進行優化。
 
-圖形資料庫為了儲存複雜的資料結構，例如社群網路，提供了很高的性能。他們相對較新，尚未被廣泛使用，查詢工具或資源比較難取得，許多這種類型的資料庫只能透過 [REST API](#representational-state-transfer-rest).來存取。
+圖形資料庫為了儲存複雜的資料結構，例如社群網路，提供了很高的性能。他們相對較新，尚未被廣泛使用，查詢工具或資源比較難取得，許多這種類型的資料庫只能透過[REST API](#representational-state-transfer-rest)來存取。
 
 ##### 來源及延伸閱讀
 
@@ -1100,7 +1100,7 @@ Google 發表了第一個列儲存型資料庫 [Bigtable](http://www.read.seas.h
 
 ### CDN 快取
 
-[CDNs](#content-delivery-network) 也被視為一種快取。
+[內容傳遞網路(CDN)](#內容傳遞網路(CDN)) 也被視為一種快取。
 
 ### 網站伺服器快取
 
