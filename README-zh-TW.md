@@ -116,31 +116,31 @@
 * [內容傳遞網路(CDN)](#內容傳遞網路(CDN))
     * [推送式 CDNs](#推送式 CDNs)
     * [拉取式 CDNs](#拉取式 CDNs)
-* [負載平衡器](#load-balancer)
-    * [主動到備用切換模式(AP Mode)](#active-passive)
-    * [雙主動切換模式(AA Mode)](#active-active)
-    * [四層負載平衡](#layer-4-load-balancing)
-    * [七層負載平衡](#layer-7-load-balancing)
-    * [水平擴展](#horizontal-scaling)
-* [反向代理 (網路伺服器)](#reverse-proxy-web-server)
-    * [負載平衡和反向代理](#load-balancer-vs-reverse-proxy)
-* [應用層](#application-layer)
-    * [微服務](#microservices)
-    * [服務發現](#service-discovery)
-* [資料庫](#database)
-    * [關聯式資料庫管理系統 (RDBMS)](#relational-database-management-system-rdbms)
-        * [Master-slave 複製](#master-slave-replication)
-        * [Master-master 複製](#master-master-replication)
-        * [聯合](#federation)
-        * [分片](#sharding)
-        * [反正規化](#denormalization)
-        * [SQL 優化](#sql-tuning)
-    * [NoSQL](#nosql)
-        * [鍵值儲存](#key-value-store)
-        * [文件儲存](#document-store)
-        * [寬列儲存](#wide-column-store)
-        * [圖形資料庫](#graph-database)
-    * [SQL或NoSQL](#sql-or-nosql)
+* [負載平衡器](#負載平衡器)
+    * [主動到備用切換模式(AP Mode)](#主動到備用切換模式(AP Mode))
+    * [雙主動切換模式(AA Mode)](#雙主動切換模式(AA Mode))
+    * [第四層負載平衡](#第四層負載平衡)
+    * [第七層負載平衡](#第七層負載平衡)
+    * [水平擴展](#水平擴展)
+* [反向代理(網頁伺服器)](#反向代理(網頁伺服器))
+    * [負載平衡器與反向代理伺服器](#負載平衡器與反向代理伺服器)
+* [應用層](#應用層)
+    * [微服務](#微服務)
+    * [服務發現](#服務發現)
+* [資料庫](#資料庫)
+    * [關連式資料庫管理系統(RDBMS)](#關連式資料庫管理系統(RDBMS))
+        * [主從複寫](#主從複寫)
+        * [主動模式複寫](#主動模式複寫)
+        * [聯邦式資料庫](#聯邦式資料庫)
+        * [分片](#分片)
+        * [反正規化](#反正規化)
+        * [SQL 優化](#SQL 優化)
+    * [NoSQL](#NoSQL)
+        * [鍵-值對的資料庫](#鍵-值對的資料庫)
+        * [文件類型資料庫](#文件類型資料庫)
+        * [列儲存型資料庫](#列儲存型資料庫)
+        * [圖形資料庫](#圖形資料庫)
+    * [SQL 或 NoSQL](#SQL 或 NoSQL)
 * [快取](#cache)
     * [客戶端快取](#client-caching)
     * [CDN 快取](#cdn-caching)
@@ -522,8 +522,6 @@ DNS 或是電子郵件系統使用的就是這種方式，最終一致性在高�
 
 #### 主動到備用複寫與雙主動複寫
 
-This topic is further discussed in the [Database](#database) section:
-
 這一個主題進一步討論了[資料庫](#資料庫)部分：
 
 * [主動到備用複寫](#主動到備用複寫)
@@ -608,7 +606,7 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
 * [拉取式和推拉式 CDN 的差別](http://www.travelblogadvice.com/technical/the-differences-between-push-and-pull-cdns/)
 * [維基百科](https://en.wikipedia.org/wiki/Content_delivery_network)
 
-## 負載平衡
+## 負載平衡器
 
 <p align="center">
   <img src="http://i.imgur.com/h81n9iK.png">
@@ -639,7 +637,7 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
 * Session/cookies
 * [輪詢調度或加權輪詢調度](http://g33kinfo.com/info/archives/2657)
 * [第四層負載平衡](#layer-4-load-balancing)
-* [第七層負載平衡](#layer-7-load-balancing)
+* [第七層負載平衡](#第七層負載平衡)
 
 ### 第四層負載平衡
 
@@ -678,7 +676,7 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
 * [第七層負載平衡](https://www.nginx.com/resources/glossary/layer-7-load-balancing/)
 * [ELB 監聽器設定](http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html)
 
-## 反向代理 (網頁伺服器)
+## 反向代理(網頁伺服器)
 
 <p align="center">
   <img src="http://i.imgur.com/n41Azff.png">
@@ -766,7 +764,7 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
   <i><a href=https://www.youtube.com/watch?v=vg5onp8TU6Q>來源：擴展你的使用者數量到第一個一千萬量級</a></i>
 </p>
 
-### 關連式資料庫管理系統 (RDBMS)
+### 關連式資料庫管理系統(RDBMS)
 
 像 SQL 這種關連式資料庫是以一組表格的形式存在的資料集合。
 
@@ -945,7 +943,7 @@ SQL 優化是一個涵蓋範圍很廣的主題，有許多相關的[參考書籍
 
 ### NoSQL
 
-NoSQL 指的是 **鍵-值對的資料庫**、**文件類型資料庫**、**列儲存形資料庫** 和 **圖形資料庫** 等的統稱。資料是非正規化的，Join 大部分在應用端完成。大多數的 NoSQL 資料庫無法真正實現 ACID 的 transaction，他們通常會支援 [最終一致性](#最終一致性)。
+NoSQL 指的是 **鍵-值對的資料庫**、**文件類型資料庫**、**列儲存型資料庫** 和 **圖形資料庫** 等的統稱。資料是非正規化的，Join 大部分在應用端完成。大多數的 NoSQL 資料庫無法真正實現 ACID 的 transaction，他們通常會支援 [最終一致性](#最終一致性)。
 
 **BASE** 通常被用來描述 NoSQL 資料庫的特性。  跟 [CAP 理論](#cap 理論) 相比，BASE 強調可用性而非一致性。
 
@@ -953,7 +951,7 @@ NoSQL 指的是 **鍵-值對的資料庫**、**文件類型資料庫**、**列�
 * **軟狀態** - 系統的狀態可能隨著時間改變，即使在沒有輸入的情況下也是如此。
 * **最終一致性** - 經過一段時間之後，在沒有收到任何輸入的情況下，系統最終會達到一致。
 
-除了在 [SQL 或 NoSQL](#sql-或-nosql) 之間做選擇，了解哪種類型的 NoSQL 資料庫最適合你的需求也是很有幫助的。我們會在下一節中快速瞭解一下 **鍵-值對的資料庫**、**文件類型資料庫**、**列儲存形資料庫** 和 **圖形資料庫** 等資料庫。
+除了在 [SQL 或 NoSQL](#sql-或-nosql) 之間做選擇，了解哪種類型的 NoSQL 資料庫最適合你的需求也是很有幫助的。我們會在下一節中快速瞭解一下 **鍵-值對的資料庫**、**文件類型資料庫**、**列儲存型資料庫** 和 **圖形資料庫** 等資料庫。
 
 #### 鍵-值對的資料庫
 
@@ -991,7 +989,7 @@ NoSQL 指的是 **鍵-值對的資料庫**、**文件類型資料庫**、**列�
 * [CouchDB 架構](https://blog.couchdb.org/2016/08/01/couchdb-2-0-architecture/)
 * [Elasticsearch 架構](https://www.elastic.co/blog/found-elasticsearch-from-the-bottom-up)
 
-#### 列儲存形資料庫
+#### 列儲存型資料庫
 
 <p align="center">
   <img src="http://i.imgur.com/n16iOGk.png">
@@ -1001,9 +999,9 @@ NoSQL 指的是 **鍵-值對的資料庫**、**文件類型資料庫**、**列�
 
 > 抽象模型： 巢狀的 Map `ColumnFamily<RowKey, Columns<ColKey, Value, Timestamp>>`
 
-列儲存形資料庫的基本單元是一列 (名稱/值為一組)。每一列可以被分到一個列的族群中(類似於 SQL 中的資料表)。而每個列族群之上還可以有一個超級列群。你可以透過列的鍵值來存取每一列，每個值都有一個時間戳記來解決版本問題。
+列儲存型資料庫的基本單元是一列 (名稱/值為一組)。每一列可以被分到一個列的族群中(類似於 SQL 中的資料表)。而每個列族群之上還可以有一個超級列群。你可以透過列的鍵值來存取每一列，每個值都有一個時間戳記來解決版本問題。
 
-Google 發表了第一個列儲存形資料庫 [Bigtable](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf)，這影響了用於 Hadoop 系統中開源的 [HBase](https://www.mapr.com/blog/in-depth-look-hbase-architecture) often-used in the Hadoop ecosystem, 和 Facebook 的 [Cassandra](http://docs.datastax.com/en/archived/cassandra/2.0/cassandra/architecture/architectureIntro_c.html)。這些資料庫的儲存系統把鍵值利用字母順序來儲存，可以有效率的來讀取。
+Google 發表了第一個列儲存型資料庫 [Bigtable](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf)，這影響了用於 Hadoop 系統中開源的 [HBase](https://www.mapr.com/blog/in-depth-look-hbase-architecture) often-used in the Hadoop ecosystem, 和 Facebook 的 [Cassandra](http://docs.datastax.com/en/archived/cassandra/2.0/cassandra/architecture/architectureIntro_c.html)。這些資料庫的儲存系統把鍵值利用字母順序來儲存，可以有效率的來讀取。
 
 列儲存型態的資料的提供了高可用和高擴展性，通常被用在大量資料的儲存上。
 
@@ -1014,7 +1012,7 @@ Google 發表了第一個列儲存形資料庫 [Bigtable](http://www.read.seas.h
 * [HBase 架構](https://www.mapr.com/blog/in-depth-look-hbase-architecture)
 * [Cassandra 架構](http://docs.datastax.com/en/archived/cassandra/2.0/cassandra/architecture/architectureIntro_c.html)
 
-#### 圖形化資料庫
+#### 圖形資料庫
 
 <p align="center">
   <img src="http://i.imgur.com/fNcl65g.png">
@@ -1024,9 +1022,9 @@ Google 發表了第一個列儲存形資料庫 [Bigtable](http://www.read.seas.h
 
 > 抽象模型：圖
 
-在圖型資料庫中，每一個節點會對應一條紀錄，而每個邊描述兩個節點之間的關係。圖型資料庫針對表示外來鍵(Foreign Key)眾多的複雜關聯或多對多關聯進行優化。
+在圖形資料庫中，每一個節點會對應一條紀錄，而每個邊描述兩個節點之間的關係。圖形資料庫針對表示外來鍵(Foreign Key)眾多的複雜關聯或多對多關聯進行優化。
 
-圖型資料庫為了儲存複雜的資料結構，例如社群網路，提供了很高的性能。他們相對較新，尚未被廣泛使用，查詢工具或資源比較難取得，許多這種類型的資料庫只能透過 [REST API](#representational-state-transfer-rest).來存取。
+圖形資料庫為了儲存複雜的資料結構，例如社群網路，提供了很高的性能。他們相對較新，尚未被廣泛使用，查詢工具或資源比較難取得，許多這種類型的資料庫只能透過 [REST API](#representational-state-transfer-rest).來存取。
 
 ##### 來源及延伸閱讀
 
