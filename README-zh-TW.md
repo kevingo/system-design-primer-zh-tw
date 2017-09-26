@@ -80,7 +80,7 @@
 * 增加新的章節
 * [翻譯](https://github.com/donnemartin/system-design-primer/issues/28)
 
-某些還需要再完善的章節放在[修正中](#under-development)。
+某些還需要再完善的章節放在[修正中](#仍在進行中)。
 
 請參考[貢獻指南](CONTRIBUTING.md)。
 
@@ -141,40 +141,40 @@
         * [列儲存型資料庫](#列儲存型資料庫)
         * [圖形資料庫](#圖形資料庫)
     * [SQL 或 NoSQL](#SQL 或 NoSQL)
-* [快取](#cache)
-    * [客戶端快取](#client-caching)
-    * [CDN 快取](#cdn-caching)
-    * [網站伺服器快取](#web-server-caching)
-    * [資料庫快取](#database-caching)
-    * [應用程式快取](#application-caching)
-    * [資料庫查詢級別的快取](#caching-at-the-database-query-level)
-    * [物件級別的快取](#caching-at-the-object-level)
-    * [如何更新快取](#when-to-update-the-cache)
-        * [快取端](#cache-aside)
-        * [直寫模式](#write-through)
-        * [回寫模式](#write-behind-write-back)
-        * [重新整理](#refresh-ahead)
-* [異步](#asynchronism)
-    * [消息隊列](#message-queues)
-    * [工作隊列](#task-queues)
-    * [反壓機制](#back-pressure)
-* [通訊](#communication)
-    * [傳輸控制通訊協定 (TCP)](#transmission-control-protocol-tcp)
-    * [使用者封包通訊協定 (UDP)](#user-datagram-protocol-udp)
-    * [遠端程序呼叫 (RPC)](#remote-procedure-call-rpc)
-    * [REST](#representational-state-transfer-rest)
-* [安全](#security)
-* [附錄](#appendix)
-    * [2 的次方表](#powers-of-two-table)
-    * [每個開發者都應該知道的延遲數量](#latency-numbers-every-programmer-should-know)
-    * [其他的系統設計面試問題](#additional-system-design-interview-questions)
-    * [真實世界的架構](#real-world-architectures)
-    * [公司的系統架構](#company-architectures)
-    * [公司的工程部落格](#company-engineering-blogs)
-* [尚在進行中](#under-development)
-* [致謝](#credits)
-* [聯絡方式](#contact-info)
-* [授權](#license)
+* [快取](#快取)
+    * [客戶端快取](#客戶端快取)
+    * [CDN 快取](#CDN 快取)
+    * [網站伺服器快取](#網站伺服器快取)
+    * [資料庫快取](#資料庫快取)
+    * [應用程式快取](#應用程式快取)
+    * [資料庫查詢級別的快取](#資料庫查詢級別的快取)
+    * [物件級別的快取](#物件級別的快取)
+    * [什麼時候要更新快取](#什麼時候要更新快取)
+        * [快取模式](#快取模式)
+        * [寫入模式](#寫入模式)
+        * [事後寫入(回寫)](#事後寫入(回寫))
+        * [更新式快取](#更新式快取)
+* [非同步機制](#非同步機制)
+    * [訊息佇列](#訊息佇列)
+    * [工作佇列](#工作佇列)
+    * [背壓機制](#背壓機制)
+* [通訊](#通訊)
+    * [傳輸控制通訊協定(TCP)](#傳輸控制通訊協定(TCP))
+    * [使用者資料流通訊協定 (UDP)](#使用者資料流通訊協定-udp)
+    * [遠端程式呼叫 (RPC)](#遠端程式呼叫-rpc)
+    * [具象狀態轉移 (REST)](#具象狀態轉移-rest)
+* [資訊安全](#資訊安全)
+* [附錄](#附錄)
+    * [2 的次方表](#2-的次方表)
+    * [每個開發者都應該知道的延遲數量](#每個開發者都應該知道的延遲數量)
+    * [其他的系統設計面試問題](#其他的系統設計面試問題)
+    * [真實世界的架構](#真實世界的架構)
+    * [公司的系統架構](#公司的系統架構)
+    * [公司的工程部落格](#公司的工程部落格)
+* [仍在進行中](#仍在進行中)
+* [致謝](#致謝)
+* [聯絡資訊](#聯絡資訊)
+* [授權](#授權)
 
 ## 學習指南
 
@@ -204,9 +204,9 @@
 
 | | 短期 | 中期 | 長期 |
 |---|---|---|---|
-| 閱讀 [系統設計主題](#index-of-system-design-topics) 來取得關於系統如何運作的廣泛知識 | :+1: | :+1: | :+1: |
-| 閱讀一些你要面試的 [公司技術部落格](#company-engineering-blogs) 文章 | :+1: | :+1: | :+1: |
-| 閱讀關於 [真實世界的架構](#real-world-architectures) | :+1: | :+1: | :+1: |
+| 閱讀 [系統設計主題的索引](#系統設計主題的索引) 來取得關於系統如何運作的廣泛知識 | :+1: | :+1: | :+1: |
+| 閱讀一些你要面試的 [公司的工程部落格](#公司的工程部落格) 文章 | :+1: | :+1: | :+1: |
+| 閱讀關於 [真實世界的架構](#真實世界的架構) | :+1: | :+1: | :+1: |
 | 複習 [如何處理一個系統設計的面試題目](#how-to-approach-a-system-design-interview-question) | :+1: | :+1: | :+1: |
 | 完成 [系統設計面試題目與解答](#system-design-interview-questions-with-solutions) | 一些 | 很多 | 大部分 |
 | 完成 [物件導向設計與解答](#object-oriented-design-interview-questions-with-solutions) | 一些 | 很多 | 大部分 |
@@ -269,8 +269,8 @@
 你可能要求針對設計進行一些估算，可以參考[附錄](#appendix)的一些資源：
 
 * [使用快速估算法](http://highscalability.com/blog/2011/1/26/google-pro-tip-use-back-of-the-envelope-calculations-to-choo.html)
-* [2 的次方表](#powers-of-two-table)
-* [每個開發者都應該知道的延遲數量](#latency-numbers-every-programmer-should-know)
+* [2 的次方表](#2-的次方表)
+* [每個開發者都應該知道的延遲數量](#每個開發者都應該知道的延遲數量)
 
 ### 相關資源與延伸閱讀
 
@@ -731,7 +731,7 @@ DNS 是階層式的架構，一部分的 DNS 伺服器位於頂層，當查詢�
 
 **單一職責原則**鼓勵小型、自治的服務與共同合作，小型團隊透過提供小型的服務可以更有效率地讓計畫成長。
 
-在應用層中的工作程式可以實作[異步機制](#異步機制)
+在應用層中的工作程式可以實作[非同步機制](#非同步機制)
 
 ### 微服務
 
@@ -1110,7 +1110,7 @@ Google 發表了第一個列儲存型資料庫 [Bigtable](http://www.read.seas.h
 
 資料庫的預設設定中通常包含了快取的級別，針對一般的使用進行了優化。你可以針對不同的情況調整這些設定來進一步提高效能。
 
-### 應用快取
+### 應用程式快取
 
 基於記憶體的快取，像是 Memcached 和 Redis 是一種在應用層和資料庫之間的鍵值對快取。由於資料保存在記憶體中，比起存放在硬碟中的資料庫在存取上要快得多。記憶體的限制也比硬碟更多，所以像是[least recently used (LRU)](https://en.wikipedia.org/wiki/Cache_algorithms#Least_Recently_Used) 的 [cache invalidation](https://en.wikipedia.org/wiki/Cache_algorithms) 方法可以讓 '熱門資料' 放在記憶體中，而比較 '冷門' 的資料在記憶體中失效。
 
@@ -1224,7 +1224,7 @@ def set_user(user_id, values):
 * 當發生故障或因為水平擴展而產生新的節點時，新的節點中將不會有快取資料，直到資料庫更新為止。將快取模式和寫入模式一起使用可以減緩這種現象。
 * 被寫入多數的資料可能永遠都不會被讀取，你可以設定 TTL 來解決這種問題。
 
-#### 事後寫入 (回寫)
+#### 事後寫入(回寫)
 
 <p align="center">
   <img src="http://i.imgur.com/rgSrvjG.png">
@@ -1274,7 +1274,7 @@ def set_user(user_id, values):
 * [AWS ElastiCache 策略](http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Strategies.html)
 * [維基百科](https://en.wikipedia.org/wiki/Cache_(computing))
 
-## 非同步
+## 非同步機制
 
 <p align="center">
   <img src="http://i.imgur.com/54GYsSx.png">
@@ -1305,7 +1305,7 @@ def set_user(user_id, values):
 
 **Celery** 支援排程，主要是使用 Python 開發。
 
-### 背壓
+### 背壓機制
 
 當佇列開始明顯成長時，佇列的大小可能會超過記憶體，這會導致無法命中快取，降低整體效能。[背壓](http://mechanical-sympathy.blogspot.com/2012/05/apply-back-pressure-when-overloaded.html) 可以用來限制佇列的大小，讓佇列保持高吞吐率和良好的回應時間。一旦佇列滿了，客戶端將會得到 HTTP 503 的回應碼，以便讓他們在稍後重新嘗試。客戶端可以透過[指數後退演算法](https://en.wikipedia.org/wiki/Exponential_backoff)這種方式來進行重試。
 
@@ -1352,7 +1352,7 @@ HTTP 是依賴於較底層的協議(例如：**TCP** 和 **UDP**) 的應用層�
 * [HTTP 和 TCP 的差別](https://www.quora.com/What-is-the-difference-between-HTTP-protocol-and-TCP-protocol)
 * [PUT 和 PATCH 的差別](https://laracasts.com/discuss/channels/general-discussion/whats-the-differences-between-put-and-patch?page=1)
 
-### 傳輸控制通訊協定 (TCP)
+### 傳輸控制通訊協定(TCP)
 
 <p align="center">
   <img src="http://i.imgur.com/JdAsdvG.jpg">
@@ -1549,7 +1549,7 @@ REST 關注於揭露資料，減少客戶端/伺服器之間耦合的程度，�
 
 * [2 的次方](https://en.wikipedia.org/wiki/Power_of_two)
 
-### 每個程式設計師都應該知道的延遲數量級
+### 每個開發者都應該知道的延遲數量級
 
 ```
 延遲比較數量級
@@ -1776,7 +1776,7 @@ Notes
 
 我的聯絡資訊可以在我的 [GitHub 主頁](https://github.com/donnemartin) 中找到。
 
-## 版權
+## 授權
 
 *我已開放原始碼授權的方式提供你在此儲存庫中的程式碼和資源。因為這是我個人的儲存庫，所以你所以所收到的使用許可是來自於我，並非我的雇主(Facebook)*
 
