@@ -1,4 +1,4 @@
-*[English](README.md) ∙ [简体中文](README-zh-Hans.md) | [Brazilian Portuguese](https://github.com/donnemartin/system-design-primer/issues/40) ∙ [Japanese](https://github.com/donnemartin/system-design-primer/issues/100) ∙ [Polish](https://github.com/donnemartin/system-design-primer/issues/68) ∙ [Russian](https://github.com/donnemartin/system-design-primer/issues/87) ∙ [繁體中文](README-zh-TW.md) ∙ [Turkish](https://github.com/donnemartin/system-design-primer/issues/39) | [Add Translation](https://github.com/donnemartin/system-design-primer/issues/28)*
+*[English](README.md) ∙ [简体中文](README-zh-Hans.md) | [Brazilian Portuguese](https://github.com/donnemartin/system-design-primer/issues/40) ∙ [Japanese](https://github.com/donnemartin/system-design-primer/issues/100) ∙ [Polish](https://github.com/donnemartin/system-design-primer/issues/68) ∙ [Russian](https://github.com/donnemartin/system-design-primer/issues/87) ∙ [繁體中文](README-zh-TW.md) ∙ [Turkish](https://github.com/donnemartin/system-design-primer/issues/39) | [增加翻譯](https://github.com/donnemartin/system-design-primer/issues/28)*
 
 # 系統設計入門
 
@@ -356,14 +356,14 @@
 
 | 問題 | |
 |---|---|
-| 設計一個 hash map | [Solution](solutions/object_oriented_design/hash_table/hash_map.ipynb)  |
-| 設計一個 LRU 快取 | [Solution](solutions/object_oriented_design/lru_cache/lru_cache.ipynb)  |
-| 設計一個客服系統 | [Solution](solutions/object_oriented_design/call_center/call_center.ipynb)  |
-| 設計一副牌 | [Solution](solutions/object_oriented_design/deck_of_cards/deck_of_cards.ipynb)  |
-| 設計一個停車場 | [Solution](solutions/object_oriented_design/parking_lot/parking_lot.ipynb)  |
-| 設計一個聊天室 | [Solution](solutions/object_oriented_design/online_chat/online_chat.ipynb)  |
-| 設計一個環形陣列 | [Contribute](#如何貢獻)  |
-| 增加一個物件導向設計問題 | [Contribute](#如何貢獻) |
+| 設計一個 hash map | [解答](solutions/object_oriented_design/hash_table/hash_map.ipynb)  |
+| 設計一個 LRU 快取 | [解答](solutions/object_oriented_design/lru_cache/lru_cache.ipynb)  |
+| 設計一個客服系統 | [解答](solutions/object_oriented_design/call_center/call_center.ipynb)  |
+| 設計一副牌 | [解答](solutions/object_oriented_design/deck_of_cards/deck_of_cards.ipynb)  |
+| 設計一個停車場 | [解答](solutions/object_oriented_design/parking_lot/parking_lot.ipynb)  |
+| 設計一個聊天室 | [解答](solutions/object_oriented_design/online_chat/online_chat.ipynb)  |
+| 設計一個環形陣列 | [如何貢獻](#如何貢獻)  |
+| 增加一個物件導向設計問題 | [如何貢獻](#如何貢獻) |
 
 ## 系統設計主題：從這裡開始
 
