@@ -233,16 +233,16 @@
 * 我們希望每秒處理多少請求？
 * 預期的讀、寫比例為何？
 
-### 第二步：建立一個高維度的設計
+### 第二步：建立一個高階的設計
 
-使用重要的元件來建立一個高維度的設計。
+使用重要的元件來建立一個高階的設計。
 
-* 畫出主要的元件與連接情況
+* 畫出主要的元件與其相互連接情況
 * 證明你的想法
 
 ### 第三步： 設計核心的元件
 
-對每一個核心元件進行深入的分析。舉例來說， 如果你被問到[設計一個短網址的服務](solutions/system_design/pastebin/README.md)，底下可以開始討論：
+對每一個核心元件進行深入的分析。舉例來說， 如果你被問到[設計一個短網址的服務](solutions/system_design/pastebin/README.md)，可以開始討論以下內容：
 
 * 產生並儲存一個完整網址的 Hash
     * [MD5](solutions/system_design/pastebin/README.md) 和 [Base62](solutions/system_design/pastebin/README.md)
