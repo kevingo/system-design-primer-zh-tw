@@ -56,7 +56,7 @@
 
 這些是非常棒的學習資源，隨時都可以使用。
 
-### 程式設計學習資源：互動式程式學習設計  
+### 程式設計學習資源：互動式程式學習設計
 
 你正在尋找資源來面對[**程式語言面試**](https://github.com/donnemartin/interactive-coding-challenges)嗎？
 
@@ -328,7 +328,7 @@
 
 ![Imgur](http://i.imgur.com/cdCv5g7.png)
 
-### 設計一個搜尋引擎使用的鍵值儲存資料結構 
+### 設計一個搜尋引擎使用的鍵值儲存資料結構
 
 [閱讀練習與解答](solutions/system_design/query_cache/README.md)
 
