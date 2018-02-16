@@ -286,17 +286,17 @@
 >
 > 相關的解答位於 `解答/` 的資料夾中。
 
-| 問題 | |
-|---|---|
-| 設計 Pastebin.com (或 Bit.ly) | [解答](solutions/system_design/pastebin/README.md) |
-| 設計一個像是 Twitter 的 timeline (或 Facebook feed)<br/>設計一個 Twitter 搜尋功能 (or Facebook 搜尋功能) | [解答](solutions/system_design/twitter/README.md) |
-| 設計一個爬蟲系統 | [解答](solutions/system_design/web_crawler/README.md) |
-| 設計 Mint.com 網站 | [解答](solutions/system_design/mint/README.md) |
-| 設計一個社交網站的資料結構 | [解答](solutions/system_design/social_graph/README.md) |
-| 設計一個搜尋引擎使用的鍵值儲存資料結構 | [解答](solutions/system_design/query_cache/README.md) |
-| 設計一個根據產品分類的亞馬遜銷售排名 | [解答](solutions/system_design/sales_rank/README.md) |
-| 在 AWS 上設計一個百萬用戶等級的系統 | [解答](solutions/system_design/scaling_aws/README.md) |
-| 增加一個系統設計的問題 | [貢獻](#如何貢獻) |
+| 問題                                                                                                |                                                        |
+|-----------------------------------------------------------------------------------------------------|--------------------------------------------------------|
+| 設計 Pastebin.com (或 Bit.ly)                                                                       | [解答](solutions/system_design/pastebin/README.md)     |
+| 設計一個像是 Twitter 的 timeline (或 Facebook feed)設計一個 Twitter 搜尋功能 (or Facebook 搜尋功能) | [解答](solutions/system_design/twitter/README.md)      |
+| 設計一個爬蟲系統                                                                                    | [解答](solutions/system_design/web_crawler/README.md)  |
+| 設計 Mint.com 網站                                                                                  | [解答](solutions/system_design/mint/README.md)         |
+| 設計一個社交網站的資料結構                                                                          | [解答](solutions/system_design/social_graph/README.md) |
+| 設計一個搜尋引擎使用的鍵值儲存資料結構                                                              | [解答](solutions/system_design/query_cache/README.md)  |
+| 設計一個根據產品分類的亞馬遜銷售排名                                                                | [解答](solutions/system_design/sales_rank/README.md)   |
+| 在 AWS 上設計一個百萬用戶等級的系統                                                                 | [解答](solutions/system_design/scaling_aws/README.md)  |
+| 增加一個系統設計的問題                                                                              | [貢獻](#如何貢獻)                                      |
 
 ### 設計 Pastebin.com (或 Bit.ly)
 
