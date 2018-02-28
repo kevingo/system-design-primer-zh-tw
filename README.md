@@ -759,7 +759,7 @@ Systems such as [Consul](https://www.consul.io/docs/index.html), [Etcd](https://
 <p align="center">
   <img src="http://i.imgur.com/Xkm5CXz.png">
   <br/>
-  <i><a href=https://www.youtube.com/watch?v=vg5onp8TU6Q>Source: Scaling up to your first 10 million users</a></i>
+  <i><a href=https://www.youtube.com/watch?v=w95murBkYmU>Source: Scaling up to your first 10 million users</a></i>
 </p>
 
 ### Relational database management system (RDBMS)
@@ -825,7 +825,7 @@ Both masters serve reads and writes and coordinate with each other on writes.  I
 <p align="center">
   <img src="http://i.imgur.com/U3qV33e.png">
   <br/>
-  <i><a href=https://www.youtube.com/watch?v=vg5onp8TU6Q>Source: Scaling up to your first 10 million users</a></i>
+  <i><a href=https://www.youtube.com/watch?v=w95murBkYmU>Source: Scaling up to your first 10 million users</a></i>
 </p>
 
 Federation (or functional partitioning) splits up databases by function.  For example, instead of a single, monolithic database, you could have three databases: **forums**, **users**, and **products**, resulting in less read and write traffic to each database and therefore less replication lag.  Smaller databases result in more data that can fit in memory, which in turn results in more cache hits due to improved cache locality.  With no single central master serializing writes you can write in parallel, increasing throughput.
@@ -839,7 +839,7 @@ Federation (or functional partitioning) splits up databases by function.  For ex
 
 ##### Source(s) and further reading: federation
 
-* [Scaling up to your first 10 million users](https://www.youtube.com/watch?v=vg5onp8TU6Q)
+* [Scaling up to your first 10 million users](https://www.youtube.com/watch?v=w95murBkYmU)
 
 #### Sharding
 
@@ -1075,7 +1075,7 @@ Sample data well-suited for NoSQL:
 
 ##### Source(s) and further reading: SQL or NoSQL
 
-* [Scaling up to your first 10 million users](https://www.youtube.com/watch?v=vg5onp8TU6Q)
+* [Scaling up to your first 10 million users](https://www.youtube.com/watch?v=w95murBkYmU)
 * [SQL vs NoSQL differences](https://www.sitepoint.com/sql-vs-nosql-differences/)
 
 ## Cache
@@ -1675,7 +1675,7 @@ Handy metrics based on numbers above:
 | Google | [Google architecture](http://highscalability.com/google-architecture) |
 | Instagram | [14 million users, terabytes of photos](http://highscalability.com/blog/2011/12/6/instagram-architecture-14-million-users-terabytes-of-photos.html)<br/>[What powers Instagram](http://instagram-engineering.tumblr.com/post/13649370142/what-powers-instagram-hundreds-of-instances) |
 | Justin.tv | [Justin.Tv's live video broadcasting architecture](http://highscalability.com/blog/2010/3/16/justintvs-live-video-broadcasting-architecture.html) |
-| Facebook | [Scaling memcached at Facebook](https://cs.uwaterloo.ca/~brecht/courses/854-Emerging-2014/readings/key-value/fb-memcached-nsdi-2013.pdf)<br/>[TAO: Facebook’s distributed data store for the social graph](https://cs.uwaterloo.ca/~brecht/courses/854-Emerging-2014/readings/data-store/tao-facebook-distributed-datastore-atc-2013.pdf)<br/>[Facebook’s photo storage](https://www.usenix.org/legacy/event/osdi10/tech/full_papers/Beaver.pdf) |
+| Facebook | [Scaling memcached at Facebook](https://cs.uwaterloo.ca/~brecht/courses/854-Emerging-2014/readings/key-value/fb-memcached-nsdi-2013.pdf)<br/>[TAO: Facebook’s distributed data store for the social graph](https://cs.uwaterloo.ca/~brecht/courses/854-Emerging-2014/readings/data-store/tao-facebook-distributed-datastore-atc-2013.pdf)<br/>[Facebook’s photo storage](https://www.usenix.org/legacy/event/osdi10/tech/full_papers/Beaver.pdf)<br/>[How Facebook Live Streams To 800,000 Simultaneous Viewers](http://highscalability.com/blog/2016/6/27/how-facebook-live-streams-to-800000-simultaneous-viewers.html) |
 | Flickr | [Flickr architecture](http://highscalability.com/flickr-architecture) |
 | Mailbox | [From 0 to one million users in 6 weeks](http://highscalability.com/blog/2013/6/18/scaling-mailbox-from-0-to-one-million-users-in-6-weeks-and-1.html) |
 | Netflix | [Netflix: What Happens When You Press Play?](http://highscalability.com/blog/2017/12/11/netflix-what-happens-when-you-press-play.html) |
