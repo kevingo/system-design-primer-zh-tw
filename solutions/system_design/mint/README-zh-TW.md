@@ -30,40 +30,40 @@
 
 * **服務** 提供額外的日誌記錄與分析功能
 
-### Constraints and assumptions
+### 限制與假設
 
-#### State assumptions
+#### 狀態假設
 
-* Traffic is not evenly distributed
-* Automatic daily update of accounts applies only to users active in the past 30 days
-* Adding or removing financial accounts is relatively rare
-* Budget notifications don't need to be instant
-* 10 million users
-    * 10 budget categories per user = 100 million budget items
-    * Example categories:
-        * Housing = $1,000
-        * Food = $200
-        * Gas = $100
-    * Sellers are used to determine transaction category
-        * 50,000 sellers
-* 30 million financial accounts
-* 5 billion transactions per month
-* 500 million read requests per month
-* 10:1 write to read ratio
-    * Write-heavy, users make transactions daily, but few visit the site daily
+* 流量不是均勻分布的
+* 每日的自動更新帳戶功能僅適用於過去三十天內處於活動狀態的使用者
+* 新增或刪除一個帳戶的功能相對較少使用
+* 預算通知不需要是即時的
+* 1000 萬個使用者
+    * 每個 user 有 10 個預算的類別 = 總共有 1 億筆的預算資料
+    * 幾個類別範例：
+        * 租屋 = $1,000
+        * 食物 = $200
+        * 加油 = $100
+    *販賣者被用來決定每個交易的類別
+        * 50,000 個販賣者
+* 3000 萬個帳戶
+* 每月 50 億筆交易資料
+* 每月 5 億次的讀取請求
+* 寫入和讀取的比例為 10:1
+    * 寫入的需求很大，因為使用者每天都會進行交易，但相對比較少的人會每天訪問網站
 
-#### Calculate usage
+#### 計算使用量
 
-**Clarify with your interviewer if you should run back-of-the-envelope usage calculations.**
+**向你的面試人員詢問你是否可以用比較粗略的方式來計算使用量**
 
-* Size per transaction:
+* 每筆資料的大小：
     * `user_id` - 8 bytes
     * `created_at` - 5 bytes
     * `seller` - 32 bytes
     * `amount` - 5 bytes
-    * Total: ~50 bytes
-* 250 GB of new transaction content per month
-    * 50 bytes per transaction * 5 billion transactions per month
+    * 總共約： ~50 bytes
+* 每月 250 GB 新的交易資料量
+    * 每筆交易 50 bytes * 每月 50 億比交易資料
     * 9 TB of new transaction content in 3 years
     * Assume most are new transactions instead of updates to existing ones
 * 2,000 transactions per second on average
