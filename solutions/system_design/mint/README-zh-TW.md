@@ -26,9 +26,9 @@
     * 當接近或超過預算上限時會通知使用者
 * **服務** 是高可用的
 
-#### Out of scope
+#### 不包含在此範圍
 
-* **Service** performs additional logging and analytics
+* **服務** 提供額外的日誌記錄與分析功能
 
 ### Constraints and assumptions
 
