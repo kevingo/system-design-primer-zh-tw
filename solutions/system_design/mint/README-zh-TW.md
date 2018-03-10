@@ -63,18 +63,18 @@
     * `amount` - 5 bytes
     * 總共約： ~50 bytes
 * 每月 250 GB 新的交易資料量
-    * 每筆交易 50 bytes * 每月 50 億比交易資料
-    * 9 TB of new transaction content in 3 years
-    * Assume most are new transactions instead of updates to existing ones
-* 2,000 transactions per second on average
-* 200 read requests per second on average
+    * 每筆交易 50 bytes * 每月 50 億筆交易資料
+    * 3 年內有 9 TB 的新交易資料
+    * 假設絕大多數都是新的交易資料，而不是更新既有的資料
+* 平均每秒 2000 筆交易
+* 平均每秒 200 個讀取的請求
 
-Handy conversion guide:
+一些筆記：
 
-* 2.5 million seconds per month
-* 1 request per second = 2.5 million requests per month
-* 40 requests per second = 100 million requests per month
-* 400 requests per second = 1 billion requests per month
+* 每月 250 萬秒
+* 每秒 1 次請求 = 每月 250 萬次請求
+* 每秒 40 次請求 = 每月 1 億次請求
+* 每秒 400 次請求 = 每月 10 億 次請求
 
 ## Step 2: Create a high level design
 
