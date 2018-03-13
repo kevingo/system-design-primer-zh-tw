@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from enum import Enum
+
 class DefaultCategories(Enum):
 
     HOUSING = 0
