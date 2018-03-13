@@ -7,19 +7,19 @@ class SpendingByCategory(MRJob):
 
     def __init__(self, categorizer):
         self.categorizer = categorizer
-        ...
+        pass
 
     def current_year_month(self):
         """Return the current year and month."""
-        ...
+        pass
 
     def extract_year_month(self, timestamp):
         """Return the year and month portions of the timestamp."""
-        ...
+        pass
 
     def handle_budget_notifications(self, key, total):
         """Call notification API if nearing or exceeded budget."""
-        ...
+        pass
 
     def mapper(self, _, line):
         """Parse each log line, extract and transform relevant lines.
@@ -35,7 +35,7 @@ class SpendingByCategory(MRJob):
         if period == self.current_year_month():
             yield (period, category), amount
 
-    def reducer(self, key, value):
+    def reducer(self, key, values):
         """Sum values for each key.
 
         (2016-01, shopping), 125
