@@ -1,14 +1,14 @@
-# Design a system that scales to millions of users on AWS
+# 在 AWS 上設計一個可以擴展到百萬使用者的系統
 
-*Note: This document links directly to relevant areas found in the [system design topics](https://github.com/donnemartin/system-design-primer#index-of-system-design-topics) to avoid duplication.  Refer to the linked content for general talking points, tradeoffs, and alternatives.*
+*注意：本文件某些連結直接連到 [系統設計主題的索引](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E7%B3%BB%E7%B5%B1%E8%A8%AD%E8%A8%88%E4%B8%BB%E9%A1%8C%E7%9A%84%E7%B4%A2%E5%BC%95)來避免重複的內容。你可以參考連結來取得相關重點、設計的取捨和選擇。*
 
-## Step 1: Outline use cases and constraints
+## 步驟一：描述使用情境與限制
 
-> Gather requirements and scope the problem.
-> Ask questions to clarify use cases and constraints.
-> Discuss assumptions.
+> 蒐集問題的需求、資訊和範圍。
+> 透過詢問問題來瞭解使用情境和限制。
+> 討論你的假設。
 
-Without an interviewer to address clarifying questions, we'll define some use cases and constraints.
+在這裡沒有面試者會幫你釐清上面的問題，所以我們會預先定義一些使用情境和限制。
 
 ### Use cases
 
