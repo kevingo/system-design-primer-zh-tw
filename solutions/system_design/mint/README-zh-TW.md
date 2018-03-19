@@ -252,7 +252,7 @@ class Budget(object):
         self.categories_to_budget_map[category] = amount
 ```
 
-對於**預算服務**來說，我們可以透過查詢 `transactions` 資料表來產生 `monthly_spending` 的彙整表。`monthly_spending` 的資料表中的資料會遠少於 50 億筆的交易資料，因為使用者通常一個月會有許多交易紀錄。 
+對於**預算服務**來說，我們可以透過查詢 `transactions` 資料表來產生 `monthly_spending` 的彙整表。`monthly_spending` 的資料表中的資料會遠少於 50 億筆的交易資料，因為使用者通常一個月會有許多交易紀錄。
 
 而作為替代方案，我們可以在原始的交易資料上執行 **MapReduce**：
 
