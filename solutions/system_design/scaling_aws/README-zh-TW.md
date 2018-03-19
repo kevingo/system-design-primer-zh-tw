@@ -24,23 +24,23 @@
     * 我們會討論一個通用性的原則來讓架構本身可以處理大量的使用者請求
 * **服務**本身具備高可用 (High-Availability)
 
-### Constraints and assumptions
+### 限制與假設
 
-#### State assumptions
+#### 狀態假設
 
-* Traffic is not evenly distributed
-* Need for relational data
-* Scale from 1 user to tens of millions of users
-    * Denote increase of users as:
+* 流量並非均勻的分佈
+* 資料為關連式
+* 從 1 個使用者擴展到數千萬名使用者
+    * 我們用以下表示方式來代表使用者不斷增加：
         * Users+
         * Users++
         * Users+++
         * ...
-    * 10 million users
-    * 1 billion writes per month
-    * 100 billion reads per month
-    * 100:1 read to write ratio
-    * 1 KB content per write
+    * 1000 萬名使用者
+    * 每月 10 億次寫入
+    * 每月 1000 億次讀取
+    * 讀寫比例為 100:1
+    * 每次寫入大小為 1 KB
 
 #### Calculate usage
 
