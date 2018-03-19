@@ -10,11 +10,11 @@
 
 在這裡沒有面試者會幫你釐清上面的問題，所以我們會預先定義一些使用情境和限制。
 
-### Use cases
+### 使用情境
 
-Solving this problem takes an iterative approach of: 1) **Benchmark/Load Test**, 2) **Profile** for bottlenecks 3) address bottlenecks while evaluating alternatives and trade-offs, and 4) repeat, which is good pattern for evolving basic designs to scalable designs.
+解決這個問題需要透過不斷來回修正的方式：1) **負載壓力測試**、2) **描述瓶頸**、3) 解決瓶頸，並提出替代方案、4) 重複以上步驟。上面這幾個步驟可以很好的幫助你解決可擴展系統架構的基本問題。
 
-Unless you have a background in AWS or are applying for a position that requires AWS knowledge, AWS-specific details are not a requirement.  However, **much of the principles discussed in this exercise can apply more generally outside of the AWS ecosystem.**
+除非你本來就對 AWS 有相關背景知識，或是你打算申請的職位需要 AWS 的知識，否則對於 AWS 的細部知識並非必要。然而，**絕大多數在這裡提到的準則，你都可以用在其他非 AWS 的環境上**。
 
 #### We'll scope the problem to handle only the following use cases
 
