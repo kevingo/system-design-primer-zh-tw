@@ -16,13 +16,13 @@
 
 除非你本來就對 AWS 有相關背景知識，或是你打算申請的職位需要 AWS 的知識，否則對於 AWS 的細部知識並非必要。然而，**絕大多數在這裡提到的準則，你都可以用在其他非 AWS 的環境上**。
 
-#### We'll scope the problem to handle only the following use cases
+#### 我們將所要解決的問題限縮在以下範圍
 
-* **User** makes a read or write request
-    * **Service** does processing, stores user data, then returns the results
-* **Service** needs to evolve from serving a small amount of users to millions of users
-    * Discuss general scaling patterns as we evolve an architecture to handle a large number of users and requests
-* **Service** has high availability
+* **使用者**會產生讀取和寫入的請求
+    * **服務**本身會處理請求、儲存使用者資料並且回傳結果
+* **服務**本身需要從服務少量的使用者一路擴展到百萬等級的使用者
+    * 我們會討論一個通用性的原則來讓架構本身可以處理大量的使用者請求
+* **服務**本身具備高可用 (High-Availability)
 
 ### Constraints and assumptions
 
