@@ -70,14 +70,14 @@
 
 > 深入每個核心元件的細節
 
-### Use case: User makes a read or write request
+### 使用情境：使用者發送一個讀取或寫入請求
 
-#### Goals
+#### 目標
 
-* With only 1-2 users, you only need a basic setup
-    * Single box for simplicity
-    * Vertical scaling when needed
-    * Monitor to determine bottlenecks
+* 當只有 1 到 2 個使用者時，你只需要基本的架構
+    * 只需要一台機器
+    * 需要擴展時使用垂直擴展
+    * 做好監控來發現瓶頸
 
 #### Start with a single box
 
