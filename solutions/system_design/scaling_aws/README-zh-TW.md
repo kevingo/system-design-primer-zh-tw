@@ -42,23 +42,23 @@
     * 讀寫比例為 100:1
     * 每次寫入大小為 1 KB
 
-#### Calculate usage
+#### 計算使用量
 
-**Clarify with your interviewer if you should run back-of-the-envelope usage calculations.**
+**向你的面試人員詢問你是否可以用比較粗略的方式來計算使用量**
 
-* 1 TB of new content per month
-    * 1 KB per write * 1 billion writes per month
-    * 36 TB of new content in 3 years
-    * Assume most writes are from new content instead of updates to existing ones
-* 400 writes per second on average
-* 40,000 reads per second on average
+* 每月 1 TB 的新資料
+    * 每次寫入 1 KB * 每月寫入 10 億次
+    * 三年共 36 TB 的新資料
+    * 假設大部分的寫入都是新資料，而不是更新既有的資料
+* 平均每秒 400 次寫入
+* 平均每秒 40,000 次寫入
 
-Handy conversion guide:
+一些筆記：
 
-* 2.5 million seconds per month
-* 1 request per second = 2.5 million requests per month
-* 40 requests per second = 100 million requests per month
-* 400 requests per second = 1 billion requests per month
+* 每月 250 萬秒
+* 每秒 1 次請求 = 每月 250 萬次請求
+* 每秒 40 次請求 = 每月 1 億次請求
+* 每秒 400 次請求 = 每月 10 億 次請求
 
 ## Step 2: Create a high level design
 
