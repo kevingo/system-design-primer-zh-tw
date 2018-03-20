@@ -107,10 +107,10 @@
 * 參考 [關聯式資料庫 (RDBMS)](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E9%97%9C%E9%80%A3%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1rdbms) 章節
 * 討論使用 [SQL 或 NoSQL](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#sql-%E6%88%96-nosql) 的理由
 
-#### Assign a public static IP
+#### 指定一個公開的 IP 位置
 
-* Elastic IPs provide a public endpoint whose IP doesn't change on reboot
-* Helps with failover, just point the domain to a new IP
+* IP 可以提供一個公開的 IP 位置，不會隨著你重開機 IP 就變更
+* 綁定一個 IP 位置可以幫助你的服務具有容錯功能，當發生問題時，只要指向另外一個 IP 位置即可
 
 #### Use a DNS
 
