@@ -66,9 +66,9 @@
 
 ![Imgur](http://i.imgur.com/B8LDKD7.png)
 
-## Step 3: Design core components
+## 步驟三：設計核心元件
 
-> Dive into details for each core component.
+> 深入每個核心元件的細節
 
 ### Use case: User makes a read or write request
 
