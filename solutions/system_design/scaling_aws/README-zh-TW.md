@@ -79,24 +79,24 @@
     * 需要擴展時使用垂直擴展
     * 做好監控來發現瓶頸
 
-#### Start with a single box
+#### 從一台機器開始
 
-* **Web server** on EC2
-    * Storage for user data
-    * [**MySQL Database**](https://github.com/donnemartin/system-design-primer#sql)
+* **網頁伺服器** 在 EC2
+    * 儲存使用者資料
+    * [**MySQL 資料庫**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E9%97%9C%E9%80%A3%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1rdbms)
 
-Use **Vertical Scaling**:
+使用 **垂直擴展**:
 
-* Simply choose a bigger box
-* Keep an eye on metrics to determine how to scale up
-    * Use basic monitoring to determine bottlenecks: CPU, memory, IO, network, etc
-    * CloudWatch, top, nagios, statsd, graphite, etc
-* Scaling vertically can get very expensive
-* No redundancy/failover
+* 只要單純的選擇規格比較好的機器即可
+* 透過以下指標和方式來關注何時需要進行擴展
+    * 使用基本的監控指標來決定系統瓶頸：CPU、記憶體、IO、Network
+    * 使用 CloudWatch、top、nagios、statsd、 graphite 等工具
+* 垂直擴展可能是成本很高的
+* 垂直擴展不具備容錯轉移/高可用的特性
 
-*Trade-offs, alternatives, and additional details:*
+*其他的選擇：*
 
-* The alternative to **Vertical Scaling** is [**Horizontal scaling**](https://github.com/donnemartin/system-design-primer#horizontal-scaling)
+* 相對於**垂直擴展**的另一個選擇是 [**水平擴展**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%B0%B4%E5%B9%B3%E6%93%B4%E5%B1%95)
 
 #### Start with SQL, consider NoSQL
 
