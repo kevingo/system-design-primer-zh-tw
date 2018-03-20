@@ -98,14 +98,14 @@
 
 * 相對於**垂直擴展**的另一個選擇是 [**水平擴展**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%B0%B4%E5%B9%B3%E6%93%B4%E5%B1%95)
 
-#### Start with SQL, consider NoSQL
+#### 從 SQL 資料庫開始，並且將 NoSQL 納入考量
 
-The constraints assume there is a need for relational data.  We can start off using a **MySQL Database** on the single box.
+我們的假設是這個系統是使用關連式資料，所以我們可以從一台 **MySQL 資料庫**開始規化。
 
-*Trade-offs, alternatives, and additional details:*
+*其他的選擇與細節說明：*
 
-* See the [Relational database management system (RDBMS)](https://github.com/donnemartin/system-design-primer#relational-database-management-system-rdbms) section
-* Discuss reasons to use [SQL or NoSQL](https://github.com/donnemartin/system-design-primer#sql-or-nosql)
+* 參考 [關聯式資料庫 (RDBMS)](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E9%97%9C%E9%80%A3%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1rdbms) 章節
+* 討論使用 [SQL 或 NoSQL](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#sql-%E6%88%96-nosql) 的理由
 
 #### Assign a public static IP
 
