@@ -133,19 +133,19 @@
 
 * 參考 [資訊安全](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E8%B3%87%E8%A8%8A%E5%AE%89%E5%85%A8) 章節
 
-## Step 4: Scale the design
+## 步驟四：擴展你的設計
 
-> Identify and address bottlenecks, given the constraints.
+> 根據你設定的限制條件，提出目前設計架構上的瓶頸，並提出解決方法
 
 ### Users+
 
 ![Imgur](http://i.imgur.com/rrfjMXB.png)
 
-#### Assumptions
+#### 假設
 
-Our user count is starting to pick up and the load is increasing on our single box.  Our **Benchmarks/Load Tests** and **Profiling** are pointing to the **MySQL Database** taking up more and more memory and CPU resources, while the user content is filling up disk space.
+我們的使用者數量開始增加，一台機器的負擔越來越大。根據我們的**監控與負載測試**顯示， **MySQL 資料庫**的記憶體和 CPU 資源負擔逐漸增加，同時使用者的資料佔滿了我們的硬碟。
 
-We've been able to address these issues with **Vertical Scaling** so far.  Unfortunately, this has become quite expensive and it doesn't allow for independent scaling of the **MySQL Database** and **Web Server**.
+我們現在已經可以使用**垂直擴展**的方式來解決這樣的問題，但是，這種方式成本很高，而且它無法針對單ㄧ**MySQL 資料庫**或**網頁伺服器**來進行擴展。
 
 #### Goals
 
