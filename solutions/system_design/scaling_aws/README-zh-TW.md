@@ -94,7 +94,7 @@
 * 垂直擴展可能是成本很高的
 * 垂直擴展不具備容錯轉移/高可用的特性
 
-*其他的選擇：*
+*其他的選擇或相關細節：*
 
 * 相對於**垂直擴展**的另一個選擇是 [**水平擴展**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%B0%B4%E5%B9%B3%E6%93%B4%E5%B1%95)
 
@@ -102,7 +102,7 @@
 
 我們的假設是這個系統是使用關連式資料，所以我們可以從一台 **MySQL 資料庫**開始規化。
 
-*其他的選擇與細節說明：*
+*其他的選擇或相關細節：*
 
 * 參考 [關聯式資料庫 (RDBMS)](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E9%97%9C%E9%80%A3%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1rdbms) 章節
 * 討論使用 [SQL 或 NoSQL](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#sql-%E6%88%96-nosql) 的理由
