@@ -112,13 +112,13 @@
 * IP 可以提供一個公開的 IP 位置，不會隨著你重開機 IP 就變更
 * 綁定一個 IP 位置可以幫助你的服務具有容錯功能，當發生問題時，只要指向另外一個 IP 位置即可
 
-#### Use a DNS
+#### 使用 DNS
 
-Add a **DNS** such as Route 53 to map the domain to the instance's public IP.
+使用像是 Route 53 這樣的 **DNS** 服務來將域名指向伺服器的公開 IP 位置。
 
-*Trade-offs, alternatives, and additional details:*
+*其他的選擇或相關細節：*
 
-* See the [Domain name system](https://github.com/donnemartin/system-design-primer#domain-name-system) section
+* 參考 [域名系統](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%B5%B1) 章節
 
 #### Secure the web server
 
