@@ -120,18 +120,18 @@
 
 * 參考 [域名系統](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%B5%B1) 章節
 
-#### Secure the web server
+#### 保護網頁伺服器
 
-* Open up only necessary ports
-    * Allow the web server to respond to incoming requests from:
-        * 80 for HTTP
-        * 443 for HTTPS
-        * 22 for SSH to only whitelisted IPs
-    * Prevent the web server from initiating outbound connections
+* 在防火牆部分只開啟需要的 port
+    * 伺服器只允許來自底下幾個 port 得請求
+        * HTTP 80
+        * HTTPS 443
+        * 只允許某些白名單上的 IP 位置使用 22 port 來 ssh 到這台機器
+    * 避免伺服器任意的對外連線
 
-*Trade-offs, alternatives, and additional details:*
+*其他的選擇或相關細節：*
 
-* See the [Security](https://github.com/donnemartin/system-design-primer#security) section
+* 參考 [資訊安全](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E8%B3%87%E8%A8%8A%E5%AE%89%E5%85%A8) 章節
 
 ## Step 4: Scale the design
 
