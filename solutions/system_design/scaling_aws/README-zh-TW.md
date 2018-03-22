@@ -147,15 +147,15 @@
 
 我們現在已經可以使用**垂直擴展**的方式來解決這樣的問題，但是，這種方式成本很高，而且它無法針對單ㄧ**MySQL 資料庫**或**網頁伺服器**來進行擴展。
 
-#### Goals
+#### 目標
 
-* Lighten load on the single box and allow for independent scaling
-    * Store static content separately in an **Object Store**
-    * Move the **MySQL Database** to a separate box
-* Disadvantages
-    * These changes would increase complexity and would require changes to the **Web Server** to point to the **Object Store** and the **MySQL Database**
-    * Additional security measures must be taken to secure the new components
-    * AWS costs could also increase, but should be weighed with the costs of managing similar systems on your own
+* 減輕單一機器的負擔，並且允許單獨縮放
+    * 將靜態的內容單獨儲存在**物件儲存資料庫**中。
+    * 將 **MySQL 資料庫**移到單獨的機器
+* 缺點
+    * 這個改變會增加系統複雜度，同時**網頁伺服器**會需要可以連接到**物件儲存資料庫**和 **MySQL 資料庫**。
+    * 必須採取額外的安全措施來保護新的元件的安全
+    * AWS 的成本可能也會增加，但同時你也需要考量自己管理類似系統的成本
 
 #### Store static content separately
 
