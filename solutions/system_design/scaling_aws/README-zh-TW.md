@@ -157,17 +157,17 @@
     * 必須採取額外的安全措施來保護新的元件的安全
     * AWS 的成本可能也會增加，但同時你也需要考量自己管理類似系統的成本
 
-#### Store static content separately
+#### 將靜態資獨立儲存
 
-* Consider using a managed **Object Store** like S3 to store static content
-    * Highly scalable and reliable
-    * Server side encryption
-* Move static content to S3
-    * User files
+* 考慮使用受託的**物件儲存服務**，像是 S3 來儲存靜態資料
+    * 具有高度可擴展和高可靠的優點
+    * 具有伺服器端加密功能
+* 考慮將以下資料移至 S3
+    * 使用者靜態資料
     * JS
     * CSS
-    * Images
-    * Videos
+    * 圖片
+    * 影片
 
 #### Move the MySQL database to a separate box
 
