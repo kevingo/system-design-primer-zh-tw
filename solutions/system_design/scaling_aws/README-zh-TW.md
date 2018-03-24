@@ -193,9 +193,9 @@
 
 ![Imgur](http://i.imgur.com/raoFTXM.png)
 
-#### Assumptions
+#### 狀態假設
 
-Our **Benchmarks/Load Tests** and **Profiling** show that our single **Web Server** bottlenecks during peak hours, resulting in slow responses and in some cases, downtime.  As the service matures, we'd also like to move towards higher availability and redundancy.
+根據我們的**監控與壓力測試**顯示，在尖峰時段，**單一台網頁伺服器**已經成為系統的瓶頸了，在某些情境下，它的回應時間變慢，在系統越來越成熟的情況下，我們應該要朝向更加高可用和高擴展的目標前進
 
 #### Goals
 
