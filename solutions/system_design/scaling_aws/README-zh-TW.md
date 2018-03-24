@@ -169,25 +169,25 @@
     * 圖片
     * 影片
 
-#### Move the MySQL database to a separate box
+#### 將 MySQL 資料庫轉移至單獨的機器
 
-* Consider using a service like RDS to manage the **MySQL Database**
-    * Simple to administer, scale
-    * Multiple availability zones
-    * Encryption at rest
+* 考慮使用像是 RDS 這樣受託的 **MySQL 資料庫**
+    * 管理上簡單，並且容易擴展
+    * 多可用區域
+    * 加密靜態的資料
 
-#### Secure the system
+#### 保護系統資訊安全
 
-* Encrypt data in transit and at rest
-* Use a Virtual Private Cloud
-    * Create a public subnet for the single **Web Server** so it can send and receive traffic from the internet
-    * Create a private subnet for everything else, preventing outside access
-    * Only open ports from whitelisted IPs for each component
-* These same patterns should be implemented for new components in the remainder of the exercise
+* 加密傳輸中和被儲存的資料
+* 使用虛擬私有網路
+    * 將**網頁伺服器**設置於一個公開的子網路，讓他可以傳送和接收從 Internet 上來的流量
+    * 其他的部分建立一個私有網路，避免對外連線
+    * 每個伺服器或資料庫只開放特定的 port 給白名單上的 IP 進行連線
+* 在剩下的系統架構練習題中，這樣的模式同樣應該運用到新的資源上
 
-*Trade-offs, alternatives, and additional details:*
+*其他的選擇或相關細節：*
 
-* See the [Security](https://github.com/donnemartin/system-design-primer#security) section
+* 閱讀 [資訊安全](https://github.com/donnemartin/system-design-primer#security) 章節
 
 ### Users++
 
