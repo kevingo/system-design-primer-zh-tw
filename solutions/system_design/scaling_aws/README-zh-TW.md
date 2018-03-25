@@ -197,26 +197,26 @@
 
 根據我們的**監控與壓力測試**顯示，在尖峰時段，**單一台網頁伺服器**已經成為系統的瓶頸了，在某些情境下，它的回應時間變慢，在系統越來越成熟的情況下，我們應該要朝向更加高可用和高擴展的目標前進
 
-#### Goals
+#### 目標
 
-* The following goals attempt to address the scaling issues with the **Web Server**
-    * Based on the **Benchmarks/Load Tests** and **Profiling**, you might only need to implement one or two of these techniques
-* Use [**Horizontal Scaling**](https://github.com/donnemartin/system-design-primer#horizontal-scaling) to handle increasing loads and to address single points of failure
-    * Add a [**Load Balancer**](https://github.com/donnemartin/system-design-primer#load-balancer) such as Amazon's ELB or HAProxy
-        * ELB is highly available
-        * If you are configuring your own **Load Balancer**, setting up multiple servers in [active-active](https://github.com/donnemartin/system-design-primer#active-active) or [active-passive](https://github.com/donnemartin/system-design-primer#active-passive) in multiple availability zones will improve availability
-        * Terminate SSL on the **Load Balancer** to reduce computational load on backend servers and to simplify certificate administration
-    * Use multiple **Web Servers** spread out over multiple availability zones
-    * Use multiple **MySQL** instances in [**Master-Slave Failover**](https://github.com/donnemartin/system-design-primer#master-slave-replication) mode across multiple availability zones to improve redundancy
-* Separate out the **Web Servers** from the [**Application Servers**](https://github.com/donnemartin/system-design-primer#application-layer)
-    * Scale and configure both layers independently
-    * **Web Servers** can run as a [**Reverse Proxy**](https://github.com/donnemartin/system-design-primer#reverse-proxy-web-server)
-    * For example, you can add **Application Servers** handling **Read APIs** while others handle **Write APIs**
-* Move static (and some dynamic) content to a [**Content Delivery Network (CDN)**](https://github.com/donnemartin/system-design-primer#content-delivery-network) such as CloudFront to reduce load and latency
+* 底下的目標嘗試解決**網頁伺服器**擴展的問題
+    * 根據**監控與壓力測試**的結果，你也許只要採取一到兩種做法即可
+* 使用 [**水平擴展**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%B0%B4%E5%B9%B3%E6%93%B4%E5%B1%95) 來解決流量增加的問題，並且提高可用性
+    * 增加一個 [**負載平衡器**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E8%B2%A0%E8%BC%89%E5%B9%B3%E8%A1%A1%E5%99%A8)。比如說使用 Amazon 的 ELB 或自己架設 HAProxy
+        * ELB 是高可用的
+        * 如果你打算自己架設**負載平衡器**，記得設定為 [雙主動切換模式](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E9%9B%99%E4%B8%BB%E5%8B%95%E5%88%87%E6%8F%9B%E6%A8%A1%E5%BC%8Faa-mode) 或在不同的區域設定 [主動到備用切換模式](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E4%B8%BB%E5%8B%95%E5%88%B0%E5%82%99%E7%94%A8%E5%88%87%E6%8F%9B%E6%A8%A1%E5%BC%8Fap-mode) 以達到高可用
+        * 將處理 SSL 相關工作設定在**負載平衡器**上進行，如此一來可以降低後端伺服器的工作，同時在管理憑證上也更為簡便
+    * 在多個可用區域 (availability zones) 中配置數台**網頁伺服器**
+    * 在多個可用區域中使用多台 **MySQL** 伺服器來達到 [主從複寫](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E4%B8%BB%E5%BE%9E%E8%A4%87%E5%AF%AB)
+* 將**網頁伺服器**從[**應用伺服器**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%87%89%E7%94%A8%E5%B1%A4)中分離出來
+    * 你可以分別擴展與設定這兩種類型的伺服器
+    * **網頁伺服器**可以使用[**反向代理伺服器**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%B6%B2%E9%A0%81%E4%BC%BA%E6%9C%8D%E5%99%A8)
+    * 比如說，你可以使用**應用伺服器**來處理**讀取 API** 的需求，其餘的伺服器則處理**寫入 API** 的部分
+* 將靜態 (甚至某些動態部分) 的內容移到 [CDN](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%85%A7%E5%AE%B9%E5%82%B3%E9%81%9E%E7%B6%B2%E8%B7%AFcdn) 上，像是 CloudFront，這樣可以降低讀取速度與伺服器的負擔
 
-*Trade-offs, alternatives, and additional details:*
+*其他的選擇或相關細節：*
 
-* See the linked content above for details
+* 詳細的內容請參考上述內文中的各個連結
 
 ### Users+++
 
