@@ -228,22 +228,22 @@
 
 根據我們的**監控與壓力測試**顯示，我們的服務在讀取與寫入的比例是 100:1，而我們的資料庫因為大量的讀取請求造成效能低落
 
-#### Goals
+#### 目標
 
-* The following goals attempt to address the scaling issues with the **MySQL Database**
-    * Based on the **Benchmarks/Load Tests** and **Profiling**, you might only need to implement one or two of these techniques
-* Move the following data to a [**Memory Cache**](https://github.com/donnemartin/system-design-primer#cache) such as Elasticache to reduce load and latency:
-    * Frequently accessed content from **MySQL**
-        * First, try to configure the **MySQL Database** cache to see if that is sufficient to relieve the bottleneck before implementing a **Memory Cache**
-    * Session data from the **Web Servers**
-        * The **Web Servers** become stateless, allowing for **Autoscaling**
-    * Reading 1 MB sequentially from memory takes about 250 microseconds, while reading from SSD takes 4x and from disk takes 80x longer.<sup><a href=https://github.com/donnemartin/system-design-primer#latency-numbers-every-programmer-should-know>1</a></sup>
-* Add [**MySQL Read Replicas**](https://github.com/donnemartin/system-design-primer#master-slave-replication) to reduce load on the write master
-* Add more **Web Servers** and **Application Servers** to improve responsiveness
+* **MySQL Database** 以下的目標嘗試來解決**MySQL 資料庫**擴展的問題
+    * 根據你的**監控與壓力測試**結果，你可能只需要採用底下一到兩種做法即可
+* 將底下的資料移到[**記憶體快取**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%BF%AB%E5%8F%96)中，像是 Elasticcache，這樣一來可以降低資料庫的負擔與延遲：
+    * 在 **MySQL 資料庫**中經常被存取的資料
+        * 首先，你可以先設定 **MySQL 資料庫**去快取你的資料。在實作**記憶體快取**之前，確認這樣的設計是否滿足你的需求
+    * **網頁伺服器**的 session 資料
+        * 這樣一來，**網頁伺服器**會變成無狀態模式，以利於**自動擴展**
+    * 從記憶體中循序讀取 1 MB 的資料大約需要花費 250 微秒，然而，從 SSD 中讀取則需要花 4 倍以上的時間，而從硬碟中讀取則要花費 80 倍以上的時間<sup><a href=https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%AF%8F%E5%80%8B%E9%96%8B%E7%99%BC%E8%80%85%E9%83%BD%E6%87%89%E8%A9%B2%E7%9F%A5%E9%81%93%E7%9A%84%E5%BB%B6%E9%81%B2%E6%95%B8%E9%87%8F%E7%B4%9A>1</a></sup>
+* 增加 [**MySQL 讀取副本**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E4%B8%BB%E5%BE%9E%E8%A4%87%E5%AF%AB) 來降低主資料庫的負擔
+* 增加更多**網頁伺服器**和**應用程式伺服器**來改善回應速度
 
-*Trade-offs, alternatives, and additional details:*
+*其他的選擇或相關細節：*
 
-* See the linked content above for details
+* 詳細的內容請參考上述內文中的各個連結
 
 #### Add MySQL read replicas
 
