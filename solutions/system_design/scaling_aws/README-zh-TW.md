@@ -222,11 +222,11 @@
 
 ![Imgur](http://i.imgur.com/OZCxJr0.png)
 
-**Note:** **Internal Load Balancers** not shown to reduce clutter
+**注意：** **內部負載平衡器**並沒有畫出來，避免造成整個架構過於複雜
 
-#### Assumptions
+#### 狀態假設
 
-Our **Benchmarks/Load Tests** and **Profiling** show that we are read-heavy (100:1 with writes) and our database is suffering from poor performance from the high read requests.
+根據我們的**監控與壓力測試**顯示，我們的服務在讀取與寫入的比例是 100:1，而我們的資料庫因為大量的讀取請求造成效能低落
 
 #### Goals
 
