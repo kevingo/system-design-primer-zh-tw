@@ -245,16 +245,16 @@
 
 * 詳細的內容請參考上述內文中的各個連結
 
-#### Add MySQL read replicas
+#### 增加 MySQL 可讀副本
 
-* In addition to adding and scaling a **Memory Cache**, **MySQL Read Replicas** can also help relieve load on the **MySQL Write Master**
-* Add logic to **Web Server** to separate out writes and reads
-* Add **Load Balancers** in front of **MySQL Read Replicas** (not pictured to reduce clutter)
-* Most services are read-heavy vs write-heavy
+* 除了增加並擴展**記憶體快取**之外，**MySQL 可讀副本**也可以降低主資料庫的負擔。
+* 在**網頁伺服器**調整實作邏輯，將讀寫分離
+* 在 **MySQL 可讀副本**前加上**負載平衡器**(在這裡並未畫在架構圖上)
+* 大部分的服務要不就是著重讀取，要不就是著重寫入
 
-*Trade-offs, alternatives, and additional details:*
+*其他的選擇或相關細節：*
 
-* See the [Relational database management system (RDBMS)](https://github.com/donnemartin/system-design-primer#relational-database-management-system-rdbms) section
+* 閱讀 [關連式資料庫管理系統 (RDBMS)](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E9%97%9C%E9%80%A3%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1rdbms) 章節
 
 ### Users++++
 
