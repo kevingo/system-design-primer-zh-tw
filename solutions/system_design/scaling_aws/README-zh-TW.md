@@ -260,24 +260,24 @@
 
 ![Imgur](http://i.imgur.com/3X8nmdL.png)
 
-#### Assumptions
+#### 狀態假設
 
-Our **Benchmarks/Load Tests** and **Profiling** show that our traffic spikes during regular business hours in the U.S. and drop significantly when users leave the office.  We think we can cut costs by automatically spinning up and down servers based on actual load.  We're a small shop so we'd like to automate as much of the DevOps as possible for **Autoscaling** and for the general operations.
+根據**監控與壓力測試**顯示，我們尖峰的流量集中在上班時間的美國地區，在下班後流量就急速下降。我們認為可以藉由自動的調整伺服器的數量來降低整體成本，透過**自動擴展**的機制來達到 DevOps 的自動化。
 
-#### Goals
+#### 目標
 
-* Add **Autoscaling** to provision capacity as needed
-    * Keep up with traffic spikes
-    * Reduce costs by powering down unused instances
-* Automate DevOps
-    * Chef, Puppet, Ansible, etc
-* Continue monitoring metrics to address bottlenecks
-    * **Host level** - Review a single EC2 instance
-    * **Aggregate level** - Review load balancer stats
-    * **Log analysis** - CloudWatch, CloudTrail, Loggly, Splunk, Sumo
-    * **External site performance** - Pingdom or New Relic
-    * **Handle notifications and incidents** - PagerDuty
-    * **Error Reporting** - Sentry
+* 增加**自動擴展**機制
+    * 滿足尖峰流量需求
+    * 離峰時段藉由關閉機器來降低成本
+* DevOps 自動化
+    * 使用 Chef、Puppet、Ansible 等等工具
+* 持續的監控來觀測系統瓶頸
+    * **從機器的觀點** - 檢視每個 EC2 機器
+    * **從匯總的觀點** - 檢視每個負載平衡器的狀態
+    * **Log 分析** - 使用 CloudWatch、CloudTrail、Loggly、Splunk、Sumo
+    * **外部網站性能監控** - Pingdom 或 New Relic
+    * **處理事件和通知** - PagerDuty
+    * **錯誤的報告** - Sentry
 
 #### Add autoscaling
 
