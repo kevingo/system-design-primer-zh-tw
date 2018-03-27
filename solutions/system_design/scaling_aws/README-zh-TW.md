@@ -279,21 +279,21 @@
     * **處理事件和通知** - PagerDuty
     * **錯誤的報告** - Sentry
 
-#### Add autoscaling
+#### 增加自動擴展機制
 
-* Consider a managed service such as AWS **Autoscaling**
-    * Create one group for each **Web Server** and one for each **Application Server** type, place each group in multiple availability zones
-    * Set a min and max number of instances
-    * Trigger to scale up and down through CloudWatch
-        * Simple time of day metric for predictable loads or
-        * Metrics over a time period:
-            * CPU load
-            * Latency
-            * Network traffic
-            * Custom metric
-    * Disadvantages
-        * Autoscaling can introduce complexity
-        * It could take some time before a system appropriately scales up to meet increased demand, or to scale down when demand drops
+* 考慮使用託管的服務，像是 AWS 的 **Autoscaling**
+    * 為**網頁伺服器**和**應用程式伺服器**分別設定一個自動擴展的群組，將每個群組放在多個可用區中
+    * 設定最小和最大的機器數量
+    * 透過 CloudWatch 來觸發機器的擴展或縮減
+        * 可以透過每日預估系統負載的時段來自動擴展或縮減
+        * 透過觀測以下指標來進行自動擴展或縮減
+            * CPU 負載
+            * 延遲狀況
+            * 網路流量
+            * 其他客製化的指標
+    * 缺點
+        * 自動擴展會增加複雜度
+        * 自動擴展或縮減會需要花上一點時間來滿足當前的系統需求
 
 ### Users+++++
 
