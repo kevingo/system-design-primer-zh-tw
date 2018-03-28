@@ -299,11 +299,11 @@
 
 ![Imgur](http://i.imgur.com/jj3A5N8.png)
 
-**Note:** **Autoscaling** groups not shown to reduce clutter
+**注意：** **自動擴展** 群組並沒有畫在架構圖上以避免過於混亂
 
-#### Assumptions
+#### 狀態假設
 
-As the service continues to grow towards the figures outlined in the constraints, we iteratively run **Benchmarks/Load Tests** and **Profiling** to uncover and address new bottlenecks.
+隨著服務的架構朝著我們設定的目標和限制調整，我們持續進行**監控與壓力測試**來發現並解決新的問題。
 
 #### Goals
 
