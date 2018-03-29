@@ -305,38 +305,38 @@
 
 隨著服務的架構朝著我們設定的目標和限制調整，我們持續進行**監控與壓力測試**來發現並解決新的問題。
 
-#### Goals
+#### 目標
 
-We'll continue to address scaling issues due to the problem's constraints:
+根據我們對問題的假設，持續的討論關於可擴展性的相關議題：
 
-* If our **MySQL Database** starts to grow too large, we might consider only storing a limited time period of data in the database, while storing the rest in a data warehouse such as Redshift
-    * A data warehouse such as Redshift can comfortably handle the constraint of 1 TB of new content per month
-* With 40,000 average read requests per second, read traffic for popular content can be addressed by scaling the **Memory Cache**, which is also useful for handling the unevenly distributed traffic and traffic spikes
-    * The **SQL Read Replicas** might have trouble handling the cache misses, we'll probably need to employ additional SQL scaling patterns
-* 400 average writes per second (with presumably significantly higher peaks) might be tough for a single **SQL Write Master-Slave**, also pointing to a need for additional scaling techniques
+* 如果 **MySQL 資料庫**當中儲存的資料開始變得太大，我們可能會考慮只將某個時間內的資料儲存在資料庫中，其餘的資料則放在 Redshift 這樣的資料倉儲中
+    * 像 Redshift 這樣的資料倉儲可以輕鬆的儲存每個月 1 TB 新資料的規模
+* 針對每秒平均 40,000 次的讀取需求，我們可以透過**記憶體快取**服務來解決，這對於處理不均勻流量與尖峰流量也會很有幫助
+    * **SQL 可讀副本**可能會在讀取不到快取時遇到問題，我們需要透過其他 SQL 擴展模式來解決這個問題
+* 每秒平均 400 次寫入 (尖峰時可能更高) 可能會對單一 **SQL 主從寫入**模式的資料庫產生壓力，也需要額外的擴展技術來解決
 
-SQL scaling patterns include:
+SQL 資料庫擴展模式包含以下方法：
 
-* [Federation](https://github.com/donnemartin/system-design-primer#federation)
-* [Sharding](https://github.com/donnemartin/system-design-primer#sharding)
-* [Denormalization](https://github.com/donnemartin/system-design-primer#denormalization)
-* [SQL Tuning](https://github.com/donnemartin/system-design-primer#sql-tuning)
+* [聯邦式資料庫](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E8%81%AF%E9%82%A6%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB)
+* [分片](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%88%86%E7%89%87)
+* [反正規化](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%8F%8D%E6%AD%A3%E8%A6%8F%E5%8C%96)
+* [SQL 優化](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#sql-%E5%84%AA%E5%8C%96)
 
-To further address the high read and write requests, we should also consider moving appropriate data to a [**NoSQL Database**](https://github.com/donnemartin/system-design-primer#nosql) such as DynamoDB.
+要進一步處理高讀取和寫入的請求，我們應該要考慮將適當的資料移到像是 DynamoDB 這樣的 [**NoSQL 資料庫**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#nosql)。
 
-We can further separate out our [**Application Servers**](https://github.com/donnemartin/system-design-primer#application-layer) to allow for independent scaling.  Batch processes or computations that do not need to be done in real-time can be done [**Asynchronously**](https://github.com/donnemartin/system-design-primer#asynchronism) with **Queues** and **Workers**:
+我們可以進一步將 [**應用程式伺服器**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%87%89%E7%94%A8%E5%B1%A4) 分離出來，以便於單獨擴展。批次處理或是不需要即時計算的部分可以透過 [**非同步機制**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E9%9D%9E%E5%90%8C%E6%AD%A5%E6%A9%9F%E5%88%B6) 加上**佇列**和**工作佇列**：
 
-* For example, in a photo service, the photo upload and the thumbnail creation can be separated:
-    * **Client** uploads photo
-    * **Application Server** puts a job in a **Queue** such as SQS
-    * The **Worker Service** on EC2 or Lambda pulls work off the **Queue** then:
-        * Creates a thumbnail
-        * Updates a **Database**
-        * Stores the thumbnail in the **Object Store**
+* 以一個相簿服務來說，一張照片上傳後，縮圖的顯示可以被拆解成以下步驟：
+    * **客戶端** 上傳照片
+    * **應用伺服器** 將建立縮圖的工作丟到**佇列服務**中。比如說：SQS
+    * 在 EC2 或 Lambda 上的 **Worker** 會到**佇列服務**上將工作抓取下來後處理：
+        * 建立一個縮圖
+        * 更新**資料庫**
+        * 將縮圖儲存到**物件儲存**服務上
 
-*Trade-offs, alternatives, and additional details:*
+*其他的選擇或相關細節：*
 
-* See the linked content above for details
+* 詳細的內容請參考上述內文中的各個連結
 
 ## Additional talking points
 
