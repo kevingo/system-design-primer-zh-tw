@@ -338,9 +338,9 @@ SQL 資料庫擴展模式包含以下方法：
 
 * 詳細的內容請參考上述內文中的各個連結
 
-## Additional talking points
+## 其他的重點
 
-> Additional topics to dive into, depending on the problem scope and time remaining.
+> 根據問題的範圍和剩餘的時間來深入探討其他主題
 
 ### SQL scaling patterns
 
