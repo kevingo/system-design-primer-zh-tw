@@ -375,12 +375,12 @@ SQL 資料庫擴展模式包含以下方法：
     * [事後寫入(回寫)](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E4%BA%8B%E5%BE%8C%E5%AF%AB%E5%85%A5%E5%9B%9E%E5%AF%AB)
     * [更新式快取](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%9B%B4%E6%96%B0%E5%BC%8F%E5%BF%AB%E5%8F%96)
 
-### Asynchronism and microservices
+### 非同步機制與微服務
 
-* [Message queues](https://github.com/donnemartin/system-design-primer#message-queues)
-* [Task queues](https://github.com/donnemartin/system-design-primer#task-queues)
-* [Back pressure](https://github.com/donnemartin/system-design-primer#back-pressure)
-* [Microservices](https://github.com/donnemartin/system-design-primer#microservices)
+* [訊息佇列](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E8%A8%8A%E6%81%AF%E4%BD%87%E5%88%97)
+* [工作佇列](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%B7%A5%E4%BD%9C%E4%BD%87%E5%88%97)
+* [被壓機制](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E8%83%8C%E5%A3%93%E6%A9%9F%E5%88%B6)
+* [微服務](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%BE%AE%E6%9C%8D%E5%8B%99)
 
 ### Communications
 
