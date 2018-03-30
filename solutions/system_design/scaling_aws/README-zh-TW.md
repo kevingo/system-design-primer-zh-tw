@@ -397,7 +397,7 @@ SQL 資料庫擴展模式包含以下方法：
 
 參考 [每個開發者都應該知道的延遲數量級](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%AF%8F%E5%80%8B%E9%96%8B%E7%99%BC%E8%80%85%E9%83%BD%E6%87%89%E8%A9%B2%E7%9F%A5%E9%81%93%E7%9A%84%E5%BB%B6%E9%81%B2%E6%95%B8%E9%87%8F%E7%B4%9A) 章節。
 
-### Ongoing
+### 後續步驟
 
-* Continue benchmarking and monitoring your system to address bottlenecks as they come up
-* Scaling is an iterative process
+* 持續監控系統，並進行壓力測試來解決隨時出現的系統瓶頸。
+* 擴展是一個持續迭代的過程
