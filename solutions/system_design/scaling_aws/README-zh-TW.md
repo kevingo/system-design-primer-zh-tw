@@ -85,9 +85,9 @@
     * 儲存使用者資料
     * [**MySQL 資料庫**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E9%97%9C%E9%80%A3%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1rdbms)
 
-使用 **垂直擴展**:
+使用 **垂直擴展**：
 
-* 只要單純的選擇規格比較好的機器即可
+* 只要單純的選擇規格比較好的機器即可
 * 透過以下指標和方式來關注何時需要進行擴展
     * 使用基本的監控指標來決定系統瓶頸：CPU、記憶體、IO、Network
     * 使用 CloudWatch、top、nagios、statsd、 graphite 等工具
@@ -96,7 +96,7 @@
 
 *其他的選擇或相關細節：*
 
-* 相對於**垂直擴展**的另一個選擇是 [**水平擴展**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%B0%B4%E5%B9%B3%E6%93%B4%E5%B1%95)
+* 相對於**垂直擴展**的另一個選擇是 [**水平擴展**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%B0%B4%E5%B9%B3%E6%93%B4%E5%B1%95)
 
 #### 從 SQL 資料庫開始，並且將 NoSQL 納入考量
 
@@ -122,7 +122,7 @@
 
 #### 保護網頁伺服器
 
-* 在防火牆部分只開啟需要的 port
+* 在防火牆部分只開啟需要的 port
     * 伺服器只允許來自底下幾個 port 得請求
         * HTTP 80
         * HTTPS 443
@@ -143,7 +143,7 @@
 
 #### 假設
 
-我們的使用者數量開始增加，一台機器的負擔越來越大。根據我們的**監控與負載測試**顯示， **MySQL 資料庫**的記憶體和 CPU 資源負擔逐漸增加，同時使用者的資料佔滿了我們的硬碟。
+我們的使用者數量開始增加，一台機器的負擔越來越大。根據我們的**監控與負載測試**顯示， **MySQL 資料庫**的記憶體和 CPU 資源負擔逐漸增加，同時使用者的資料佔滿了我們的硬碟。
 
 我們現在已經可以使用**垂直擴展**的方式來解決這樣的問題，但是，這種方式成本很高，而且它無法針對單ㄧ**MySQL 資料庫**或**網頁伺服器**來進行擴展。
 
@@ -205,13 +205,13 @@
     * 增加一個 [**負載平衡器**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E8%B2%A0%E8%BC%89%E5%B9%B3%E8%A1%A1%E5%99%A8)。比如說使用 Amazon 的 ELB 或自己架設 HAProxy
         * ELB 是高可用的
         * 如果你打算自己架設**負載平衡器**，記得設定為 [雙主動切換模式](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E9%9B%99%E4%B8%BB%E5%8B%95%E5%88%87%E6%8F%9B%E6%A8%A1%E5%BC%8Faa-mode) 或在不同的區域設定 [主動到備用切換模式](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E4%B8%BB%E5%8B%95%E5%88%B0%E5%82%99%E7%94%A8%E5%88%87%E6%8F%9B%E6%A8%A1%E5%BC%8Fap-mode) 以達到高可用
-        * 將處理 SSL 相關工作設定在**負載平衡器**上進行，如此一來可以降低後端伺服器的工作，同時在管理憑證上也更為簡便
-    * 在多個可用區域 (availability zones) 中配置數台**網頁伺服器**
+        * 將處理 SSL 相關工作設定在**負載平衡器**上進行，如此一來可以降低後端伺服器的工作，同時在管理憑證上也更為簡便
+    * 在多個可用區域 (availability zones) 中配置數台**網頁伺服器**
     * 在多個可用區域中使用多台 **MySQL** 伺服器來達到 [主從複寫](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E4%B8%BB%E5%BE%9E%E8%A4%87%E5%AF%AB)
 * 將**網頁伺服器**從[**應用伺服器**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%87%89%E7%94%A8%E5%B1%A4)中分離出來
     * 你可以分別擴展與設定這兩種類型的伺服器
     * **網頁伺服器**可以使用[**反向代理伺服器**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%B6%B2%E9%A0%81%E4%BC%BA%E6%9C%8D%E5%99%A8)
-    * 比如說，你可以使用**應用伺服器**來處理**讀取 API** 的需求，其餘的伺服器則處理**寫入 API** 的部分
+    * 比如說，你可以使用**應用伺服器**來處理**讀取 API** 的需求，其餘的伺服器則處理**寫入 API** 的部分
 * 將靜態 (甚至某些動態部分) 的內容移到 [CDN](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%85%A7%E5%AE%B9%E5%82%B3%E9%81%9E%E7%B6%B2%E8%B7%AFcdn) 上，像是 CloudFront，這樣可以降低讀取速度與伺服器的負擔
 
 *其他的選擇或相關細節：*
@@ -222,7 +222,7 @@
 
 ![Imgur](http://i.imgur.com/OZCxJr0.png)
 
-**注意：** **內部負載平衡器**並沒有畫出來，避免造成整個架構過於複雜
+**注意：** **內部負載平衡器**並沒有畫出來，避免造成整個架構過於複雜
 
 #### 狀態假設
 
@@ -231,7 +231,7 @@
 #### 目標
 
 * **MySQL Database** 以下的目標嘗試來解決**MySQL 資料庫**擴展的問題
-    * 根據你的**監控與壓力測試**結果，你可能只需要採用底下一到兩種做法即可
+    * 根據你的**監控與壓力測試**結果，你可能只需要採用底下一到兩種做法即可
 * 將底下的資料移到[**記憶體快取**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%BF%AB%E5%8F%96)中，像是 Elasticcache，這樣一來可以降低資料庫的負擔與延遲：
     * 在 **MySQL 資料庫**中經常被存取的資料
         * 首先，你可以先設定 **MySQL 資料庫**去快取你的資料。在實作**記憶體快取**之前，確認這樣的設計是否滿足你的需求
