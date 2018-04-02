@@ -26,39 +26,39 @@
 #### 不包含在此範圍
 
 * **服務本身**將 tweets 推送到 Twitter Firehose 或其他串流服務
-* **Service** strips out tweets based on user's visibility settings 服務本身根據使用者的隱私設定來決定 tweets 的可見性
+* **服務本身**根據使用者的隱私設定來決定 tweets 的可見性
     * 如果使用者沒有追蹤被回覆的人，隱藏 @reply 的 tweet
     * 這是根據 '隱藏 retweets' 的設定
 * 分析功能
 
-### Constraints and assumptions
+### 限制與假設
 
-#### State assumptions
+#### 狀態假設
 
-General
+一般假設
 
-* Traffic is not evenly distributed
-* Posting a tweet should be fast
-    * Fanning out a tweet to all of your followers should be fast, unless you have millions of followers
-* 100 million active users
-* 500 million tweets per day or 15 billion tweets per month
-    * Each tweet averages a fanout of 10 deliveries
-    * 5 billion total tweets delivered on fanout per day
-    * 150 billion tweets delivered on fanout per month
-* 250 billion read requests per month
-* 10 billion searches per month
+* 流量不是均勻分布的
+* 撰寫一則 tweet 是很快速的
+    * 除非你有數百萬個跟隨者，否則向所有的跟隨者發送 tweets 應該很快
+* 一億個活躍使用者
+* 每天 5 億個 tweets 或每月 150 億個 tweets
+    * 每則 tweet 平均被轉發給 10 個使用者
+    * 平均每天發送 50 億則 tweets
+    * 每個月平個發送 1500 億則 tweets
+* 每月 250 億次讀取請求
+* 每月 100 億次搜尋請求
 
 Timeline
 
-* Viewing the timeline should be fast
-* Twitter is more read heavy than write heavy
-    * Optimize for fast reads of tweets
-* Ingesting tweets is write heavy
+* 瀏覽 timeline 應該要很快
+* Twitter 服務的讀取請求應該大於寫入請求
+    * 架構上應該要朝向快速讀取 tweets 來設計
+* 採集 tweets 是以寫入請求為主
 
-Search
+搜尋
 
-* Searching should be fast
-* Search is read-heavy
+* 搜尋應該要很快
+* 搜尋主要是以讀取請求為主
 
 #### Calculate usage
 
