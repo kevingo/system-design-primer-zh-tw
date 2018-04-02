@@ -4,32 +4,32 @@
 
 **設計 Facebook feed** 以及**搜尋**功能和本篇是類似的問題。
 
-## Step 1: Outline use cases and constraints
+## 步驟一：描述使用情境與限制
 
-> Gather requirements and scope the problem.
-> Ask questions to clarify use cases and constraints.
-> Discuss assumptions.
+> 蒐集問題的需求、資訊和範圍。
+> 透過詢問問題來瞭解使用情境和限制。
+> 討論你的假設。
 
-Without an interviewer to address clarifying questions, we'll define some use cases and constraints.
+在這裡沒有面試者會幫你釐清上面的問題，所以我們會預先定義一些使用情境和限制。
 
-### Use cases
+### 使用情境
 
-#### We'll scope the problem to handle only the following use cases
+#### 我們將所要解決的問題限縮在以下範圍
 
-* **User** posts a tweet
-    * **Service** pushes tweets to followers, sending push notifications and emails
-* **User** views the user timeline (activity from the user)
-* **User** views the home timeline (activity from people the user is following)
-* **User** searches keywords
-* **Service** has high availability
+* **使用者**撰寫一則 tweet 訊息
+    * **服務本身**會透過通知機制和 email 來推送 tweets 給跟隨者
+*  **使用者**會瀏覽 timeline (使用者的活動狀況)
+* **使用者**檢視自己的 timeline 首頁 (會顯示其跟隨者的活動狀態)
+* **使用者**搜尋關鍵子
+* **服務**本身為高可用
 
-#### Out of scope
+#### 不包含在此範圍
 
-* **Service** pushes tweets to the Twitter Firehose and other streams
-* **Service** strips out tweets based on user's visibility settings
-    * Hide @reply if the user is not also following the person being replied to
-    * Respect 'hide retweets' setting
-* Analytics
+* **服務本身**將 tweets 推送到 Twitter Firehose 或其他串流服務
+* **Service** strips out tweets based on user's visibility settings 服務本身根據使用者的隱私設定來決定 tweets 的可見性
+    * 如果使用者沒有追蹤被回覆的人，隱藏 @reply 的 tweet
+    * 這是根據 '隱藏 retweets' 的設定
+* 分析功能
 
 ### Constraints and assumptions
 
