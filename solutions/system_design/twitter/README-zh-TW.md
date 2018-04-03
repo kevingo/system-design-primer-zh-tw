@@ -20,7 +20,7 @@
     * **服務本身**會透過通知機制和 email 來推送 tweets 給跟隨者
 *  **使用者**會瀏覽 timeline (使用者的活動狀況)
 * **使用者**檢視自己的 timeline 首頁 (會顯示其跟隨者的活動狀態)
-* **使用者**搜尋關鍵子
+* **使用者**搜尋關鍵字
 * **服務**本身為高可用
 
 #### 不包含在此範圍
@@ -60,33 +60,33 @@ Timeline
 * 搜尋應該要很快
 * 搜尋主要是以讀取請求為主
 
-#### Calculate usage
+#### 計算使用量
 
-**Clarify with your interviewer if you should run back-of-the-envelope usage calculations.**
+**向你的面試人員詢問你是否可以用比較粗略的方式來計算使用量**
 
-* Size per tweet:
+* 每一則 tweet 的大小：
     * `tweet_id` - 8 bytes
     * `user_id` - 32 bytes
     * `text` - 140 bytes
     * `media` - 10 KB average
-    * Total: ~10 KB
-* 150 TB of new tweet content per month
-    * 10 KB per tweet * 500 million tweets per day * 30 days per month
-    * 5.4 PB of new tweet content in 3 years
-* 100 thousand read requests per second
-    * 250 billion read requests per month * (400 requests per second / 1 billion requests per month)
-* 6,000 tweets per second
-    * 15 billion tweets per month * (400 requests per second / 1 billion requests per month)
-* 60 thousand tweets delivered on fanout per second
-    * 150 billion tweets delivered on fanout per month * (400 requests per second / 1 billion requests per month)
+    * 總共：~10 KB
+* 每月新 tweets 的大小為 150 TB
+    * 每條 tweet 10 KB * 每天 5 億條 * 每月 30 天
+    * 三年總共 5.4 PB
+* 每秒 10 萬次的讀取請求
+    * 每月 250 億次讀取請求 * (每秒 400 次請求 / 每月 10 億次請求)
+* 每秒 6000 個 tweets
+    * 每月 150 億次 tweets * (每秒 400 次請求 / 每月 10 億次請求)
+* 每秒 fanout 的 tweets 有 6 萬則
+    * 每月 fanout 1500 億則 tweets * (每秒 400 次請求 / 每月 10 億次請求)
 * 4,000 search requests per second
 
-Handy conversion guide:
+一些筆記：
 
-* 2.5 million seconds per month
-* 1 request per second = 2.5 million requests per month
-* 40 requests per second = 100 million requests per month
-* 400 requests per second = 1 billion requests per month
+* 每月 250 萬秒
+* 每秒 1 次請求 = 每月 250 萬次請求
+* 每秒 40 次請求 = 每月 1 億次請求
+* 每秒 400 次請求 = 每月 10 億 次請求
 
 ## Step 2: Create a high level design
 
