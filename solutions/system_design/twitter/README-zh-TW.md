@@ -94,11 +94,11 @@ Timeline
 
 ![Imgur](http://i.imgur.com/48tEA2j.png)
 
-## Step 3: Design core components
+## 步驟三：設計核心元件
 
-> Dive into details for each core component.
+> 深入每個核心元件的細節
 
-### Use case: User posts a tweet
+### 使用案例：使用者張貼一則 tweet
 
 We could store the user's own tweets to populate the user timeline (activity from the user) in a [relational database](https://github.com/donnemartin/system-design-primer#relational-database-management-system-rdbms).  We should discuss the [use cases and tradeoffs between choosing SQL or NoSQL](https://github.com/donnemartin/system-design-primer#sql-or-nosql).
 
