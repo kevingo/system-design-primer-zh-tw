@@ -100,27 +100,27 @@ Timeline
 
 ### 使用案例：使用者張貼一則 tweet
 
-We could store the user's own tweets to populate the user timeline (activity from the user) in a [relational database](https://github.com/donnemartin/system-design-primer#relational-database-management-system-rdbms).  We should discuss the [use cases and tradeoffs between choosing SQL or NoSQL](https://github.com/donnemartin/system-design-primer#sql-or-nosql).
+我們可以在 [關連式資料庫](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E9%97%9C%E9%80%A3%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1rdbms) 中儲存使用者自己的 tweet 在其 timeline 上 (這是使用者自己的活動列表)。而我們同時也應該討論關於 [使用 SQL 或 NoSQL 之間的權衡](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#sql-%E6%88%96-nosql)。
 
-Delivering tweets and building the home timeline (activity from people the user is following) is trickier.  Fanning out tweets to all followers (60 thousand tweets delivered on fanout per second) will overload a traditional [relational database](https://github.com/donnemartin/system-design-primer#relational-database-management-system-rdbms).  We'll probably want to choose a data store with fast writes such as a **NoSQL database** or **Memory Cache**.  Reading 1 MB sequentially from memory takes about 250 microseconds, while reading from SSD takes 4x and from disk takes 80x longer.<sup><a href=https://github.com/donnemartin/system-design-primer#latency-numbers-every-programmer-should-know>1</a></sup>
+發送 tweets 和呈現使用者的 home timeline (顯示使用者之跟隨者的 tweets) 是複雜的。當系統想要將 tweets 發送給所有的跟隨者 (每秒發送 6 萬則 tweets)，使用傳統的 [關連式資料庫](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E9%97%9C%E9%80%A3%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1rdbms) 負擔太大。我們也許會想要使用寫入比較快的 **NoSQL 資料庫** 或 **記憶體快取**。循序的從記憶體中讀取 1 MB 的資料大約需要 250 微秒，而從 SSD 讀取需要 4 倍的時間，從硬碟中讀取則需要 80 倍的時間。<sup><a href=https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%AF%8F%E5%80%8B%E9%96%8B%E7%99%BC%E8%80%85%E9%83%BD%E6%87%89%E8%A9%B2%E7%9F%A5%E9%81%93%E7%9A%84%E5%BB%B6%E9%81%B2%E6%95%B8%E9%87%8F%E7%B4%9A>1</a></sup>
 
-We could store media such as photos or videos on an **Object Store**.
+我們也可以將照片或影片儲存在 **物件資料庫** 中。
 
-* The **Client** posts a tweet to the **Web Server**, running as a [reverse proxy](https://github.com/donnemartin/system-design-primer#reverse-proxy-web-server)
-* The **Web Server** forwards the request to the **Write API** server
-* The **Write API** stores the tweet in the user's timeline on a **SQL database**
-* The **Write API** contacts the **Fan Out Service**, which does the following:
-    * Queries the **User Graph Service** to find the user's followers stored in the **Memory Cache**
-    * Stores the tweet in the *home timeline of the user's followers* in a **Memory Cache**
-        * O(n) operation:  1,000 followers = 1,000 lookups and inserts
-    * Stores the tweet in the **Search Index Service** to enable fast searching
-    * Stores media in the **Object Store**
-    * Uses the **Notification Service** to send out push notifications to followers:
-        * Uses a **Queue** (not pictured) to asynchronously send out notifications
+* **使用者**撰寫一則 tweet 到 **網頁伺服器**，這個伺服器是以 [反向代理伺服器](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%B6%B2%E9%A0%81%E4%BC%BA%E6%9C%8D%E5%99%A8) 的方式執行。
+* **網頁伺服器** 將請求轉給 **API 伺服器** 負責寫入資料
+* **API 伺服器**將使用者的 tweet 儲存在**關聯式資料庫**中。
+* **API 伺服器**同時會和**發送 tweets 的服務**進行溝通，進行以下幾項行動：
+    * 到**使用者圖形服務**進行查詢，找出使用**記憶體快取**儲存的使用者的跟隨者名單
+    * 在**記憶體快取**中儲存 tweet 到*使用者跟隨者的 timeline*
+        * O(n) 操作：1,000 跟隨者 = 1,000 次的查詢和寫入
+    * 將 tweet 儲存在**搜尋索引服務**中來加快搜尋操作
+    * 將影音儲存在**物件資料庫**中
+    * 使用**通知服務**來發送通知給跟隨者：
+        * 使用**佇列** (未畫在架構圖上) 來非同步的發送通知
 
-**Clarify with your interviewer how much code you are expected to write**.
+**向你的面試者詢問他預期你的程式碼要寫到什麼程度**.
 
-If our **Memory Cache** is Redis, we could use a native Redis list with the following structure:
+在我們使用的 Redis **記憶體快取**服務上可以使用 Redis 的 list 來儲存 tweet 資料：
 
 ```
            tweet n+2                   tweet n+1                   tweet n
@@ -128,9 +128,9 @@ If our **Memory Cache** is Redis, we could use a native Redis list with the foll
 | tweet_id  user_id  meta   | tweet_id  user_id  meta   | tweet_id  user_id  meta   |
 ```
 
-The new tweet would be placed in the **Memory Cache**, which populates user's home timeline (activity from people the user is following).
+新的 tweet 可以被放在**記憶體快取**中，用來被發佈至使用者的 home timeline (跟隨者的活動狀況)。
 
-We'll use a public [**REST API**](https://github.com/donnemartin/system-design-primer#representational-state-transfer-rest):
+我們可以使用 twitter 的 [**REST API**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%85%B7%E8%B1%A1%E7%8B%80%E6%85%8B%E8%BD%89%E7%A7%BB-rest)：
 
 ```
 $ curl -X POST --data '{ "user_id": "123", "auth_token": "ABC123", \
@@ -138,7 +138,7 @@ $ curl -X POST --data '{ "user_id": "123", "auth_token": "ABC123", \
     https://twitter.com/api/v1/tweet
 ```
 
-Response:
+回應：
 
 ```
 {
@@ -150,7 +150,7 @@ Response:
 }
 ```
 
-For internal communications, we could use [Remote Procedure Calls](https://github.com/donnemartin/system-design-primer#remote-procedure-call-rpc).
+內部通訊上，我們可以使用 [遠端程式呼叫](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E9%81%A0%E7%AB%AF%E7%A8%8B%E5%BC%8F%E5%91%BC%E5%8F%AB-rpc) 的方式。
 
 ### Use case: User views the home timeline
 
