@@ -187,13 +187,13 @@ $ curl https://twitter.com/api/v1/home_timeline?user_id=123
 },
 ```
 
-### Use case: User views the user timeline
+### 使用案例：使用者瀏覽自己的 timeline
 
-* The **Client** posts a home timeline request to the **Web Server**
-* The **Web Server** forwards the request to the **Read API** server
-* The **Read API** retrieves the user timeline from the **SQL Database**
+* **客戶端**發送一個 home timeline 的請求到 **網站伺服器**
+* **網站伺服器**將請求轉送到 **API 伺服器**
+* **API 伺服器**從 **SQL 資料庫**將自己的 timelime 資訊取出
 
-The REST API would be similar to the home timeline, except all tweets would come from the user as opposed to the people the user is following.
+REST API 的部分和 home timeline 類似，除了要抓出來的 tweets 是自己發送的，而不是跟隨者的 tweets。
 
 ### Use case: User searches keywords
 
