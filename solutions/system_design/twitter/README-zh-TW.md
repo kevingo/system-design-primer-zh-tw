@@ -152,22 +152,22 @@ $ curl -X POST --data '{ "user_id": "123", "auth_token": "ABC123", \
 
 內部通訊上，我們可以使用 [遠端程式呼叫](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E9%81%A0%E7%AB%AF%E7%A8%8B%E5%BC%8F%E5%91%BC%E5%8F%AB-rpc) 的方式。
 
-### Use case: User views the home timeline
+### 使用案例：使用者瀏覽 home timeline
 
-* The **Client** posts a home timeline request to the **Web Server**
-* The **Web Server** forwards the request to the **Read API** server
-* The **Read API** server contacts the **Timeline Service**, which does the following:
-    * Gets the timeline data stored in the **Memory Cache**, containing tweet ids and user ids - O(1)
-    * Queries the **Tweet Info Service** with a [multiget](http://redis.io/commands/mget) to obtain additional info about the tweet ids - O(n)
-    * Queries the **User Info Service** with a multiget to obtain additional info about the user ids - O(n)
+* **客戶端**將一個 home timeline 的請求發送給**網頁伺服器**
+* **網頁伺服器**將請求轉發給**負責讀取請求的 API 伺服器**
+* **負責讀取請求的 API 伺服器**會呼叫 **timeline 服務**，進行以下操作：
+    * 從**記憶體快取**中取得 timeline 資料，包含 tweet id 和使用者 id
+    * 透過 **Tweet Info 服務**，使用 [multiget](http://redis.io/commands/mget) 指令來取得每個 tweet 的額外資訊 - O(n)
+    * 透過 **使用者資訊服務**，使用  [multiget](http://redis.io/commands/mget) 指令來取得每個使用者的額外茲訓 - O(n)
 
-REST API:
+REST API：
 
 ```
 $ curl https://twitter.com/api/v1/home_timeline?user_id=123
 ```
 
-Response:
+回應：
 
 ```
 {
