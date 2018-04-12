@@ -159,7 +159,7 @@ $ curl -X POST --data '{ "user_id": "123", "auth_token": "ABC123", \
 * **負責讀取請求的 API 伺服器**會呼叫 **timeline 服務**，進行以下操作：
     * 從**記憶體快取**中取得 timeline 資料，包含 tweet id 和使用者 id
     * 透過 **Tweet Info 服務**，使用 [multiget](http://redis.io/commands/mget) 指令來取得每個 tweet 的額外資訊 - O(n)
-    * 透過 **使用者資訊服務**，使用  [multiget](http://redis.io/commands/mget) 指令來取得每個使用者的額外茲訓 - O(n)
+    * 透過 **使用者資訊服務**，使用  [multiget](http://redis.io/commands/mget) 指令來取得每個使用者的額外資訊 - O(n)
 
 REST API：
 
