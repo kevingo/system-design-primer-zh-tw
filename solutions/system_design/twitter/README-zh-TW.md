@@ -195,28 +195,28 @@ $ curl https://twitter.com/api/v1/home_timeline?user_id=123
 
 REST API 的部分和 home timeline 類似，除了要抓出來的 tweets 是自己發送的，而不是跟隨者的 tweets。
 
-### Use case: User searches keywords
+### 使用案例：使用者搜尋關鍵字
 
-* The **Client** sends a search request to the **Web Server**
-* The **Web Server** forwards the request to the **Search API** server
-* The **Search API** contacts the **Search Service**, which does the following:
-    * Parses/tokenizes the input query, determining what needs to be searched
-        * Removes markup
-        * Breaks up the text into terms
-        * Fixes typos
-        * Normalizes capitalization
-        * Converts the query to use boolean operations
-    * Queries the **Search Cluster** (ie [Lucene](https://lucene.apache.org/)) for the results:
-        * [Scatter gathers](https://github.com/donnemartin/system-design-primer#under-development) each server in the cluster to determine if there are any results for the query
-        * Merges, ranks, sorts, and returns the results
+* **客戶端**會發送搜尋請求到**網頁伺服器**
+* **網頁伺服器**會轉發請求到**搜尋 API**
+* **搜尋 API** 透過**搜尋服務**進行以下行為：
+    * 將搜尋語句進行分析/斷詞，決定哪一部分需要被搜尋：
+        * 刪除標記
+        * 將長文句分解成詞
+        * 修正錯字
+        * 將大小寫歸一化
+        * 將查詢語句轉換成布林操作
+    * 透過**搜尋集群服務** (例如： [Lucene](https://lucene.apache.org/)) 來查詢結果：
+        * 透過 [Scatter gathers](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E4%BB%8D%E5%9C%A8%E9%80%B2%E8%A1%8C%E4%B8%AD) 方法來搜尋集群中的每台伺服器來查詢是否有任何搜尋回傳結果
+        * 合併結果、排序並回傳結果
 
-REST API:
+REST API：
 
 ```
 $ curl https://twitter.com/api/v1/search?query=hello+world
 ```
 
-The response would be similar to that of the home timeline, except for tweets matching the given query.
+除了回傳比對到的 tweets 之外，這部分的回傳值應該和 home timeline 類似。
 
 ## Step 4: Scale the design
 
