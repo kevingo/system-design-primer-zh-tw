@@ -218,62 +218,63 @@ $ curl https://twitter.com/api/v1/search?query=hello+world
 
 除了回傳比對到的 tweets 之外，這部分的回傳值應該和 home timeline 類似。
 
-## Step 4: Scale the design
+## 步驟四：擴展你的設計
 
-> Identify and address bottlenecks, given the constraints.
+> 根據你設定的限制條件，提出目前設計架構上的瓶頸，並提出解決方法
 
 ![Imgur](http://i.imgur.com/jrUBAF7.png)
 
-**Important: Do not simply jump right into the final design from the initial design!**
+**重要提醒：不要一開始就從最初的設計跳到最後階段**
 
-State you would 1) **Benchmark/Load Test**, 2) **Profile** for bottlenecks 3) address bottlenecks while evaluating alternatives and trade-offs, and 4) repeat.  See [Design a system that scales to millions of users on AWS](../scaling_aws/README.md) as a sample on how to iteratively scale the initial design.
+描述你如何進行 1) **負載壓力測試**、2) **描述瓶頸**、3) 解決瓶頸，並提出替代方案、4) 重複以上步驟。可以參考 [在 AWS 上設計可以乘載百萬使用者的系統](../scaling_aws/README.md) 章節作為參考，學習如何一步一步來擴展你的初始架構設計。
 
-It's important to discuss what bottlenecks you might encounter with the initial design and how you might address each of them.  For example, what issues are addressed by adding a **Load Balancer** with multiple **Web Servers**?  **CDN**?  **Master-Slave Replicas**?  What are the alternatives and **Trade-Offs** for each?
+針對初始設計所會遇到的瓶頸進行討論，並且知道如何解決是很重要的。舉例來說，你可以透過增加一台**負載平衡器**來加入多個**網頁伺服器**來解決什麼問題？**CDN**呢？**主-從架構**？每個選擇的替代方案和權衡條件是什麼？
 
-We'll introduce some components to complete the design and to address scalability issues.  Internal load balancers are not shown to reduce clutter.
+我們會介紹一些元件來使系統設計更完整，並且解決擴展性的問題。這裡沒有顯示內部負載平衡器，以免讓整個架構太混亂。
 
-*To avoid repeating discussions*, refer to the following [system design topics](https://github.com/donnemartin/system-design-primer#index-of-system-design-topics) for main talking points, tradeoffs, and alternatives:
+*為了避免重複贅述*，請參考 [系統設計主題索引](https://github.com/donnemartin/system-design-primer#index-of-system-design-topics) 中提到的各種架構的取捨與選擇：
 
 * [DNS](https://github.com/donnemartin/system-design-primer#domain-name-system)
 * [CDN](https://github.com/donnemartin/system-design-primer#content-delivery-network)
-* [Load balancer](https://github.com/donnemartin/system-design-primer#load-balancer)
-* [Horizontal scaling](https://github.com/donnemartin/system-design-primer#horizontal-scaling)
-* [Web server (reverse proxy)](https://github.com/donnemartin/system-design-primer#reverse-proxy-web-server)
-* [API server (application layer)](https://github.com/donnemartin/system-design-primer#application-layer)
-* [Cache](https://github.com/donnemartin/system-design-primer#cache)
-* [Relational database management system (RDBMS)](https://github.com/donnemartin/system-design-primer#relational-database-management-system-rdbms)
-* [SQL write master-slave failover](https://github.com/donnemartin/system-design-primer#fail-over)
-* [Master-slave replication](https://github.com/donnemartin/system-design-primer#master-slave-replication)
-* [Consistency patterns](https://github.com/donnemartin/system-design-primer#consistency-patterns)
-* [Availability patterns](https://github.com/donnemartin/system-design-primer#availability-patterns)
+* [負載平衡器](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E8%B2%A0%E8%BC%89%E5%B9%B3%E8%A1%A1%E5%99%A8)
+* [水平擴展](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%B0%B4%E5%B9%B3%E6%93%B4%E5%B1%95)
+* [網頁伺服器 (反向代理)](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%B6%B2%E9%A0%81%E4%BC%BA%E6%9C%8D%E5%99%A8)
+* [API 伺服器 (應用層)](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%87%89%E7%94%A8%E5%B1%A4)
+* [快取](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%BF%AB%E5%8F%96)
+* [關聯式資料庫 (RDBMS)](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E9%97%9C%E9%80%A3%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1rdbms)
+* [SQL 主從轉移](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%AE%B9%E9%8C%AF%E8%BD%89%E7%A7%BB)
+* [主從複寫](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E4%B8%BB%E5%BE%9E%E8%A4%87%E5%AF%AB)
+* [非同步](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E9%9D%9E%E5%90%8C%E6%AD%A5%E6%A9%9F%E5%88%B6)
+* [一致性模式](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E4%B8%80%E8%87%B4%E6%80%A7%E6%A8%A1%E5%BC%8F)
+* [可用性模式](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%8F%AF%E7%94%A8%E6%80%A7%E6%A8%A1%E5%BC%8F)
 
-The **Fanout Service** is a potential bottleneck.  Twitter users with millions of followers could take several minutes to have their tweets go through the fanout process.  This could lead to race conditions with @replies to the tweet, which we could mitigate by re-ordering the tweets at serve time.
+**Fanout 服務**可能是潛在的系統瓶頸。當你有數百萬個跟隨者時，可能會需要花費好幾分鐘來完成整個 fanout 的流程。這會和 @reply 的 tweet 發生競爭 (race condition)，我們可以透過重新排列 tweets 來舒緩這種情況。
 
-We could also avoid fanning out tweets from highly-followed users.  Instead, we could search to find tweets for high-followed users, merge the search results with the user's home timeline results, then re-order the tweets at serve time.
+我們還可以避免對具有大量跟隨者的使用者進行 fanout。取而代之的，我們可以主動尋找這些熱門的使用者，將他們的搜尋結果合併後，再一次把他們的 home timeline 回傳。
 
-Additional optimizations include:
+其他優化的方式還有：
 
-* Keep only several hundred tweets for each home timeline in the **Memory Cache**
-* Keep only active users' home timeline info in the **Memory Cache**
-    * If a user was not previously active in the past 30 days, we could rebuild the timeline from the **SQL Database**
-        * Query the **User Graph Service** to determine who the user is following
-        * Get the tweets from the **SQL Database** and add them to the **Memory Cache**
-* Store only a month of tweets in the **Tweet Info Service**
-* Store only active users in the **User Info Service**
-* The **Search Cluster** would likely need to keep the tweets in memory to keep latency low
+* 在**記憶體快取**中，針對 home timeline 部分只保留數百則 tweets
+* 在**記憶體快取**中，只保留活躍使用者的資訊
+    * 如果使用者在過去三十天內沒有使用的紀錄時，我們可以從 **SQL 資料庫**中重建 home timeline 的資訊
+        * 使用 **使用者 Graph 服務**來尋找使用者的跟隨者
+        * 從 **SQL 資料庫**中把使用者的 tweets 取出並寫入**記憶體快取**中
+* 只保留一個月的 tweets 資料在 **Tweet Info 服務**中
+* 僅保留活躍的使用者在**使用者 Info 服務**中
+* **搜尋集群**可能會將 tweets 儲存在記憶體中以降低延遲
 
-We'll also want to address the bottleneck with the **SQL Database**.
+我們同樣會想要來關心 **SQL 資料庫**所面臨的瓶頸。
 
-Although the **Memory Cache** should reduce the load on the database, it is unlikely the **SQL Read Replicas** alone would be enough to handle the cache misses.  We'll probably need to employ additional SQL scaling patterns.
+儘管**記憶體快取**可以降低資料庫的負擔，但 **SQL 可讀副本**的架構不見得足夠處理快取未命中的情形。我們可能會想要採用其他 SQL 擴展的模式。
 
-The high volume of writes would overwhelm a single **SQL Write Master-Slave**, also pointing to a need for additional scaling techniques.
+大量的寫入會導致 **SQL 主從複寫**資料庫的壓力，我們也需要額外的擴展技巧。
 
-* [Federation](https://github.com/donnemartin/system-design-primer#federation)
-* [Sharding](https://github.com/donnemartin/system-design-primer#sharding)
-* [Denormalization](https://github.com/donnemartin/system-design-primer#denormalization)
-* [SQL Tuning](https://github.com/donnemartin/system-design-primer#sql-tuning)
+* [聯邦式資料庫](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E8%81%AF%E9%82%A6%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB)
+* [分片](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%88%86%E7%89%87)
+* [反正規化](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%8F%8D%E6%AD%A3%E8%A6%8F%E5%8C%96)
+* [SQL 優化](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#sql-%E5%84%AA%E5%8C%96)
 
-We should also consider moving some data to a **NoSQL Database**.
+我們也可以考慮將某些資料移到 **NoSQL 資料庫**。
 
 ## Additional talking points
 
