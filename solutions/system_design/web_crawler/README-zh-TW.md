@@ -1,32 +1,32 @@
-# Design a web crawler
+# 設計一個網路爬蟲程式
 
-*Note: This document links directly to relevant areas found in the [system design topics](https://github.com/donnemartin/system-design-primer#index-of-system-design-topics) to avoid duplication.  Refer to the linked content for general talking points, tradeoffs, and alternatives.*
+*注意：本文件某些連結直接連到 [系統設計主題的索引](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E7%B3%BB%E7%B5%B1%E8%A8%AD%E8%A8%88%E4%B8%BB%E9%A1%8C%E7%9A%84%E7%B4%A2%E5%BC%95) 來避免重複的內容。你可以參考連結來取得相關重點、設計的取捨和選擇。*
 
-## Step 1: Outline use cases and constraints
+## 步驟一：描述使用情境與限制
 
-> Gather requirements and scope the problem.
-> Ask questions to clarify use cases and constraints.
-> Discuss assumptions.
+> 蒐集問題的需求、資訊和範圍。
+> 透過詢問問題來瞭解使用情境和限制。
+> 討論你的假設。
 
-Without an interviewer to address clarifying questions, we'll define some use cases and constraints.
+在這裡沒有面試者會幫你釐清上面的問題，所以我們會預先定義一些使用情境和限制。
 
-### Use cases
+### 使用情境
 
-#### We'll scope the problem to handle only the following use cases
+#### 我們將所要解決的問題限縮在以下範圍
 
-* **Service** crawls a list of urls:
-    * Generates reverse index of words to pages containing the search terms
-    * Generates titles and snippets for pages
-        * Title and snippets are static, they do not change based on search query
-* **User** inputs a search term and sees a list of relevant pages with titles and snippets  the crawler generated
-    * Only sketch high level components and interactions for this use case, no need to go into depth
-* **Service** has high availability
+* **此服務**主要針對多個網址進行抓取內容：
+    * 產生包含搜尋關鍵字的頁面的字詞反向索引
+    * 產生搜尋結果頁面的標題和描述片段(snippet)
+        * 標題和描述片段是固定的，不會隨著搜尋字詞而變動
+* **使用者** 輸入搜尋關鍵字，透過爬蟲服務後返回搜尋結果的標題和描述片段
+    * 僅需要描繪此使用情境中的高階元件，不需要深入研究
+* **服務本身**為高可用
 
-#### Out of scope
+#### 不包含在此範圍
 
-* Search analytics
-* Personalized search results
-* Page rank
+* 搜尋分析
+* 個人化的搜尋結果
+* 網頁排名
 
 ### Constraints and assumptions
 
