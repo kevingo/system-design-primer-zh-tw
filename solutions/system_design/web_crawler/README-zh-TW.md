@@ -28,25 +28,25 @@
 * 個人化的搜尋結果
 * 網頁排名
 
-### Constraints and assumptions
+### 限制與假設
 
-#### State assumptions
+#### 狀態假設
 
-* Traffic is not evenly distributed
-    * Some searches are very popular, while others are only executed once
-* Support only anonymous users
-* Generating search results should be fast
-* The web crawler should not get stuck in an infinite loop
-    * We get stuck in an infinite loop if the graph contains a cycle
-* 1 billion links to crawl
-    * Pages need to be crawled regularly to ensure freshness
-    * Average refresh rate of about once per week, more frequent for popular sites
-        * 4 billion links crawled each month
-    * Average stored size per web page: 500 KB
-        * For simplicity, count changes the same as new pages
-* 100 billion searches per month
+* 流量不是均勻分布的
+    * 某些搜尋很熱門，但另外一些搜尋可能僅有寥寥數次
+* 只支援匿名使用者
+* 產生搜尋結果應該很快
+* 網路爬蟲程式不應該遇到無窮迴圈的問題
+    * 當 graph 包含了包含了循環時，可能會發生無窮迴圈的問題，是我們必須注意的
+* 總共包含 10 億個連結需要抓取
+    * 需要定期抓取頁面以確保資料是定期更新的
+    * 平均更新頻率為每週一次，對於熱門網站則更加頻繁
+        * 每月抓取 40 億筆連結
+    * 每個網站的儲存大小為 500 KB
+        * 為了簡單起見，新頁面和具有多個分頁的每個頁面大小假設為一樣
+* 每個月搜尋 1000 億次
 
-Exercise the use of more traditional systems - don't use existing systems such as [solr](http://lucene.apache.org/solr/) or [nutch](http://nutch.apache.org/).
+練習使用比較傳統的系統或技術 - 不要用既有的像是 [solr](http://lucene.apache.org/solr/) 或 [nutch](http://nutch.apache.org/) 框架。
 
 #### Calculate usage
 
