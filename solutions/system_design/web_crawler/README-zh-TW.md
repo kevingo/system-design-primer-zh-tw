@@ -48,22 +48,22 @@
 
 練習使用比較傳統的系統或技術 - 不要用既有的像是 [solr](http://lucene.apache.org/solr/) 或 [nutch](http://nutch.apache.org/) 框架。
 
-#### Calculate usage
+#### 計算使用量
 
-**Clarify with your interviewer if you should run back-of-the-envelope usage calculations.**
+**向你的面試人員詢問你是否可以用比較粗略的方式來計算使用量**
 
-* 2 PB of stored page content per month
-    * 500 KB per page * 4 billion links crawled per month
-    * 72 PB of stored page content in 3 years
-* 1,600 write requests per second
-* 40,000 search requests per second
+* 每月儲存 2PB 的資料
+    * 每個頁面 500 KB * 每月抓取 40 億筆連結
+    * 三年共 72 PB 的資料
+* 每秒 1,600 次寫入請求
+* 每秒 40,000 次搜尋請求
 
-Handy conversion guide:
+一些筆記：
 
-* 2.5 million seconds per month
-* 1 request per second = 2.5 million requests per month
-* 40 requests per second = 100 million requests per month
-* 400 requests per second = 1 billion requests per month
+* 每月 250 萬秒
+* 每秒 1 次請求 = 每月 250 萬次請求
+* 每秒 40 次請求 = 每月 1 億次請求
+* 每秒 400 次請求 = 每月 10 億 次請求
 
 ## Step 2: Create a high level design
 
