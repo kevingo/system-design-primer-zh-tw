@@ -71,9 +71,9 @@
 
 ![Imgur](http://i.imgur.com/xjdAAUv.png)
 
-## Step 3: Design core components
+## 步驟二：進行高階設計
 
-> Dive into details for each core component.
+> 提出所有重要元件的高階設計
 
 ### Use case: Service crawls a list of urls
 
