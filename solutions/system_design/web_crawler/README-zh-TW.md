@@ -65,23 +65,20 @@
 * 每秒 40 次請求 = 每月 1 億次請求
 * 每秒 400 次請求 = 每月 10 億 次請求
 
-## Step 2: Create a high level design
-
-> Outline a high level design with all important components.
-
-![Imgur](http://i.imgur.com/xjdAAUv.png)
-
 ## 步驟二：進行高階設計
 
 > 提出所有重要元件的高階設計
 
-### Use case: Service crawls a list of urls
+### Use case: Service crawls a list of urls 使用情境：抓取多個 URL 的內容
 
-We'll assume we have an initial list of `links_to_crawl` ranked initially based on overall site popularity.  If this is not a reasonable assumption, we can seed the crawler with popular sites that link to outside content such as [Yahoo](https://www.yahoo.com/), [DMOZ](http://www.dmoz.org/), etc
+我們假設一開始有一個根據熱門程度排序好的列表，而我們會根據這份列表來抓取網頁內容。如果這個假設不成立，或是沒有這個列表時，可以從一些其他服務來取得，例如：[Yahoo](https://www.yahoo.com/) 或 [DMOZ](http://www.dmoz.org/) 等。
 
-We'll use a table `crawled_links` to store processed links and their page signatures.
+我們建立一張資料表 `crawled_links` 來儲存抓取過後的網頁連結和它們對應的頁面標記。
 
 We could store `links_to_crawl` and `crawled_links` in a key-value **NoSQL Database**.  For the ranked links in `links_to_crawl`, we could use [Redis](https://redis.io/) with sorted sets to maintain a ranking of page links.  We should discuss the [use cases and tradeoffs between choosing SQL or NoSQL](https://github.com/donnemartin/system-design-primer#sql-or-nosql).
+
+我們可以把要抓取的網頁連結，和已經處理過的網頁連結，分別建立兩個資料表 `links_to_crawl` 和 `crawled_links`，這兩個資料表可以儲存在鍵值對的 **NoSQL 資料庫**，例如 [Redis](https://redis.io/)，儲存時可以排序來當作我們要
+
 
 * The **Crawler Service** processes each page link by doing the following in a loop:
     * Takes the top ranked page link to crawl
