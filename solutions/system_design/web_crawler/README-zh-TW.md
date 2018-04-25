@@ -69,33 +69,30 @@
 
 > 提出所有重要元件的高階設計
 
-### Use case: Service crawls a list of urls 使用情境：抓取多個 URL 的內容
+### 使用情境：抓取多個 URL 的內容
 
 我們假設一開始有一個根據熱門程度排序好的列表，而我們會根據這份列表來抓取網頁內容。如果這個假設不成立，或是沒有這個列表時，可以從一些其他服務來取得，例如：[Yahoo](https://www.yahoo.com/) 或 [DMOZ](http://www.dmoz.org/) 等。
 
 我們建立一張資料表 `crawled_links` 來儲存抓取過後的網頁連結和它們對應的頁面標記。
 
-We could store `links_to_crawl` and `crawled_links` in a key-value **NoSQL Database**.  For the ranked links in `links_to_crawl`, we could use [Redis](https://redis.io/) with sorted sets to maintain a ranking of page links.  We should discuss the [use cases and tradeoffs between choosing SQL or NoSQL](https://github.com/donnemartin/system-design-primer#sql-or-nosql).
+我們可以把要抓取的網頁連結，和已經處理過的網頁連結，分別建立兩個資料表 `links_to_crawl` 和 `crawled_links`，這兩個資料表可以儲存在鍵值對的 **NoSQL 資料庫**，例如 [Redis](https://redis.io/)，儲存時可以針對熱門程度來排序。我們也可以針對 [使用 SQL 或 NoSQL 的情況進行討論](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#sql-%E6%88%96-nosql)。
 
-我們可以把要抓取的網頁連結，和已經處理過的網頁連結，分別建立兩個資料表 `links_to_crawl` 和 `crawled_links`，這兩個資料表可以儲存在鍵值對的 **NoSQL 資料庫**，例如 [Redis](https://redis.io/)，儲存時可以排序來當作我們要
+* **爬蟲程式**會在一個迴圈中，針對每一個要抓取的頁面進行以下行為：
+    * 選取排序高的頁面進行抓取
+        * 在 **NoSQL 資料庫** 中檢查 `crawled_links` 資料表是否頁面有某些頁面具有相同的頁面標記
+            * 如果有類似的頁面標記，調整他們的優先順序一併抓取
+                * 這可以避免我們陷入一個迴圈中
+                * 繼續檢查
+            * 如果沒有的話，就直接抓取頁面
+                * 在 **反向索引服務** 佇列中增加一個抓取網頁的工作來產生 [反向索引](https://en.wikipedia.org/wiki/Search_engine_indexing)
+                * 增加一個工作到 **文件服務** 佇列中來產生靜態的標題和描述片段(snippet)
+                * 產生頁面標記
+                * 從 **NoSQL 資料庫** 的 `links_to_crawl` 資料表中將此連結移除
+                * 在 **NoSQL 資料庫** 中的 `crawled_links` 資料表中插入此網頁連結和網頁標記
 
+**向你的面試者詢問他預期你的程式碼要寫到什麼程度**.
 
-* The **Crawler Service** processes each page link by doing the following in a loop:
-    * Takes the top ranked page link to crawl
-        * Checks `crawled_links` in the **NoSQL Database** for an entry with a similar page signature
-            * If we have a similar page, reduces the priority of the page link
-                * This prevents us from getting into a cycle
-                * Continue
-            * Else, crawls the link
-                * Adds a job to the **Reverse Index Service** queue to generate a [reverse index](https://en.wikipedia.org/wiki/Search_engine_indexing)
-                * Adds a job to the **Document Service** queue to generate a static title and snippet
-                * Generates the page signature
-                * Removes the link from `links_to_crawl` in the **NoSQL Database**
-                * Inserts the page link and signature to `crawled_links` in the **NoSQL Database**
-
-**Clarify with your interviewer how much code you are expected to write**.
-
-`PagesDataStore` is an abstraction within the **Crawler Service** that uses the **NoSQL Database**:
+`PagesDataStore` 是一個在 **網頁爬蟲程式** 中抽象的類別，它用來和 **NoSQL 資料庫** 進行溝通：
 
 ```
 class PagesDataStore(object):
@@ -129,7 +126,7 @@ class PagesDataStore(object):
         ...
 ```
 
-`Page` is an abstraction within the **Crawler Service** that encapsulates a page, its contents, child urls, and signature:
+`Page` 是一個在 **網頁爬蟲程式** 中的抽象類別，用來包裝一個網頁頁面，包含了它的內容、子連結和頁面標記：
 
 ```
 class Page(object):
@@ -141,7 +138,7 @@ class Page(object):
         self.signature = signature
 ```
 
-`Crawler` is the main class within **Crawler Service**, composed of `Page` and `PagesDataStore`.
+`Crawler` 是我們 **網頁爬蟲** 的主程式，當中會用到 `Page` 和 `PagesDataStore`：
 
 ```
 class Crawler(object):
