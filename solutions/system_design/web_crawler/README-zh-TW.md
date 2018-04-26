@@ -170,16 +170,16 @@ class Crawler(object):
                 self.crawl_page(page)
 ```
 
-### Handling duplicates
+### 處理重複
 
-We need to be careful the web crawler doesn't get stuck in an infinite loop, which happens when the graph contains a cycle.
+我們需要注意讓爬蟲程式不會陷入到無窮迴圈中。當你的 Graph 結構中包含迴圈的時候就會發生這種問題。
 
-**Clarify with your interviewer how much code you are expected to write**.
+**向你的面試者詢問他預期你的程式碼要寫到什麼程度**.
 
-We'll want to remove duplicate urls:
+我們希望移除重複的網址：
 
-* For smaller lists we could use something like `sort | unique`
-* With 1 billion links to crawl, we could use **MapReduce** to output only entries that have a frequency of 1
+* `sort | unique` 對於一個小的串列集合來說，可以使用 `sort | unique` 這樣的語法
+* 但你有 10 億筆連結時，可以透過 **MapReduce** 這樣的框架來處理，取出次數為 1 的網址即可：
 
 ```
 class RemoveDuplicateUrls(MRJob):
@@ -193,7 +193,7 @@ class RemoveDuplicateUrls(MRJob):
             yield key, total
 ```
 
-Detecting duplicate content is more complex.  We could generate a signature based on the contents of the page and compare those two signatures for similarity.  Some potential algorithms are [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index) and [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity).
+要找出內容重複則是更複雜的問題。我們可以根據網頁的內容產生一些可以用計算相似程度的指標，可以參考 [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index) 和 [cosine 相似度](https://en.wikipedia.org/wiki/Cosine_similarity)。
 
 ### Determining when to update the crawl results
 
