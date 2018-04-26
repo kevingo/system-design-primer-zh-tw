@@ -203,28 +203,28 @@ class RemoveDuplicateUrls(MRJob):
 
 我們也可以支援 `Robots.txt` 檔案，讓網站管理者可以自行決定抓取的頻率。
 
-### Use case: User inputs a search term and sees a list of relevant pages with titles and snippets
+### 使用情境：使用者輸入搜尋關鍵詞來查看相關頁面的標題和描述片段
 
-* The **Client** sends a request to the **Web Server**, running as a [reverse proxy](https://github.com/donnemartin/system-design-primer#reverse-proxy-web-server)
-* The **Web Server** forwards the request to the **Query API** server
-* The **Query API** server does the following:
-    * Parses the query
-        * Removes markup
-        * Breaks up the text into terms
-        * Fixes typos
-        * Normalizes capitalization
-        * Converts the query to use boolean operations
-    * Uses the **Reverse Index Service** to find documents matching the query
-        * The **Reverse Index Service** ranks the matching results and returns the top ones
-    * Uses the **Document Service** to return titles and snippets
+* 使用者發送請求到以 [反向代理](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%B6%B2%E9%A0%81%E4%BC%BA%E6%9C%8D%E5%99%A8) 形式運作的 **網頁伺服器**
+* **網頁伺服器** 轉送請求到 **查詢 API 伺服器**
+* **查詢 API 伺服器** 會進行以下行為：
+    * 解析查詢語句
+        * 刪除標記
+        * 將查詢語句文字轉換為詞
+        * 修正錯字
+        * 將大小寫正規化
+        * 將查詢轉換為布林操作
+    * 使用 **反向索引服務** 來尋找匹配查詢詞的網頁內容
+        * **反向索引服務** 會針對匹配的結果進行排序，並回傳排名第一的結果
+    * 使用 **文件服務** 來回傳標題和描述片段
 
-We'll use a public [**REST API**](https://github.com/donnemartin/system-design-primer#representational-state-transfer-rest):
+我們可以使用公開的 [**REST API**](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%85%B7%E8%B1%A1%E7%8B%80%E6%85%8B%E8%BD%89%E7%A7%BB-rest)：
 
 ```
 $ curl https://search.com/api/v1/search?query=hello+world
 ```
 
-Response:
+回應：
 
 ```
 {
@@ -244,7 +244,7 @@ Response:
 },
 ```
 
-For internal communications, we could use [Remote Procedure Calls](https://github.com/donnemartin/system-design-primer#remote-procedure-call-rpc).
+針對內部通訊，我們可以使用 [遠端程式呼叫](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E9%81%A0%E7%AB%AF%E7%A8%8B%E5%BC%8F%E5%91%BC%E5%8F%AB-rpc)。
 
 ## Step 4: Scale the design
 
