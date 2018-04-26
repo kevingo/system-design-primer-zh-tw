@@ -195,13 +195,13 @@ class RemoveDuplicateUrls(MRJob):
 
 要找出內容重複則是更複雜的問題。我們可以根據網頁的內容產生一些可以用計算相似程度的指標，可以參考 [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index) 和 [cosine 相似度](https://en.wikipedia.org/wiki/Cosine_similarity)。
 
-### Determining when to update the crawl results
+### 決定什麼時候要更新抓取的網頁內容
 
-Pages need to be crawled regularly to ensure freshness.  Crawl results could have a `timestamp` field that indicates the last time a page was crawled.  After a default time period, say one week, all pages should be refreshed.  Frequently updated or more popular sites could be refreshed in shorter intervals.
+我們的爬蟲程式需要經常的去更新網頁內容以保持內容是最新的。我們可以保存一個 `timestamp` 欄位來標記該頁面最後抓取的時間。設定一個期間，比如說一週，所有的頁面需要被更新。較為熱門的頁面更新的頻率可以更快一些。
 
-Although we won't dive into details on analytics, we could do some data mining to determine the mean time before a particular page is updated, and use that statistic to determine how often to re-crawl the page.
+儘管我們沒有要深入討論如何進行頁面內容的分析，但我們可以做一些簡單的資料探勘來計算特定頁面更新的平均時間，並透過統計資訊來幫助我們來決定何時要重新抓取頁面。
 
-We might also choose to support a `Robots.txt` file that gives webmasters control of crawl frequency.
+我們也可以支援 `Robots.txt` 檔案，讓網站管理者可以自行決定抓取的頻率。
 
 ### Use case: User inputs a search term and sees a list of relevant pages with titles and snippets
 
