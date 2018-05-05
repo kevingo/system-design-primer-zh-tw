@@ -18,20 +18,20 @@
 * **使用者**發送一個搜尋的請求，這個請求最後所需要的資料並沒有在快取中找到
 * **服務**為高可用
 
-### Constraints and assumptions
+### 限制與假設
 
-#### State assumptions
+#### 狀態假設
 
-* Traffic is not evenly distributed
-    * Popular queries should almost always be in the cache
-    * Need to determine how to expire/refresh
-* Serving from cache requires fast lookups
-* Low latency between machines
-* Limited memory in cache
-    * Need to determine what to keep/remove
-    * Need to cache millions of queries
-* 10 million users
-* 10 billion queries per month
+* 流量不是均勻分布的
+    * 熱門的查詢結果應該會經常存在快取中
+    * 需要決定資料何時會過去/更新
+* 從快取中拿取的資料需要快速的查閱表
+* 伺服器之間的溝通必須是低延遲
+* 快取服務的記憶體是有限的
+    * 需要決定哪些資料要保存/移除
+    * 需要在快取中保存數百萬個查詢
+* 1000 萬個使用者
+* 每月 100 億次查詢
 
 #### Calculate usage
 
