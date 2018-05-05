@@ -10,13 +10,13 @@
 
 在這裡沒有面試者會幫你釐清上面的問題，所以我們會預先定義一些使用情境和限制。
 
-### Use cases
+### 使用情境
 
-#### We'll scope the problem to handle only the following use cases
+#### 我們將所要解決的問題限縮在以下範圍
 
-* **User** sends a search request resulting in a cache hit
-* **User** sends a search request resulting in a cache miss
-* **Service** has high availability
+* **使用者**發送一個搜尋的請求，這個請求最後可以在快取中找到對應資料
+* **使用者**發送一個搜尋的請求，這個請求最後所需要的資料並沒有在快取中找到
+* **服務**為高可用
 
 ### Constraints and assumptions
 
