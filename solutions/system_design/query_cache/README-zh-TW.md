@@ -54,9 +54,9 @@
 * 每秒 40 次請求 = 每月 1 億次請求
 * 每秒 400 次請求 = 每月 10 億 次請求
 
-## Step 2: Create a high level design
+## 步驟二：進行高階設計
 
-> Outline a high level design with all important components.
+> 提出所有重要元件的高階設計
 
 ![Imgur](http://i.imgur.com/KqZ3dSx.png)
 
