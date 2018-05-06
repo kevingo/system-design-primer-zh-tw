@@ -33,26 +33,26 @@
 * 1000 萬個使用者
 * 每月 100 億次查詢
 
-#### Calculate usage
+#### 計算使用量
 
-**Clarify with your interviewer if you should run back-of-the-envelope usage calculations.**
+**向你的面試人員詢問你是否可以用比較粗略的方式來計算使用量**
 
-* Cache stores ordered list of key: query, value: results
+* 快取會依序儲存以下資訊：鍵：查詢、內容值查詢結果
     * `query` - 50 bytes
     * `title` - 20 bytes
     * `snippet` - 200 bytes
-    * Total: 270 bytes
-* 2.7 TB of cache data per month if all 10 billion queries are unique and all are stored
-    * 270 bytes per search * 10 billion searches per month
-    * Assumptions state limited memory, need to determine how to expire contents
-* 4,000 requests per second
+    * 總共： 270 bytes
+* 如果 100 億次的查詢都是唯一的，並且全部儲存，則一個月會有 2.7 TB 的快取資料
+    * 每個搜尋 270 bytes * 每月 100 億次搜尋
+    * 假設記憶體有限，我們需要決定哪些內容會過期
+* 每秒 4000 次請求
 
-Handy conversion guide:
+一些筆記：
 
-* 2.5 million seconds per month
-* 1 request per second = 2.5 million requests per month
-* 40 requests per second = 100 million requests per month
-* 400 requests per second = 1 billion requests per month
+* 每月 250 萬秒
+* 每秒 1 次請求 = 每月 250 萬次請求
+* 每秒 40 次請求 = 每月 1 億次請求
+* 每秒 400 次請求 = 每月 10 億 次請求
 
 ## Step 2: Create a high level design
 
