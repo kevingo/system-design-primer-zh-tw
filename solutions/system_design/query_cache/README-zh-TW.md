@@ -60,34 +60,34 @@
 
 ![Imgur](http://i.imgur.com/KqZ3dSx.png)
 
-## Step 3: Design core components
+## 步驟三：設計核心元件
 
-> Dive into details for each core component.
+> 深入每個核心元件的細節
 
-### Use case: User sends a request resulting in a cache hit
+### 使用案例：使用者發送查詢請求，最後讓快取命中結果並回傳
 
-Popular queries can be served from a **Memory Cache** such as Redis or Memcached to reduce read latency and to avoid overloading the **Reverse Index Service** and **Document Service**.  Reading 1 MB sequentially from memory takes about 250 microseconds, while reading from SSD takes 4x and from disk takes 80x longer.<sup><a href=https://github.com/donnemartin/system-design-primer#latency-numbers-every-programmer-should-know>1</a></sup>
+熱門的查詢可以透過**記憶體快取**，像是 Redis 或 Memcached 來降低讀取的延遲，並且避免**反向索引服務**和**文件服務**負擔過大。循序的從記憶體中讀取 1 MB 的資料大約需要 250 微秒，而從 SSD 讀取需要 4 倍的時間，從硬碟中讀取則需要 80 倍的時間。<sup><a href=https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%AF%8F%E5%80%8B%E9%96%8B%E7%99%BC%E8%80%85%E9%83%BD%E6%87%89%E8%A9%B2%E7%9F%A5%E9%81%93%E7%9A%84%E5%BB%B6%E9%81%B2%E6%95%B8%E9%87%8F%E7%B4%9A>1</a></sup>
 
-Since the cache has limited capacity, we'll use a least recently used (LRU) approach to expire older entries.
+由於快取的記憶體有限，我們可以使用「最近最少使用 (LRU)」的方法來讓舊有的資料過期。
 
-* The **Client** sends a request to the **Web Server**, running as a [reverse proxy](https://github.com/donnemartin/system-design-primer#reverse-proxy-web-server)
-* The **Web Server** forwards the request to the **Query API** server
-* The **Query API** server does the following:
-    * Parses the query
-        * Removes markup
-        * Breaks up the text into terms
-        * Fixes typos
-        * Normalizes capitalization
-        * Converts the query to use boolean operations
-    * Checks the **Memory Cache** for the content matching the query
-        * If there's a hit in the **Memory Cache**, the **Memory Cache** does the following:
-            * Updates the cached entry's position to the front of the LRU list
-            * Returns the cached contents
-        * Else, the **Query API** does the following:
-            * Uses the **Reverse Index Service** to find documents matching the query
-                * The **Reverse Index Service** ranks the matching results and returns the top ones
-            * Uses the **Document Service** to return titles and snippets
-            * Updates the **Memory Cache** with the contents, placing the entry at the front of the LRU list
+* **客戶端** 發出一個請求到 **網頁伺服器** 上，這個伺服器是一個 [反向代理伺服器](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%B6%B2%E9%A0%81%E4%BC%BA%E6%9C%8D%E5%99%A8)
+* **網頁伺服器**會轉送請求到**查詢 API 伺服器**
+* **查詢 API**伺服器包含以下行為：
+    * 解析查詢
+        * 刪除標記
+        * 將長文句分解成詞
+        * 修正錯字
+        * 將大小寫歸一化
+        * 將查詢語句轉換成布林操作
+    * 檢查**記憶體快取**來尋找和查詢詞相符合的結果
+        * 如果在**記憶體快取**中找到對應的結果，則進行以下步驟：
+            * 將快取的資料位置更新到 LRU 列表的前方
+            * 從快取回傳結果
+        * 否則，**查詢 API**伺服器則進行以下步驟：
+            * 使用**反向索引服務**來尋找對應的結果
+                * **反向索引服務**會針對符合的結果進行排序
+            * 使用**文件服務**來回傳結果標題和描述
+            * 將對應的結果更新到**記憶體快取**，並將資料位置更新到 LRU 列表前方
 
 #### Cache implementation
 
