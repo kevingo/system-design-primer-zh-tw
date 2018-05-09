@@ -89,9 +89,9 @@
             * 使用**文件服務**來回傳結果標題和描述
             * 將對應的結果更新到**記憶體快取**，並將資料位置更新到 LRU 列表前方
 
-#### Cache implementation
+#### 快取實作
 
-The cache can use a doubly-linked list: new items will be added to the head while items to expire will be removed from the tail.  We'll use a hash table for fast lookups to each linked list node.
+快取系統可以透過雙向鏈結串列來實作：新的項目會被加到開頭的位置，而過期的項目則會在尾巴的地方被移除。我們可以使用一個 hash table 來快速的查找每個鏈結串列中的節點。
 
 **Clarify with your interviewer how much code you are expected to write**.
 
