@@ -93,9 +93,9 @@
 
 快取系統可以透過雙向鏈結串列來實作：新的項目會被加到開頭的位置，而過期的項目則會在尾巴的地方被移除。我們可以使用一個 hash table 來快速的查找每個鏈結串列中的節點。
 
-**Clarify with your interviewer how much code you are expected to write**.
+**向你的面試者詢問他預期你的程式碼要寫到什麼程度**.
 
-**Query API Server** implementation:
+**查詢 API 伺服器** 實作：
 
 ```
 class QueryApi(object):
@@ -119,7 +119,7 @@ class QueryApi(object):
         return results
 ```
 
-**Node** implementation:
+**節點** 實作：
 
 ```
 class Node(object):
@@ -129,7 +129,7 @@ class Node(object):
         self.results = results
 ```
 
-**LinkedList** implementation:
+**鏈結串列** 實作：
 
 ```
 class LinkedList(object):
@@ -148,7 +148,7 @@ class LinkedList(object):
         ...
 ```
 
-**Cache** implementation:
+**快取** 實作：
 
 ```
 class Cache(object):
@@ -196,7 +196,7 @@ class Cache(object):
             self.lookup[query] = new_node
 ```
 
-#### When to update the cache
+#### 什麼時候要更新快取
 
 The cache should be updated when:
 
