@@ -198,15 +198,15 @@ class Cache(object):
 
 #### 什麼時候要更新快取
 
-The cache should be updated when:
+快取應該要在以下情況發生時進行更新：
 
-* The page contents change
-* The page is removed or a new page is added
-* The page rank changes
+* 頁面的內容改變時
+* 頁面被移除或新的頁面加入時
+* 頁面的排名改變時
 
-The most straightforward way to handle these cases is to simply set a max time that a cached entry can stay in the cache before it is updated, usually referred to as time to live (TTL).
+針對上述的情況，最直覺的方法就是為每個快取中的資料設定一個最長存活時間，通常我們稱為 TTL (time to live)。
 
-Refer to [When to update the cache](https://github.com/donnemartin/system-design-primer#when-to-update-the-cache) for tradeoffs and alternatives.  The approach above describes [cache-aside](https://github.com/donnemartin/system-design-primer#cache-aside).
+請參考 [什麼時候要更新快取](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E4%BB%80%E9%BA%BC%E6%99%82%E5%80%99%E8%A6%81%E6%9B%B4%E6%96%B0%E5%BF%AB%E5%8F%96) 這個章節來決定你的方案和評估的準則。上述的方法細節可以參考 [快取模式](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%BF%AB%E5%8F%96%E6%A8%A1%E5%BC%8F) 章節。
 
 ## Step 4: Scale the design
 
