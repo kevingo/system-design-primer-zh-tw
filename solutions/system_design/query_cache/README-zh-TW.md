@@ -208,38 +208,38 @@ class Cache(object):
 
 請參考 [什麼時候要更新快取](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E4%BB%80%E9%BA%BC%E6%99%82%E5%80%99%E8%A6%81%E6%9B%B4%E6%96%B0%E5%BF%AB%E5%8F%96) 這個章節來決定你的方案和評估的準則。上述的方法細節可以參考 [快取模式](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%BF%AB%E5%8F%96%E6%A8%A1%E5%BC%8F) 章節。
 
-## Step 4: Scale the design
+## 步驟四：擴展你的設計
 
-> Identify and address bottlenecks, given the constraints.
+> 根據你設定的限制條件，提出目前設計架構上的瓶頸，並提出解決方法
 
 ![Imgur](http://i.imgur.com/4j99mhe.png)
 
-**Important: Do not simply jump right into the final design from the initial design!**
+**重要提醒：不要一開始就從最初的設計跳到最後階段**
 
-State you would 1) **Benchmark/Load Test**, 2) **Profile** for bottlenecks 3) address bottlenecks while evaluating alternatives and trade-offs, and 4) repeat.  See [Design a system that scales to millions of users on AWS](../scaling_aws/README.md) as a sample on how to iteratively scale the initial design.
+描述你如何進行 1) **負載壓力測試**、2) **描述瓶頸**、3) 解決瓶頸，並提出替代方案、4) 重複以上步驟。可以參考 [在 AWS 上設計可以乘載百萬使用者的系統](../scaling_aws/README.md) 章節作為參考，學習如何一步一步來擴展你的初始架構設計。
 
-It's important to discuss what bottlenecks you might encounter with the initial design and how you might address each of them.  For example, what issues are addressed by adding a **Load Balancer** with multiple **Web Servers**?  **CDN**?  **Master-Slave Replicas**?  What are the alternatives and **Trade-Offs** for each?
+針對初始設計所會遇到的瓶頸進行討論，並且知道如何解決是很重要的。舉例來說，你可以透過增加一台**負載平衡器**來加入多個**網頁伺服器**來解決什麼問題？**CDN**呢？**主-從架構**？每個選擇的替代方案和權衡條件是什麼？
 
-We'll introduce some components to complete the design and to address scalability issues.  Internal load balancers are not shown to reduce clutter.
+我們會介紹一些元件來使系統設計更完整，並且解決擴展性的問題。這裡沒有顯示內部負載平衡器，以免讓整個架構太混亂。
 
-*To avoid repeating discussions*, refer to the following [system design topics](https://github.com/donnemartin/system-design-primer#index-of-system-design-topics) for main talking points, tradeoffs, and alternatives:
+*為了避免重複贅述*，請參考 [系統設計主題索引](https://github.com/donnemartin/system-design-primer#index-of-system-design-topics) 中提到的各種架構的取捨與選擇：
 
-* [DNS](https://github.com/donnemartin/system-design-primer#domain-name-system)
-* [Load balancer](https://github.com/donnemartin/system-design-primer#load-balancer)
-* [Horizontal scaling](https://github.com/donnemartin/system-design-primer#horizontal-scaling)
-* [Web server (reverse proxy)](https://github.com/donnemartin/system-design-primer#reverse-proxy-web-server)
-* [API server (application layer)](https://github.com/donnemartin/system-design-primer#application-layer)
-* [Cache](https://github.com/donnemartin/system-design-primer#cache)
-* [Consistency patterns](https://github.com/donnemartin/system-design-primer#consistency-patterns)
-* [Availability patterns](https://github.com/donnemartin/system-design-primer#availability-patterns)
+* [域名系統(DNS)](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%B5%B1)
+* [負載平衡器](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E8%B2%A0%E8%BC%89%E5%B9%B3%E8%A1%A1%E5%99%A8)
+* [水平擴展](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%B0%B4%E5%B9%B3%E6%93%B4%E5%B1%95)
+* [網頁伺服器 (反向代理)](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%B6%B2%E9%A0%81%E4%BC%BA%E6%9C%8D%E5%99%A8)
+* [API 伺服器 (應用層)](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%87%89%E7%94%A8%E5%B1%A4)
+* [快取](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%BF%AB%E5%8F%96)
+* [一致性模式](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E4%B8%80%E8%87%B4%E6%80%A7%E6%A8%A1%E5%BC%8F)
+* [可用性模式](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%8F%AF%E7%94%A8%E6%80%A7%E6%A8%A1%E5%BC%8F)
 
-### Expanding the Memory Cache to many machines
+### 擴展記憶體快去到多台機器上
 
-To handle the heavy request load and the large amount of memory needed, we'll scale horizontally.  We have three main options on how to store the data on our **Memory Cache** cluster:
+為了處理大量的請求和記憶體需求，我們會進行水平擴展。底下有三種選擇來讓你了解如何儲存資料在我們的**快取**集群中：
 
-* **Each machine in the cache cluster has its own cache** - Simple, although it will likely result in a low cache hit rate.
-* **Each machine in the cache cluster has a copy of the cache** - Simple, although it is an inefficient use of memory.
-* **The cache is [sharded](https://github.com/donnemartin/system-design-primer#sharding) across all machines in the cache cluster** - More complex, although it is likely the best option.  We could use hashing to determine which machine could have the cached results of a query using `machine = hash(query)`.  We'll likely want to use [consistent hashing](https://github.com/donnemartin/system-design-primer#under-development).
+* **每台機器在快取集群中有自己的快取節點** - 簡單的做法，即使它可能會導致較低的快取命中率
+* **每台機器在快取集群中擁有快取的複製** - 簡單的做法，但這樣在使用記憶體上較沒有效率
+* **快取是採用 [分片](https://github.com/donnemartin/system-design-primer#sharding) 式的架構** - 較為複雜的做法，但可能是比較好的架構。我們可以使用 hash 的機制來決定哪台機器會存放我們查詢的結果：`machine = hash(query)`. 可以考慮 [一致性的 hashing](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-TW.md#%E4%BB%8D%E5%9C%A8%E9%80%B2%E8%A1%8C%E4%B8%AD)。
 
 ## Additional talking points
 
