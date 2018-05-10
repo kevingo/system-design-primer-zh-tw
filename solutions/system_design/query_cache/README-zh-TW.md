@@ -241,66 +241,66 @@ class Cache(object):
 * **每台機器在快取集群中擁有快取的複製** - 簡單的做法，但這樣在使用記憶體上較沒有效率
 * **快取是採用 [分片](https://github.com/donnemartin/system-design-primer#sharding) 式的架構** - 較為複雜的做法，但可能是比較好的架構。我們可以使用 hash 的機制來決定哪台機器會存放我們查詢的結果：`machine = hash(query)`. 可以考慮 [一致性的 hashing](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-TW.md#%E4%BB%8D%E5%9C%A8%E9%80%B2%E8%A1%8C%E4%B8%AD)。
 
-## Additional talking points
+## 其他想要談論的重點
 
-> Additional topics to dive into, depending on the problem scope and time remaining.
+> 根據你問題的範圍和面試剩餘的時間，深入討論以下主題
 
-### SQL scaling patterns
+### SQL 擴展模式
 
-* [Read replicas](https://github.com/donnemartin/system-design-primer#master-slave-replication)
-* [Federation](https://github.com/donnemartin/system-design-primer#federation)
-* [Sharding](https://github.com/donnemartin/system-design-primer#sharding)
-* [Denormalization](https://github.com/donnemartin/system-design-primer#denormalization)
-* [SQL Tuning](https://github.com/donnemartin/system-design-primer#sql-tuning)
+* [主從複寫](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-TW.md#%E4%B8%BB%E5%BE%9E%E8%A4%87%E5%AF%AB)
+* [聯邦式資料庫](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E8%81%AF%E9%82%A6%E5%BC%8F%E8%B3%87%E6%96%99%E5%BA%AB)
+* [分片](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%88%86%E7%89%87)
+* [反正規化](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%8F%8D%E6%AD%A3%E8%A6%8F%E5%8C%96)
+* [SQL 優化](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#sql-%E5%84%AA%E5%8C%96)
 
-#### NoSQL
+### NoSQL
 
-* [Key-value store](https://github.com/donnemartin/system-design-primer#key-value-store)
-* [Document store](https://github.com/donnemartin/system-design-primer#document-store)
-* [Wide column store](https://github.com/donnemartin/system-design-primer#wide-column-store)
-* [Graph database](https://github.com/donnemartin/system-design-primer#graph-database)
-* [SQL vs NoSQL](https://github.com/donnemartin/system-design-primer#sql-or-nosql)
+* [鍵-值對的資料庫](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E9%8D%B5-%E5%80%BC%E5%B0%8D%E7%9A%84%E8%B3%87%E6%96%99%E5%BA%AB)
+* [文件類型資料庫](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%96%87%E4%BB%B6%E9%A1%9E%E5%9E%8B%E8%B3%87%E6%96%99%E5%BA%AB)
+* [列儲存型資料庫](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%88%97%E5%84%B2%E5%AD%98%E5%9E%8B%E8%B3%87%E6%96%99%E5%BA%AB)
+* [圖形資料庫](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%9C%96%E5%BD%A2%E8%B3%87%E6%96%99%E5%BA%AB)
+* [SQL 或 NoSQL](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#sql-%E6%88%96-nosql)
 
 ### Caching
 
-* Where to cache
-    * [Client caching](https://github.com/donnemartin/system-design-primer#client-caching)
-    * [CDN caching](https://github.com/donnemartin/system-design-primer#cdn-caching)
-    * [Web server caching](https://github.com/donnemartin/system-design-primer#web-server-caching)
-    * [Database caching](https://github.com/donnemartin/system-design-primer#database-caching)
-    * [Application caching](https://github.com/donnemartin/system-design-primer#application-caching)
-* What to cache
-    * [Caching at the database query level](https://github.com/donnemartin/system-design-primer#caching-at-the-database-query-level)
-    * [Caching at the object level](https://github.com/donnemartin/system-design-primer#caching-at-the-object-level)
-* When to update the cache
-    * [Cache-aside](https://github.com/donnemartin/system-design-primer#cache-aside)
-    * [Write-through](https://github.com/donnemartin/system-design-primer#write-through)
-    * [Write-behind (write-back)](https://github.com/donnemartin/system-design-primer#write-behind-write-back)
-    * [Refresh ahead](https://github.com/donnemartin/system-design-primer#refresh-ahead)
+* 快取在什麼位置
+    * [客戶端快取](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%AE%A2%E6%88%B6%E7%AB%AF%E5%BF%AB%E5%8F%96)
+    * [CDN 快取](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#cdn-%E5%BF%AB%E5%8F%96)
+    * [網站伺服器快取](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E7%B6%B2%E7%AB%99%E4%BC%BA%E6%9C%8D%E5%99%A8%E5%BF%AB%E5%8F%96)
+    * [資料庫快取](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E8%B3%87%E6%96%99%E5%BA%AB%E5%BF%AB%E5%8F%96)
+    * [應用程式快取](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%BF%AB%E5%8F%96)
+* 什麼內容要快取
+    * [資料庫查詢級別的快取](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E8%B3%87%E6%96%99%E5%BA%AB%E6%9F%A5%E8%A9%A2%E7%B4%9A%E5%88%A5%E7%9A%84%E5%BF%AB%E5%8F%96)
+    * [物件級別的快取](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E7%89%A9%E4%BB%B6%E7%B4%9A%E5%88%A5%E7%9A%84%E5%BF%AB%E5%8F%96)
+* 什麼時候要更新快取
+    * [快取模式](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%BF%AB%E5%8F%96%E6%A8%A1%E5%BC%8F)
+    * [寫入模式](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%AF%AB%E5%85%A5%E6%A8%A1%E5%BC%8F)
+    * [事後寫入(回寫)](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E4%BA%8B%E5%BE%8C%E5%AF%AB%E5%85%A5%E5%9B%9E%E5%AF%AB)
+    * [更新式快取](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%9B%B4%E6%96%B0%E5%BC%8F%E5%BF%AB%E5%8F%96)
 
 ### Asynchronism and microservices
 
-* [Message queues](https://github.com/donnemartin/system-design-primer#message-queues)
-* [Task queues](https://github.com/donnemartin/system-design-primer#task-queues)
-* [Back pressure](https://github.com/donnemartin/system-design-primer#back-pressure)
-* [Microservices](https://github.com/donnemartin/system-design-primer#microservices)
+* [訊息佇列](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E8%A8%8A%E6%81%AF%E4%BD%87%E5%88%97)
+* [工作佇列](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%B7%A5%E4%BD%9C%E4%BD%87%E5%88%97)
+* [背壓機制](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E8%83%8C%E5%A3%93%E6%A9%9F%E5%88%B6)
+* [微服務](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%BE%AE%E6%9C%8D%E5%8B%99)
 
 ### Communications
 
-* Discuss tradeoffs:
-    * External communication with clients - [HTTP APIs following REST](https://github.com/donnemartin/system-design-primer#representational-state-transfer-rest)
-    * Internal communications - [RPC](https://github.com/donnemartin/system-design-primer#remote-procedure-call-rpc)
-* [Service discovery](https://github.com/donnemartin/system-design-primer#service-discovery)
+* 評估以下兩種方式：
+    * 和客戶端進行外部通訊 - [使用 REST 進行 HTTP APIs 呼叫](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%85%B7%E8%B1%A1%E7%8B%80%E6%85%8B%E8%BD%89%E7%A7%BB-rest)
+    * 內部通訊 - [RPC](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E9%81%A0%E7%AB%AF%E7%A8%8B%E5%BC%8F%E5%91%BC%E5%8F%AB-rpc)
+* [服務發現](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%9C%8D%E5%8B%99%E7%99%BC%E7%8F%BE)
 
 ### Security
 
-Refer to the [security section](https://github.com/donnemartin/system-design-primer#security).
+可以參考 [資訊安全](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E8%B3%87%E8%A8%8A%E5%AE%89%E5%85%A8) 章節。
 
 ### Latency numbers
 
-See [Latency numbers every programmer should know](https://github.com/donnemartin/system-design-primer#latency-numbers-every-programmer-should-know).
+可以參考 [每個開發者都應該知道的延遲數量級](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E6%AF%8F%E5%80%8B%E9%96%8B%E7%99%BC%E8%80%85%E9%83%BD%E6%87%89%E8%A9%B2%E7%9F%A5%E9%81%93%E7%9A%84%E5%BB%B6%E9%81%B2%E6%95%B8%E9%87%8F%E7%B4%9A) 章節。
 
-### Ongoing
+### 持續調整與改善
 
-* Continue benchmarking and monitoring your system to address bottlenecks as they come up
-* Scaling is an iterative process
+* 持續的評估和監控你的系統，找出可能的瓶頸
+* 擴展是一個不斷來回迭代的過程
