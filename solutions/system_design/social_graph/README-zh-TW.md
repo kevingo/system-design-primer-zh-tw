@@ -31,20 +31,20 @@
 
 練習使用更傳統的系統 - 不要使用圖形化的解決方案，像是 [GraphQL](http://graphql.org/) 或是圖形化資料庫 [Neo4j](https://neo4j.com/)。
 
-#### Calculate usage
+#### 計算使用量
 
-**Clarify with your interviewer if you should run back-of-the-envelope usage calculations.**
+**向你的面試人員詢問你是否可以用比較粗略的方式來計算使用量**
 
-* 5 billion friend relationships
-    * 100 million users * 50 friends per user average
-* 400 search requests per second
+* 50 億個朋友之間的關係要記錄
+    * 一億個使用者 * 每個使用者平均 50 位朋友
+* 每秒 400 次搜尋
 
-Handy conversion guide:
+一些筆記：
 
-* 2.5 million seconds per month
-* 1 request per second = 2.5 million requests per month
-* 40 requests per second = 100 million requests per month
-* 400 requests per second = 1 billion requests per month
+* 每月 250 萬秒
+* 每秒 1 次請求 = 每月 250 萬次請求
+* 每秒 40 次請求 = 每月 1 億次請求
+* 每秒 400 次請求 = 每月 10 億 次請求
 
 ## Step 2: Create a high level design
 
