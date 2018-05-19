@@ -10,12 +10,12 @@
 
 在這裡沒有面試者會幫你釐清上面的問題，所以我們會預先定義一些使用情境和限制。
 
-### Use cases
+### 使用情境
 
-#### We'll scope the problem to handle only the following use cases
+#### 我們將所要解決的問題限縮在以下範圍
 
-* **User** searches for someone and sees the shortest path to the searched person
-* **Service** has high availability
+* **使用者**會尋找某人，並且看到此搜尋的最短路徑
+* **服務**本身具備高可用 (High-Availability)
 
 ### Constraints and assumptions
 
