@@ -17,19 +17,19 @@
 * **使用者**會尋找某人，並且看到此搜尋的最短路徑
 * **服務**本身具備高可用 (High-Availability)
 
-### Constraints and assumptions
+### 限制與假設
 
-#### State assumptions
+#### 狀態假設
 
-* Traffic is not evenly distributed
-    * Some searches are more popular than others, while others are only executed once
-* Graph data won't fit on a single machine
-* Graph edges are unweighted
-* 100 million users
-* 50 friends per user average
-* 1 billion friend searches per month
+* 流量並非均勻的分佈
+    * 某些搜尋總是比較熱門，但有的搜尋可能只出現一次
+* 資料並非僅存在於一台機器上
+* 圖的邊上並沒有權重
+* 一億名使用者
+* 平均每個使用者有 50 位朋友
+* 每月有 10 億次的搜尋朋友的行為
 
-Exercise the use of more traditional systems - don't use graph-specific solutions such as [GraphQL](http://graphql.org/) or a graph database like [Neo4j](https://neo4j.com/)
+練習使用更傳統的系統 - 不要使用圖形化的解決方案，像是 [GraphQL](http://graphql.org/) 或是圖形化資料庫 [Neo4j](https://neo4j.com/)。
 
 #### Calculate usage
 
