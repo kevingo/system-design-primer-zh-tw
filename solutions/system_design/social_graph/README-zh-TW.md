@@ -52,15 +52,15 @@
 
 ![Imgur](http://i.imgur.com/wxXyq2J.png)
 
-## Step 3: Design core components
+## 步驟三：設計核心元件
 
-> Dive into details for each core component.
+> 深入每個核心元件的細節
 
-### Use case: User searches for someone and sees the shortest path to the searched person
+### 使用情境： 使用者會尋找某人，並且看到此搜尋的最短路徑
 
-**Clarify with your interviewer how much code you are expected to write**.
+**向你的面試者詢問你的程式碼要撰寫到多詳細**.
 
-Without the constraint of millions of users (vertices) and billions of friend relationships (edges), we could solve this unweighted shortest path task with a general BFS approach:
+如果沒有數百萬個使用者 (圖的點) 和數十億的朋友之間的關係 (圖的邊)，我們可以用一般的廣度優先搜尋演算法(BFS) 來解決未加權的最短路徑問題：
 
 ```
 class Graph(Graph):
@@ -99,23 +99,23 @@ class Graph(Graph):
         return None
 ```
 
-We won't be able to fit all users on the same machine, we'll need to [shard](https://github.com/donnemartin/system-design-primer#sharding) users across **Person Servers** and access them with a **Lookup Service**.
+我們不可能透過一台機器來服務所有的使用者，所以我們會需要使用到 [分片](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%88%86%E7%89%87) 的技術來讓使用者分散到不同的 **使用者伺服器** 上，並且透過 **查找服務** 來搜尋他們。
 
-* The **Client** sends a request to the **Web Server**, running as a [reverse proxy](https://github.com/donnemartin/system-design-primer#reverse-proxy-web-server)
-* The **Web Server** forwards the request to the **Search API** server
-* The **Search API** server forwards the request to the **User Graph Service**
-* The **User Graph Service** does the following:
-    * Uses the **Lookup Service** to find the **Person Server** where the current user's info is stored
-    * Finds the appropriate **Person Server** to retrieve the current user's list of `friend_ids`
-    * Runs a BFS search using the current user as the `source` and the current user's `friend_ids` as the ids for each `adjacent_node`
-    * To get the `adjacent_node` from a given id:
-        * The **User Graph Service** will *again* need to communicate with the **Lookup Service** to determine which **Person Server** stores the`adjacent_node` matching the given id (potential for optimization)
+* **使用者** 發送請求到 **網頁伺服器**，這個伺服器是以 [反向代理伺服器](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E7%B6%B2%E9%A0%81%E4%BC%BA%E6%9C%8D%E5%99%A8) 的方式執行
+* **網頁伺服器** 轉送請求到 **搜尋 API** 伺服器
+* **搜尋 API** 伺服器轉送請求到 **使用者圖形服務**
+* **使用者圖形服務** 會進行以下行為：
+    * 使用 **查詢服務** 來尋找 **使用者伺服器**，這個伺服器儲存了目前使用者的資訊
+    * 尋找正確的 **使用者伺服器** 來取得目前使用者的 `friend_ids` 清單
+    * 使用目前使用者當成 `source`，以及 `friend_ids` 當成 ids 來執行廣度優先搜尋演算法(BFS)
+    * 給定 id，為了找到 `adjacent_node`：
+        * **使用者圖形服務** 需要 *再一次* 和 **查詢服務** 進行溝通，用來決定哪一台 **使用者伺服器** 用來儲存對應 id 的 `adjacent_node`。
 
-**Clarify with your interviewer how much code you should be writing**.
+**向你的面試者詢問他預期你的程式碼要寫到什麼程度**.
 
-**Note**: Error handling is excluded below for simplicity.  Ask if you should code proper error handing.
+**注意**：為了簡化流程，例外處理並不在底下的程式碼中。向你的面試官詢問是否需要考慮例外處理。
 
-**Lookup Service** implementation:
+**查詢服務** 實做：
 
 ```
 class LookupService(object):
@@ -130,7 +130,7 @@ class LookupService(object):
         return self.lookup[person_id]
 ```
 
-**Person Server** implementation:
+**使用者服務** 實作：
 
 ```
 class PersonServer(object):
@@ -149,7 +149,7 @@ class PersonServer(object):
         return results
 ```
 
-**Person** implementation:
+**使用者** 實作：
 
 ```
 class Person(object):
@@ -160,7 +160,7 @@ class Person(object):
         self.friend_ids = friend_ids
 ```
 
-**User Graph Service** implementation:
+**使用者圖形服務** 實作：
 
 ```
 class UserGraphService(object):
@@ -218,13 +218,13 @@ class UserGraphService(object):
         return None
 ```
 
-We'll use a public [**REST API**](https://github.com/donnemartin/system-design-primer#representational-state-transfer-rest):
+我們會使用公開的 [**REST API**]((https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%85%B7%E8%B1%A1%E7%8B%80%E6%85%8B%E8%BD%89%E7%A7%BB-rest))：
 
 ```
 $ curl https://social.com/api/v1/friend_search?person_id=1234
 ```
 
-Response:
+回應：
 
 ```
 {
@@ -244,7 +244,7 @@ Response:
 },
 ```
 
-For internal communications, we could use [Remote Procedure Calls](https://github.com/donnemartin/system-design-primer#remote-procedure-call-rpc).
+內部通訊上，我們可以使用 [遠端程式呼叫](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E9%81%A0%E7%AB%AF%E7%A8%8B%E5%BC%8F%E5%91%BC%E5%8F%AB-rpc) 的方式。
 
 ## Step 4: Scale the design
 
