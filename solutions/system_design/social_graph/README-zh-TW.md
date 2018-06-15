@@ -277,12 +277,12 @@ $ curl https://social.com/api/v1/friend_search?person_id=1234
 
 * 在**記憶體快取**中儲存完整或部分 BFS 遍歷的結果來加速查找過程
 * 在離線時，批次計算完整或部分 BFS 結果，用來加速後續在 **NoSQL 資料庫** 中查找的過程
-* Reduce machine jumps by batching together friend lookups hosted on the same **Person Server**
-    * [Shard](https://github.com/donnemartin/system-design-primer#sharding) **Person Servers** by location to further improve this, as friends generally live closer to each other
-* Do two BFS searches at the same time, one starting from the source, and one from the destination, then merge the two paths
-* Start the BFS search from people with large numbers of friends, as they are more likely to reduce the number of [degrees of separation](https://en.wikipedia.org/wiki/Six_degrees_of_separation) between the current user and the search target
-* Set a limit based on time or number of hops before asking the user if they want to continue searching, as searching could take a considerable amount of time in some cases
-* Use a **Graph Database** such as [Neo4j](https://neo4j.com/) or a graph-specific query language such as [GraphQL](http://graphql.org/) (if there were no constraint preventing the use of **Graph Databases**)
+* 將透過 **使用者服務** 來查找朋友的過程批次處理，並且將此服務託管在同一台機器上避免伺服器之間的跳轉
+    * 透過將 **使用者服務** 依照位置進行 [分片](https://github.com/kevingo/system-design-primer-zh-tw/blob/master/README-zh-TW.md#%E5%88%86%E7%89%87) 來進一步改善料能，因為通常朋友之間的距離在圖形上會靠得很近
+* 可以同時執行兩個 BFS 搜尋，一個從起始點開始，一個從終點開始，最後再進行合併
+* 在進行 BFS 搜尋時，先從朋友數目多的使用者開始，因為他們更有可能減少當前使用者與搜尋目標之間的 [分離度](https://en.wikipedia.org/wiki/Six_degrees_of_separation) 的數量
+* 在使用者要繼續搜尋之前，根據時間或跳轉的數量來設定一些限制，因為在某些情況下，搜尋可能需要花很多時間
+* 使用像是 [Neo4j](https://neo4j.com/) 或是圖形查詢語言 [GraphQL](http://graphql.org/) (如果沒有限制使用 **圖形資料庫**)
 
 ## 其他想要談論的重點
 
