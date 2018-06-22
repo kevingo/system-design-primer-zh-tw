@@ -23,21 +23,21 @@
 * 一般電子商務網站的功能
     * 僅僅需要設計計算銷售排名的功能即可
 
-### Constraints and assumptions
+### 限制與假設
 
-#### State assumptions
+#### 狀態假設
 
-* Traffic is not evenly distributed
-* Items can be in multiple categories
-* Items cannot change categories
-* There are no subcategories ie `foo/bar/baz`
-* Results must be updated hourly
-    * More popular products might need to be updated more frequently
-* 10 million products
-* 1000 categories
-* 1 billion transactions per month
-* 100 billion read requests per month
-* 100:1 read to write ratio
+* 流量不是均勻分布的
+* 產品可以在不同的類別
+* 產品不能更改類別
+* 不會有子類別，例如：`foo/bar/baz`
+* 查詢結果每小時更新
+    * 越熱門的產品可能要更新的更頻繁
+* 1000 萬個商品
+* 1000 個類別
+* 每月 10 億筆交易
+* 每月 1000 億次讀取請求
+* 讀取寫入比例 100：1
 
 #### Calculate usage
 
