@@ -39,11 +39,11 @@
 * 每月 1000 億次讀取請求
 * 讀取寫入比例 100：1
 
-#### Calculate usage
+#### 計算使用量
 
-**Clarify with your interviewer if you should run back-of-the-envelope usage calculations.**
+**向你的面試人員詢問你是否可以用比較粗略的方式來計算使用量**
 
-* Size per transaction:
+* 每次查詢的大小：
     * `created_at` - 5 bytes
     * `product_id` - 8 bytes
     * `category_id` - 4 bytes
@@ -51,24 +51,24 @@
     * `buyer_id` - 8 bytes
     * `quantity` - 4 bytes
     * `total_price` - 5 bytes
-    * Total: ~40 bytes
-* 40 GB of new transaction content per month
-    * 40 bytes per transaction * 1 billion transactions per month
-    * 1.44 TB of new transaction content in 3 years
-    * Assume most are new transactions instead of updates to existing ones
-* 400 transactions per second on average
-* 40,000 read requests per second on average
+    * 總共：~40 bytes
+* 每月 40 GB 的新的查詢內容
+    * 40 bytes 每筆查詢 40 bytes * 每月 10 億筆查詢
+    * 三年共有 1.44 TB 次的新查詢內容
+    * 假設大多是新的查詢，而不是更新既有的內容
+* 平均每秒 400 次查詢
+* 平均每秒 40,000 次讀取請求
 
-Handy conversion guide:
+一些筆記：
 
-* 2.5 million seconds per month
-* 1 request per second = 2.5 million requests per month
-* 40 requests per second = 100 million requests per month
-* 400 requests per second = 1 billion requests per month
+* 每月 250 萬秒
+* 每秒 1 次請求 = 每月 250 萬次請求
+* 每秒 40 次請求 = 每月 1 億次請求
+* 每秒 400 次請求 = 每月 10 億 次請求
 
-## Step 2: Create a high level design
+## 步驟二：進行高階設計
 
-> Outline a high level design with all important components.
+> 提出所有重要元件的高階設計
 
 ![Imgur](http://i.imgur.com/vwMa1Qu.png)
 
