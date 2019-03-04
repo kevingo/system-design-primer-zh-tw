@@ -12,29 +12,29 @@
 
 在這裡沒有面試者會幫你釐清上面的問題，所以我們會預先定義一些使用情境和限制。
 
-### Use cases
+### 使用情境
 
-#### We'll scope the problem to handle only the following use cases
+#### 我們將所要解決的問題限縮在以下範圍
 
-* **User** enters a block of text and gets a randomly generated link
-    * Expiration
-        * Default setting does not expire
-        * Can optionally set a timed expiration
-* **User** enters a paste's url and views the contents
-* **User** is anonymous
-* **Service** tracks analytics of pages
-    * Monthly visit stats
-* **Service** deletes expired pastes
-* **Service** has high availability
+* **使用者**在一個區塊中輸入文字，並且得到隨機產生的連結
+    * 過期機制
+        * 預設不過其
+        * 過期的時間是可由使用者選擇設定的
+* **使用者**貼上一個網址，並且可檢視其內容
+* **使用者**是匿名的
+* **服務本身**有一個統計資訊的追蹤頁面
+    * 月訪問統計
+* **服務本身**會清除過期的內容
+* **服務本身**是高可用
 
-#### Out of scope
+#### 不包含在此範圍
 
-* **User** registers for an account
-    * **User** verifies email
-* **User** logs into a registered account
-    * **User** edits the document
-* **User** can set visibility
-* **User** can set the shortlink
+* **使用者**註冊
+    * **使用者**驗證信件
+* **使用者**登入到註冊帳戶
+    * **使用者**編輯內容
+* **使用者**可以設定可視性
+* **使用者**自訂短網址
 
 ### Constraints and assumptions
 
